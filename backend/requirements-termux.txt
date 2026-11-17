@@ -1,0 +1,6 @@
+# Pinned to a matching Android wheel published by Termux User Repository.
+fastapi==0.163.1
+pydantic==2.14.3
+uvicorn==0.54.0
+# Install with pkg install python-cryptography and use --system-site-packages.
+cryptography>=43,<51

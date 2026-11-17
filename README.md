@@ -6,21 +6,34 @@ The dashboard shows up to 10 review requests and 10 assigned issues across the c
 
 ## Termux setup
 
-Install Termux from F-Droid or its official GitHub releases (do not mix Termux and plugin installation sources). In Termux, install Python, Node.js, and Git:
+Install Termux from F-Droid or its official GitHub releases (do not mix Termux and plugin installation sources). On ARM64 Termux with Python 3.14, the following approach uses the official Termux `python-cryptography` package and a prebuilt `pydantic-core` wheel from the community-maintained Termux User Repository (TUR). TUR is a **separate third-party package source**; review and trust it before installing. This setup has not yet been verified on Ian's phone.
 
 ```sh
-pkg update && pkg install python nodejs git
-# In the project directory:
-python -m venv .venv
-. .venv/bin/activate
-pip install -r backend/requirements.txt
-cd frontend && npm install && npm run build && cd ..
+pkg update
+pkg install python nodejs git python-cryptography
+# In the project directory, using Termux's system Python:
+python -m venv --system-site-packages .venv-termux
+. .venv-termux/bin/activate
+# Download only the pinned pydantic-core wheel from TUR; do not build from source.
+python -m pip install --only-binary=:all: --no-deps --index-url https://termux-user-repository.github.io/pypi/ 'pydantic-core==2.50.4'
+python -m pip install --only-binary=:all: -r backend/requirements-termux.txt
+python -m pip check
+python -c 'import cryptography, pydantic_core, fastapi; print("Imports OK", cryptography.__version__, pydantic_core.__version__)'
+cd frontend && npm ci && npm run build && cd ..
+```
+
+Stop at the first failure; don't proceed to the next step until it is resolved. `--system-site-packages` exposes all Termux system Python packages to this virtual environment, not just cryptography. The native cryptography version must satisfy the pinned range; Termux and TUR are rolling repositories and compatible packages might change. Never install or run unknown packages without reviewing their source. Other platforms can use `backend/requirements.txt` in a normal venv instead.
+
+To start the already-installed app, from the project directory:
+
+```sh
+. .venv-termux/bin/activate
 # Choose a separate local access passphrase (at least 12 characters):
 read -rs IANGIT_ACCESS_PASSPHRASE; export IANGIT_ACCESS_PASSPHRASE
 python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-Open `http://127.0.0.1:8000` in the phone's browser and enter that local access passphrase. It is separate from your token vault passphrase. The local session is kept in browser memory and resets on refresh or server restart. Stop the server with Ctrl+C. Keep Termux running while using the app. The backend only permits loopback hostnames and same-origin browser requests. The local access passphrase protects the API from unauthenticated local requests, but is not a defense against a compromised device, browser extensions, or another process with access to your environment or memory. Never expose the server on a network. Do not expose it to the network or use a tunnel. For development, start the backend as above, then run `cd frontend && npm run dev` and open `http://127.0.0.1:5173`. The interface uses system fonts and does not load third-party font resources.
+Open `http://127.0.0.1:8000` in the phone's browser and enter that local access passphrase. It is separate from your token vault passphrase. The local session is kept in browser memory and resets on refresh or server restart. Stop the server with Ctrl+C. Keep Termux running while using the app. The backend only permits loopback hostnames and same-origin browser requests. The local access passphrase protects the API from unauthenticated local requests, but is not a defense against a compromised device, browser extensions, or another process with access to your environment or memory. Never expose the server on a network or use a tunnel. For development, start the backend as above, then run `cd frontend && npm run dev` and open `http://127.0.0.1:5173`. The interface uses system fonts and does not load third-party font resources.
 
 ### Android permissions
 
@@ -80,7 +93,7 @@ After installing backend dependencies, run `python -m unittest discover -s tests
 - **GitHub rejects token:** check its expiration, owner, repository selection, and permissions in GitHub settings. Do not share it when asking for help.
 - **Missing private repositories:** connect as `ianwest09`, and check that the token is authorized for those repositories. GitHub may require organization authorization in other contexts.
 - **Offline or rate-limited:** retry refresh later. A previously fetched cache is shown on refresh failure while unlocked.
-- **Build or install fails:** update Termux packages and check Python/Node versions and available storage. Some Python cryptography builds may require additional native build dependencies on your Termux version.
+- **Build or install fails:** update Termux packages and check Python/Node versions and available storage. Check that the Termux native cryptography package version meets the Termux requirements, that the venv was created with `--system-site-packages`, and that TUR has a compatible pinned pydantic-core wheel. Do not silently fall back to an unreviewed source build.
 - **Port in use:** choose another loopback port and use that port in the browser.
 
 ## Next milestones for individual approval
