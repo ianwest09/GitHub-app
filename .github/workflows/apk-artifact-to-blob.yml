@@ -5,6 +5,13 @@ name: Copy debug APK artifact to Git blob
 # blob via api.github.com, and its SHA + checksum are published as a commit
 # status. Nothing is committed to a branch and no secrets are required.
 on:
+  # A push trigger registers this workflow on a non-default branch; the first
+  # push of this file does the copy, and workflow_dispatch allows repeats.
+  push:
+    branches:
+      - arena/2b1e7304-github-app
+    paths:
+      - '.github/workflows/apk-artifact-to-blob.yml'
   workflow_dispatch:
     inputs:
       run_id:
