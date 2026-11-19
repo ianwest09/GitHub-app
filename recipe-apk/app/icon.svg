@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Christmas Lunch">
+  <rect width="192" height="192" rx="36" fill="#16442f"/>
+  <circle cx="96" cy="96" r="62" fill="#fbf8f1"/>
+  <path d="M96 42l11 31 33 1-26 20 9 32-27-19-27 19 9-32-26-20 33-1z" fill="#b18b46"/>
+  <path d="M58 138c12-10 24-10 38 0 14-10 26-10 38 0" fill="none" stroke="#16442f" stroke-width="9" stroke-linecap="round"/>
+</svg>

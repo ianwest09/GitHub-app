@@ -1,0 +1,15 @@
+{
+  "name": "Christmas Lunch · Port Alfred",
+  "short_name": "Xmas Lunch",
+  "description": "Offline-first run sheet, shopping list, agenda and verified-price cost calculator for Christmas lunch for ten.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbf8f1",
+  "theme_color": "#16442f",
+  "lang": "en-ZA",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "christmas-lunch-sync-service",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional zero-dependency LAN sync service for the offline-first Christmas Lunch app",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}
