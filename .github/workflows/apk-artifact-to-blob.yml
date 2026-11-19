@@ -37,15 +37,16 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Download APK artifact
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p apk
-          gh run download "${{ inputs.run_id }}" \
-            -n "${{ inputs.artifact_name }}" \
-            --repo "${{ github.repository }}" \
-            --dir apk
-          ls -lh apk
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: apk
+          run-id: ${{ inputs.run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+
+      - name: List downloaded files
+        run: ls -lh apk
 
       - name: Create Git blob and commit status
         env:
