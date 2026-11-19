@@ -1,17 +1,11 @@
 name: Copy debug APK artifact to Git blob
 
-# Workaround for sandboxes that cannot reach the Azure blob host used by
-# GitHub Actions artifact downloads. The APK is stored as an unreferenced Git
-# blob via api.github.com, and its SHA + checksum are published as a commit
-# status. Nothing is committed to a branch and no secrets are required.
+# Temporary workaround for sandboxes that cannot reach the Azure blob host used
+# by GitHub Actions artifact downloads. A GitHub runner fetches the artifact ZIP
+# from api.github.com, stores it as an unreferenced Git blob via the same API,
+# and publishes the blob SHA + ZIP checksum as a commit status. Nothing is
+# committed to a branch and no secrets are used.
 on:
-  # A push trigger registers this workflow on a non-default branch; the first
-  # push of this file does the copy, and workflow_dispatch allows repeats.
-  push:
-    branches:
-      - arena/2b1e7304-github-app
-    paths:
-      - '.github/workflows/apk-artifact-to-blob.yml'
   workflow_dispatch:
     inputs:
       run_id:
@@ -24,6 +18,11 @@ on:
         required: true
         type: string
         default: 'christmas-lunch-debug-apk-184d829596a8fe00abcf8df79f3bebc329df1fcf'
+  push:
+    branches:
+      - arena/2b1e7304-github-app
+    paths:
+      - '.github/workflows/apk-artifact-to-blob.yml'
 
 permissions:
   actions: read
@@ -32,34 +31,69 @@ permissions:
 
 jobs:
   publish-blob:
-    name: Publish APK as Git blob
+    name: Publish APK artifact ZIP as Git blob
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      APK_RUN_ID: ${{ github.event.inputs.run_id || '44481659196' }}
+      APK_ARTIFACT_NAME: ${{ github.event.inputs.artifact_name || 'christmas-lunch-debug-apk-184d829596a8fe00abcf8df79f3bebc329df1fcf' }}
     steps:
-      - name: Download APK artifact
-        uses: actions/download-artifact@v7
-        with:
-          name: ${{ inputs.artifact_name }}
-          path: apk
-          run-id: ${{ inputs.run_id }}
-          repository: ${{ github.repository }}
-          github-token: ${{ github.token }}
-
-      - name: List downloaded files
-        run: ls -lh apk
+      - name: Download artifact ZIP from GitHub API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ARCHIVE_URL=$(gh api "repos/${{ github.repository }}/actions/runs/${APK_RUN_ID}/artifacts" \
+            --jq ".artifacts[] | select(.name == \"${APK_ARTIFACT_NAME}\") | .archive_download_url")
+          test -n "$ARCHIVE_URL"
+          echo "Archive URL: $ARCHIVE_URL"
+          LOCATION=$(curl -sSI \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "$ARCHIVE_URL" |
+            awk 'tolower($0) ~ /^location:/ { sub(/^[^:]+:[[:space:]]*/, ""); sub(/\r$/, ""); print; exit }')
+          test -n "$LOCATION"
+          curl -fL --retry 3 --connect-timeout 15 "$LOCATION" -o artifact.zip
+          echo "Downloaded artifact ZIP:"
+          ls -lh artifact.zip
+          unzip -l artifact.zip
 
       - name: Create Git blob and commit status
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          base64 -w0 apk/app-debug.apk > apk.b64
-          SHA256=$(sha256sum apk/app-debug.apk | cut -d' ' -f1)
+          set -euo pipefail
+          base64 -w0 artifact.zip > artifact.zip.b64
           BLOB=$(gh api --method POST "repos/${{ github.repository }}/git/blobs" \
-            -F content=@apk.b64 -F encoding=base64 --jq .sha)
-          DESC="blob:$BLOB sha256:$SHA256"
+            -F content=@artifact.zip.b64 -F encoding=base64 --jq .sha)
+          ZIP_SHA256=$(sha256sum artifact.zip | cut -d' ' -f1)
+          unzip -o artifact.zip -d apk >/dev/null
+          APK_FILE=$(find apk -type f -name app-debug.apk -print -quit)
+          CHECKSUM_FILE=$(find apk -type f -name apk.sha256 -print -quit)
+          test -n "$APK_FILE"
+          test -n "$CHECKSUM_FILE"
+          APK_SHA256=$(sha256sum "$APK_FILE" | cut -d' ' -f1)
+          CHECKSUM_TEXT=$(cat "$CHECKSUM_FILE")
+          if ! grep -Fq "$APK_SHA256" "$CHECKSUM_FILE"; then
+            echo "Artifact checksum file does not contain computed APK SHA-256" >&2
+            exit 1
+          fi
+          DESC="zip-blob:$BLOB zip-sha256:$ZIP_SHA256"
           gh api --method POST "repos/${{ github.repository }}/statuses/${{ github.sha }}" \
             -f state=success \
             -f context=apk-blob \
             -f description="$DESC" \
             -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >/dev/null
-          printf '### APK blob ready\n\n- Blob: `%s`\n- SHA-256: `%s`\n- Status context: `apk-blob`\n' "$BLOB" "$SHA256" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "### APK artifact blob ready"
+            echo
+            echo "- Zip blob: \`$BLOB\`"
+            echo "- Zip SHA-256: \`$ZIP_SHA256\`"
+            echo "- APK SHA-256: \`$APK_SHA256\`"
+            echo "- Artifact checksum file: \`$CHECKSUM_TEXT\`"
+            echo "- Status context: \`apk-blob\`"
+            echo
+            echo '```'
+            unzip -l artifact.zip
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
