@@ -1,6 +1,6 @@
 # FINAL PROMPT — Christmas Lunch recipe & cost app
 
-*Consolidated and definitive. Supersedes `BUILD-PROMPT.md`. All clarifications from the conversation are folded in: alcohol-free table, Port Alfred, hosts in their 80s, one cook, red meat at the table is fine, verified prices from the three local shops, cheaper route, and no GitHub upload.*
+*Consolidated and definitive. Supersedes `BUILD-PROMPT.md`. All clarifications from the conversation are folded in: alcohol-free table, Port Alfred, hosts in their 80s, one cook, red meat at the table is fine, verified prices from the three local shops, cheaper route, and the original no-GitHub-upload preference. That preference was later explicitly superseded when the user asked to push the branch.*
 
 ---
 
@@ -77,6 +77,7 @@ DELIVER: full source tree, a runnable build (APK if possible), BUILD.md with MIU
 | Build, install and MIUI instructions | `BUILD.md` |
 | Data model, scheduling algorithm, cheaper-route logic and run instructions | `app/README.md` |
 | Explicit assumptions and unverifiable items | `ASSUMPTIONS.md` |
-| Signed arm64-v8a APK | **Not produced here** — the sandbox has no Java/JDK, Android SDK, Gradle/Kotlin compiler or Android build tools, so the native project cannot be assembled or signed in this session. `BUILD.md` gives the exact commands to produce a debug or signed release APK on any machine with Android Studio / JDK 17 / SDK 35. |
+| GitHub Actions APK workflow | `.github/workflows/build-android.yml` — no-secrets CI that runs the web tests, builds a debug APK from `android/`, and uploads `app-debug.apk` + SHA-256 as an artifact. First run pending at the time this row was added. |
+| Signed arm64-v8a APK | **Not produced here** — the sandbox has no Java/JDK, Android SDK, Gradle/Kotlin compiler or Android build tools, so the native project cannot be assembled or signed in this session. `BUILD.md` gives the exact commands to produce a debug or signed release APK on any machine with Android Studio / JDK 17 / SDK 35. A signed release still requires your own keystore; the CI workflow intentionally builds a debug APK only. |
 
-The executed fallback is therefore **both** deliverables required by the fallback clause: a fully working offline-first web app **and** a complete native Android WebView-wrapper project. No PWA-only result, no guessed prices, no partial total presented as final, no commit, no push, no GitHub upload — everything is local on this branch.
+The executed fallback is therefore **both** deliverables required by the fallback clause: a fully working offline-first web app **and** a complete native Android WebView-wrapper project. No PWA-only result, no guessed prices, no partial total presented as final. The branch was committed and pushed only after the user explicitly asked for a GitHub push; no PR or merge was opened. The workflow row above tracks the later CI addition.

@@ -1,0 +1,106 @@
+name: Build Android debug APK
+
+# No secrets, no account, no API key, no Play Store publishing.
+# This is a build-time convenience only; the app itself stays offline-first.
+on:
+  push:
+    branches:
+      - arena/2b1e7304-github-app
+    paths:
+      - '.github/workflows/build-android.yml'
+      - 'recipe-apk/android/**'
+      - 'recipe-apk/app/**'
+      - 'recipe-apk/sync-assets.sh'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build-android.yml'
+      - 'recipe-apk/android/**'
+      - 'recipe-apk/app/**'
+      - 'recipe-apk/sync-assets.sh'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-android-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-web-app:
+    name: Test offline web app
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dev dependencies
+        working-directory: recipe-apk/app
+        run: npm install --no-audit --no-fund
+
+      - name: Syntax, engine tests and UI smoke test
+        working-directory: recipe-apk/app
+        run: npm run test:all
+
+  build-android-apk:
+    name: Build and upload debug APK
+    needs: test-web-app
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK 35
+        uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: 'true'
+          log-accepted-android-sdk-licenses: 'false'
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+
+      - name: Set up Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Copy current web assets into the wrapper
+        run: |
+          chmod +x recipe-apk/sync-assets.sh recipe-apk/android/gradlew
+          ./recipe-apk/sync-assets.sh
+
+      - name: Assemble debug APK
+        working-directory: recipe-apk/android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Inspect and checksum the APK
+        run: |
+          APK=recipe-apk/android/app/build/outputs/apk/debug/app-debug.apk
+          ls -lh "$APK"
+          sha256sum "$APK" | tee apk.sha256
+          SHA=$(cut -d' ' -f1 apk.sha256)
+          SIZE=$(stat -c%s "$APK")
+          printf '### Christmas Lunch debug APK\n\n- Commit: `%s`\n- APK: `%s`\n- SHA-256: `%s`\n- Size: %s bytes\n- Debug application id: `za.co.portalfred.christmaslunch.debug`\n- Signed release APK: not built here; requires a keystore.\n' "${{ github.sha }}" "$APK" "$SHA" "$SIZE" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: christmas-lunch-debug-apk-${{ github.sha }}
+          path: |
+            recipe-apk/android/app/build/outputs/apk/debug/app-debug.apk
+            apk.sha256
+          if-no-files-found: error
+          retention-days: 14

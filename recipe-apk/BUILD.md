@@ -9,7 +9,7 @@
 | Optional LAN sync service | ✅ `sync-service/` + `OPTIONAL-SYNC.md` |
 | Signed `arm64-v8a` APK | ❌ **not produced in this sandbox** |
 
-The sandbox has no Java/JDK, Android SDK, Gradle/Kotlin compiler, `sdkmanager`, `adb`, `aapt`, `d8`, `zipalign`, `apksigner`, `keytool`, Flutter or Dart, and no `ANDROID_HOME`. The Android project is complete source, but it must be assembled on a machine with Android Studio (or equivalent CLI tools). No GitHub upload, commit or push is involved.
+The sandbox has no Java/JDK, Android SDK, Gradle/Kotlin compiler, `sdkmanager`, `adb`, `aapt`, `d8`, `zipalign`, `apksigner`, `keytool`, Flutter or Dart, and no `ANDROID_HOME`. The Android project is complete source. The branch was committed and pushed at the user's explicit request, and the GitHub Actions workflow in section 2b can now build a debug APK without a local Android Studio install.
 
 ## Prerequisites on your computer
 
@@ -45,6 +45,25 @@ app/build/outputs/apk/debug/app-debug.apk
 ```
 
 Debug builds use the automatic Android debug key and get application id `za.co.portalfred.christmaslunch.debug`. They are fine for sideloading to your own phone.
+
+## 2b. Or build it on GitHub Actions (no local Android Studio needed)
+
+`.github/workflows/build-android.yml` runs on pushes to `arena/2b1e7304-github-app`, on PRs targeting `main`, and manually via **Run workflow**. It:
+
+1. runs `npm run test:all` for the web app;
+2. sets up JDK 17, Android SDK 35 and Gradle 8.9;
+3. syncs web assets and runs `./gradlew assembleDebug`;
+4. uploads `christmas-lunch-debug-apk-<sha>` containing `app-debug.apk` and `apk.sha256`.
+
+No secrets are needed because this is a debug build. Watch or download it with:
+
+```bash
+gh run list --workflow build-android.yml --branch arena/2b1e7304-github-app
+gh run watch <run-id> --exit-status
+gh run download <run-id> -n christmas-lunch-debug-apk-<sha>
+```
+
+A signed release APK still needs your keystore; do not commit it. If you later want CI to sign a release, add the keystore and passwords as GitHub Actions secrets and never paste them into chat.
 
 ## 3. Build a signed release APK
 
