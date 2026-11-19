@@ -15,7 +15,7 @@
 | `android/` | Native Gradle/Kotlin WebView-wrapper project; compiled into a debug APK by the CI workflow |
 | `sync-service/` | Zero-dependency optional LAN sync server |
 | `sync-assets.sh` | Copies `app/` into `android/app/src/main/assets/www/` |
-| `../.github/workflows/build-android.yml` | No-secrets GitHub Actions workflow: web tests + debug APK artifact |
+| `../.github/workflows/build-android.yml` | Verified no-secrets GitHub Actions workflow: web tests + debug APK artifact ([run 44481659196](https://github.com/ianwest09/GitHub-app/actions/runs/44481659196)) |
 
 ## Quick start
 
@@ -24,4 +24,4 @@
 - **Run tests:** `cd app && npm install && npm run test:all`.
 - **Optional sync:** `cd sync-service && npm start`, then read `OPTIONAL-SYNC.md`.
 
-No signed release APK was produced in this sandbox because the Android toolchain is absent; `.github/workflows/build-android.yml` now builds a debug APK artifact on GitHub. No price was guessed; no partial total is presented as final. No Play Store listing, account, API key or runtime cloud dependency is involved. The branch was committed and pushed at the user's explicit request; no PR or merge has been opened.
+No signed release APK was produced in this sandbox because the Android toolchain is absent; `.github/workflows/build-android.yml` has successfully built a debug APK artifact on GitHub ([run 44481659196](https://github.com/ianwest09/GitHub-app/actions/runs/44481659196)). No price was guessed; no partial total is presented as final. No Play Store listing, account, API key or runtime cloud dependency is involved. The branch was committed and pushed at the user's explicit request; no PR or merge has been opened.

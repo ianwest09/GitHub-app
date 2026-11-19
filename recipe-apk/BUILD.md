@@ -9,7 +9,7 @@
 | Optional LAN sync service | ✅ `sync-service/` + `OPTIONAL-SYNC.md` |
 | Signed `arm64-v8a` APK | ❌ **not produced in this sandbox** |
 
-The sandbox has no Java/JDK, Android SDK, Gradle/Kotlin compiler, `sdkmanager`, `adb`, `aapt`, `d8`, `zipalign`, `apksigner`, `keytool`, Flutter or Dart, and no `ANDROID_HOME`. The Android project is complete source. The branch was committed and pushed at the user's explicit request, and the GitHub Actions workflow in section 2b can now build a debug APK without a local Android Studio install.
+The sandbox has no Java/JDK, Android SDK, Gradle/Kotlin compiler, `sdkmanager`, `adb`, `aapt`, `d8`, `zipalign`, `apksigner`, `keytool`, Flutter or Dart, and no `ANDROID_HOME`. The Android project is complete source. The branch was committed and pushed at the user's explicit request, and the GitHub Actions workflow in section 2b has successfully built a debug APK in CI without a local Android Studio install.
 
 ## Prerequisites on your computer
 
@@ -55,7 +55,7 @@ Debug builds use the automatic Android debug key and get application id `za.co.p
 3. syncs web assets and runs `./gradlew assembleDebug`;
 4. uploads `christmas-lunch-debug-apk-<sha>` containing `app-debug.apk` and `apk.sha256`.
 
-No secrets are needed because this is a debug build. Watch or download it with:
+No secrets are needed because this is a debug build. Last verified successful run: [44481659196](https://github.com/ianwest09/GitHub-app/actions/runs/44481659196), artifact `christmas-lunch-debug-apk-184d829596a8fe00abcf8df79f3bebc329df1fcf` (2,194,843 bytes). Watch or download it with:
 
 ```bash
 gh run list --workflow build-android.yml --branch arena/2b1e7304-github-app
