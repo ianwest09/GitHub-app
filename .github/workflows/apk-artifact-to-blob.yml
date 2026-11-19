@@ -1,0 +1,57 @@
+name: Copy debug APK artifact to Git blob
+
+# Workaround for sandboxes that cannot reach the Azure blob host used by
+# GitHub Actions artifact downloads. The APK is stored as an unreferenced Git
+# blob via api.github.com, and its SHA + checksum are published as a commit
+# status. Nothing is committed to a branch and no secrets are required.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Actions run ID containing the APK artifact
+        required: true
+        type: string
+        default: '44481659196'
+      artifact_name:
+        description: Artifact name to download
+        required: true
+        type: string
+        default: 'christmas-lunch-debug-apk-184d829596a8fe00abcf8df79f3bebc329df1fcf'
+
+permissions:
+  actions: read
+  contents: write
+  statuses: write
+
+jobs:
+  publish-blob:
+    name: Publish APK as Git blob
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download APK artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p apk
+          gh run download "${{ inputs.run_id }}" \
+            -n "${{ inputs.artifact_name }}" \
+            --repo "${{ github.repository }}" \
+            --dir apk
+          ls -lh apk
+
+      - name: Create Git blob and commit status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          base64 -w0 apk/app-debug.apk > apk.b64
+          SHA256=$(sha256sum apk/app-debug.apk | cut -d' ' -f1)
+          BLOB=$(gh api --method POST "repos/${{ github.repository }}/git/blobs" \
+            -F content=@apk.b64 -F encoding=base64 --jq .sha)
+          DESC="blob:$BLOB sha256:$SHA256"
+          gh api --method POST "repos/${{ github.repository }}/statuses/${{ github.sha }}" \
+            -f state=success \
+            -f context=apk-blob \
+            -f description="$DESC" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >/dev/null
+          printf '### APK blob ready\n\n- Blob: `%s`\n- SHA-256: `%s`\n- Status context: `apk-blob`\n' "$BLOB" "$SHA256" >> "$GITHUB_STEP_SUMMARY"

@@ -18,3 +18,7 @@ recipe-apk/android/*.jks
 
 # Optional sync service runtime state (recreated automatically)
 recipe-apk/sync-service/data/
+
+# Locally downloaded CI artifacts (not committed)
+downloads/
+*.apk
