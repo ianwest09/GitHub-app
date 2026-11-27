@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Standalone offline build: CSS and JS inlined; no network required. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16442f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Christmas Lunch · Port Alfred</title>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkNocmlzdG1hcyBMdW5jaCI+CiAgPHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIHJ4PSIzNiIgZmlsbD0iIzE2NDQyZiIvPgogIDxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjYyIiBmaWxsPSIjZmJmOGYxIi8+CiAgPHBhdGggZD0iTTk2IDQybDExIDMxIDMzIDEtMjYgMjAgOSAzMi0yNy0xOS0yNyAxOSA5LTMyLTI2LTIwIDMzLTF6IiBmaWxsPSIjYjE4YjQ2Ii8+CiAgPHBhdGggZD0iTTU4IDEzOGMxMi0xMCAyNC0xMCAzOCAwIDE0LTEwIDI2LTEwIDM4IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE2NDQyZiIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+<style>
+:root{
+  --green:#16442f; --green2:#0f3323; --gold:#b18b46; --gold-soft:#f5eddc;
+  --berry:#8d3242; --berry-soft:#f8ecee; --paper:#fbf8f1; --card:#fff;
+  --ink:#25332b; --muted:#6a756c; --line:#e2ddcf; --soft:#eef3ec;
+  --ok:#1c6b45; --warn:#9a6a12; --bad:#a13a48;
+  --radius:12px; --shadow:0 2px 12px rgba(22,52,35,.08);
+  --serif:"Iowan Old Style",Palatino,Georgia,serif;
+  --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body[data-theme="dark"]{--paper:#121c16;--card:#1b2820;--ink:#eaf2ea;--muted:#a5b4a8;--line:#314238;--soft:#223229;--gold-soft:#3a3220;--berry-soft:#3a222a;--green:#8fd0a8;--green2:#0d2519}
+.app{max-width:1020px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.topbar{background:var(--green2);color:#f2f6f0;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{color:#d9bd85;font-size:22px}
+.brand h1{font:400 21px/1.15 var(--serif);margin:0}
+.brand .sub{margin:2px 0 0;font-size:11.5px;letter-spacing:.04em;color:#c3d5c8;text-transform:uppercase}
+.top-actions{display:flex;align-items:center;gap:8px}
+.pill{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:5px 10px;white-space:nowrap}
+.icon-btn{background:transparent;border:1px solid rgba(255,255,255,.35);color:inherit;border-radius:8px;width:34px;height:34px;font-size:17px;cursor:pointer;line-height:1}
+.view .icon-btn{border-color:var(--line);color:var(--ink)}
+.icon-btn:hover{background:rgba(255,255,255,.14)}
+.tabs{display:flex;gap:4px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--line);padding:6px 10px;position:sticky;top:0;z-index:10;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:transparent;color:var(--muted);font:600 12.5px/1 var(--sans);padding:11px 13px;border-radius:8px;cursor:pointer;white-space:nowrap;min-height:40px}
+.tabs button.active{background:var(--green2);color:#fff}
+body[data-theme="dark"] .tabs button.active{background:#2f6a48;color:#fff}
+.view{flex:1;padding:18px 16px 30px}
+.foot{padding:12px 16px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+h2.sec{font:400 23px/1.2 var(--serif);color:var(--green);margin:0 0 4px}
+p.lede{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:720px}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card h3{font:400 18px/1.25 var(--serif);color:var(--green);margin:0 0 8px}
+.card h4{font:700 11px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--berry);margin:16px 0 8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}}
+.banner{border-radius:var(--radius);padding:13px 15px;margin-bottom:14px;font-size:13.5px;line-height:1.5}
+.banner.info{background:var(--soft);border-left:3px solid var(--green)}
+.banner.warn{background:var(--gold-soft);border-left:3px solid var(--gold)}
+.banner.bad{background:var(--berry-soft);border-left:3px solid var(--berry)}
+.banner strong{display:block;margin-bottom:3px}
+.tag{display:inline-block;font:600 10px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px;background:var(--soft);color:var(--green);border:1px solid var(--line);margin:2px 4px 2px 0}
+.tag.rose{background:var(--berry-soft);color:var(--berry);border-color:#e8ccd1}
+.tag.gold{background:var(--gold-soft);color:#8a6b2e;border-color:#e6d7b6}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:9px 13px;font:600 12.5px/1.2 var(--sans);cursor:pointer;min-height:40px}
+.btn:hover{border-color:var(--gold)}
+.btn.primary{background:var(--green2);color:#fff;border-color:var(--green2)}
+body[data-theme="dark"] .btn.primary{background:#2f6a48;border-color:#2f6a48}
+.btn.small{padding:6px 10px;min-height:32px;font-size:11.5px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+input,select,textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 10px;min-height:40px;width:100%}
+input[type=checkbox]{width:20px;height:20px;min-height:0;accent-color:var(--green2)}
+label.field{display:block;font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+label.field span{display:block;margin-bottom:5px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row>*{flex:1 1 160px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.mono{font-variant-numeric:tabular-nums}
+.good{color:var(--ok);font-weight:700}
+.bad{color:var(--bad)}
+.warn{color:var(--warn)}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font:600 10px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--green2);padding:9px 10px}
+td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 55%,transparent)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+.nowrap{white-space:nowrap}
+
+/* run sheet / timeline */
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 14px 16px}
+.tl li:before{content:"";position:absolute;left:-24px;top:5px;width:10px;height:10px;border:2px solid var(--gold);border-radius:50%;background:var(--paper)}
+.tl b{font:700 11px/1.4 var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--berry);display:block}
+.tl span{font-size:13.5px}
+.tl .phase{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.step{border-top:1px solid var(--line);padding:9px 0;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.step:first-child{border-top:0}
+.step .t{flex:1 1 200px;font-weight:600;font-size:13.5px}
+.step .meta{font-size:11.5px;color:var(--muted);flex:1 1 100%}
+.step input{width:90px;min-height:34px;padding:5px 8px;font-size:13px;flex:0 0 auto}
+
+/* cook mode */
+.cook-step{background:var(--green2);color:#fff;border-radius:var(--radius);padding:22px 20px;margin-bottom:14px}
+.cook-step .k{font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#d9bd85}
+.cook-step h3{font:400 27px/1.2 var(--serif);margin:10px 0 8px;color:#fff}
+.cook-step .dish{font-size:12.5px;color:#c3d5c8}
+.timers{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
+.timer{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px}
+.timer .n{font-size:11.5px;color:var(--muted)}
+.timer .v{font:700 25px/1.2 var(--sans);font-variant-numeric:tabular-nums;color:var(--green)}
+.timer.done .v{color:var(--bad)}
+.progress{height:5px;background:var(--soft);border-radius:99px;margin:8px 0}
+.progress i{display:block;height:100%;background:var(--gold);border-radius:99px}
+
+/* shopping */
+.line{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}
+.line:first-child{border-top:0}
+.line .name{flex:1 1 auto}
+.line .qty{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.line.done .name{text-decoration:line-through;color:var(--muted)}
+.line .price{font-size:11px;white-space:nowrap}
+.group-title{font:700 10.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--berry);margin:18px 0 6px;border-bottom:1px solid var(--line);padding-bottom:6px}
+
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px;text-align:center}
+.stat .v{font:700 26px/1.1 var(--serif);color:var(--green)}
+.stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:5px}
+
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--green2);color:#fff;padding:11px 18px;border-radius:99px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:0 8px 28px rgba(0,0,0,.25);max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal-back{position:fixed;inset:0;background:rgba(10,25,16,.6);display:flex;align-items:flex-end;justify-content:center;z-index:50}
+@media(min-width:700px){.modal-back{align-items:center}}
+.modal{background:var(--card);border-radius:16px 16px 0 0;width:min(560px,100%);max-height:88vh;overflow:auto;padding:18px}
+@media(min-width:700px){.modal{border-radius:16px}}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.modal-head h2{font:400 21px/1.2 var(--serif);color:var(--green);margin:0}
+.modal-head .icon-btn{color:var(--ink);border-color:var(--line)}
+
+/* Accessibility: high-contrast keeps the same layout but strengthens edges. */
+body.high-contrast{--paper:#fff;--card:#fff;--ink:#000;--muted:#1c1c1c;--line:#000;--soft:#eee;--gold-soft:#fff8dc;--berry-soft:#ffe8ee;--green:#004d26;--green2:#00210f;--berry:#6a0019}
+body.high-contrast[data-theme="dark"]{--paper:#000;--card:#000;--ink:#fff;--muted:#e6e6e6;--line:#fff;--soft:#222;--gold-soft:#3a3200;--berry-soft:#3a0010;--green:#7fffb0;--green2:#001a0a;--berry:#ffb3c7}
+body.high-contrast .card,body.high-contrast .banner,body.high-contrast .btn,body.high-contrast input,body.high-contrast select,body.high-contrast textarea,body.high-contrast .modal{border-width:2px}
+body.high-contrast .tabs button.active{outline:2px solid var(--ink);outline-offset:-3px}
+body.high-contrast .tag{border-width:2px}
+
+#print-sheet{display:none}
+@media print{
+  body{background:#fff}
+  .app,.toast,.modal-back{display:none!important}
+  #print-sheet{display:block;padding:0;font-family:Georgia,serif;color:#16442f}
+  #print-sheet h1{font-size:26pt;margin:0 0 6pt}
+  #print-sheet h2{font-size:15pt;margin:18pt 0 6pt;border-bottom:1pt solid #b18b46;padding-bottom:4pt}
+  #print-sheet ul{font-size:13pt;line-height:1.7}
+  #print-sheet .label{border:2pt solid #16442f;border-radius:6pt;padding:14pt;margin:10pt 0;font-size:20pt;font-weight:bold;text-align:center;break-inside:avoid}
+  #print-sheet .label small{display:block;font-size:11pt;font-weight:normal;margin-top:6pt}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">✦</span>
+      <div>
+        <h1>Christmas Lunch</h1>
+        <p class="sub">Port Alfred · 10 guests · alcohol-free</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="pill" id="status-pill">offline ready</span>
+      <button class="icon-btn" id="btn-print" title="Print large-print cards" aria-label="Print large-print cards">⎙</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="Sections">
+    <button data-tab="run" class="active">Run sheet</button>
+    <button data-tab="cook">Cook mode</button>
+    <button data-tab="shop">Shopping</button>
+    <button data-tab="agenda">Agenda</button>
+    <button data-tab="cost">Cost &amp; route</button>
+    <button data-tab="more">More</button>
+  </nav>
+
+  <main id="view" class="view" tabindex="-1"></main>
+
+  <footer class="foot">
+    <span>Core data stays on this device. Optional LAN sync is off by default.</span>
+    <span id="foot-meta"></span>
+  </footer>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<div class="modal-back" id="modal-back" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head"><h2 id="modal-title"></h2><button class="icon-btn" id="modal-close" aria-label="Close">✕</button></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<section id="print-sheet" aria-hidden="true"></section>
+
+<script>
+(() => {
+  // recipe-apk/app/js/data.js
+  var STORES = [
+    { id: "pnp", name: "Pick n Pay", short: "PnP", hours: "Mon\u2013Sat 06:30\u201320:00 \xB7 Sun 06:30\u201319:00", closed: ["2026-12-25-note"], note: "Corner Masonic & Gluckman St, Port Alfred" },
+    { id: "woolworths", name: "Woolworths", short: "Woolies", hours: "Online listings used \u2014 local store hours not verified", closed: [], note: "Guzzle lists no current Port Alfred catalogue specials" },
+    { id: "spar", name: "Spar", short: "Spar", hours: "Mon\u2013Fri 07:00\u201319:00 \xB7 Sat 07:00\u201319:00 \xB7 Sun 07:30\u201317:00", closed: ["2026-12-25"], note: "32\u201336 Biscay Rd, Port Alfred \u2014 CLOSED CHRISTMAS DAY" }
+  ];
+  var SOURCES = {
+    pnpCatalogue: "https://cdnm.heyzine.com/flip-book/pdf/2e4baf279fe06cfb532f5802ec2764b23103d818.pdf",
+    sparPortAlfred: "https://www.guzzle.co.za/spar/port-alfred",
+    woolChicken: "https://www.woolworths.co.za/cat/Chicken-Portions-Other/_/N-1bisvo2",
+    woolPotatoes: "https://www.woolworths.co.za/cat/_/N-tc3vp2",
+    woolCauli: "https://www.woolworths.co.za/cat/Broccoli-Cauliflower/_/N-0Z33kgtk",
+    woolCucumber: "https://www.woolworths.co.za/cat/Foo/WCellar/Food/_/N-1z13sk5",
+    woolFood: "https://www.woolworths.co.za/browse/food"
+  };
+  var PRICE_ENTRIES = [
+    { id: "pnp-chicken-breast", store: "pnp", matchKey: "chicken-boneless", product: "PnP Fresh Skinless Chicken Breast Fillets 4s or 12s", packQty: 1, packUnit: "kg", priceCents: 7999, unitCents: 7999, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: true, note: "Per kg. Catalogue valid 16\u201322 Nov 2026. Prices include VAT." },
+    { id: "pnp-chicken-drumstick", store: "pnp", matchKey: "chicken-boneless", product: "PnP Fresh Chicken 4 Drumsticks & 4 Thighs", packQty: 1, packUnit: "kg", priceCents: 7699, unitCents: 7699, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, note: "Bone-in \u2014 NOT like-for-like with the boneless requirement for hosts in their 80s." },
+    { id: "pnp-potatoes-bundle", store: "pnp", matchKey: "potatoes", product: "PnP All Purpose Potatoes 2 kg (or Tomatoes 1.5 kg / Gem Squash / Carrots bag / Green Peppers 800 g)", packQty: 2, packUnit: "kg", priceCents: 3500, unitCents: 1750, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: true, bundle: "BUY ANY 4 qualifying items (bundle)", bundleMinItems: 4, bundleQualifyingKeys: ["potatoes", "tomatoes"], note: "Bundle-derived price per 2 kg; applies ONLY with 4 qualifying items in the basket." },
+    { id: "pnp-blueberries", store: "pnp", matchKey: "berries", product: "PnP Blueberries on the Run", packQty: null, packUnit: "pack", priceCents: 4500, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, bundle: "Two-item bundle (base pack size not stated)", note: "Pack size not stated \u2014 no usable unit price." },
+    { id: "pnp-mushrooms", store: "pnp", matchKey: "mushrooms", product: "PnP Chopped Mixed Mushrooms 400 g", packQty: 0.4, packUnit: "kg", priceCents: null, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, bundle: "Two-item saving (no base price listed)", note: "No base price in the catalogue \u2014 no usable price." },
+    { id: "pnp-fruitcake-alcfree", store: "pnp", matchKey: "extras-pudding", product: "PnP Fruit Cake Alcohol Free 350 g", packQty: 0.35, packUnit: "kg", priceCents: 5999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: true, dietary: ["SUGAR", "WHEAT", "DAIRY"], note: "Alcohol-free option for the extras sideboard; not for Guest A." },
+    { id: "pnp-brandy-pudding", store: "pnp", matchKey: "extras-pudding", product: "PnP Brandy Pudding 450 g", packQty: 0.45, packUnit: "kg", priceCents: 14999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: false, excluded: "ALCOHOL_FREE", note: "EXCLUDED \u2014 contains alcohol." },
+    { id: "pnp-brandy-cake", store: "pnp", matchKey: "extras-pudding", product: "PnP Brandy Christmas Fruit Cake 350 g", packQty: 0.35, packUnit: "kg", priceCents: 7999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: false, excluded: "ALCOHOL_FREE", note: "EXCLUDED \u2014 contains alcohol." },
+    { id: "spar-chicken-frozen", store: "spar", matchKey: "chicken-boneless", product: "SPAR IQF Mixed Chicken Portions 2 kg", packQty: 2, packUnit: "kg", priceCents: 7999, unitCents: 4e3, validFrom: "2026-11-09", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.sparPortAlfred, promotion: true, loyalty: false, likeForLike: false, note: "Cheapest per kg but FROZEN, bone-in, mixed portions \u2014 not like-for-like." },
+    { id: "spar-rice-parboiled", store: "spar", matchKey: "brown-rice", product: "Spekko Long Grain Parboiled White Rice 2 kg", packQty: 2, packUnit: "kg", priceCents: 3299, unitCents: 1650, validFrom: "2026-11-09", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.sparPortAlfred, promotion: true, loyalty: false, likeForLike: false, note: "Different product \u2014 menu needs brown rice. Not like-for-like." },
+    { id: "spar-oil-blend", store: "spar", matchKey: "olive-oil", product: "B-Well Omega 3 Cooking Oil 2 L", packQty: 2, packUnit: "L", priceCents: 5999, unitCents: 3e3, validFrom: "2026-11-09", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.sparPortAlfred, promotion: true, loyalty: false, likeForLike: false, note: "Different product \u2014 menu needs olive oil. Not like-for-like." },
+    { id: "spar-mixed-veg-expired", store: "spar", matchKey: "frozen-veg", product: "Harvestime Frozen Mixed Vegetables 1 kg", packQty: 1, packUnit: "kg", priceCents: 4699, unitCents: 4699, validFrom: "2026-10-07", validTo: "2026-10-18", source: "CATALOGUE", url: SOURCES.sparPortAlfred, promotion: true, loyalty: false, likeForLike: false, note: "EXPIRED catalogue (07\u201318 Oct 2026) \u2014 kept only to demonstrate auto-expiry." },
+    { id: "wool-chicken-breast-15", store: "woolworths", matchKey: "chicken-boneless", product: "Skinless Chicken Breast Fillets Avg 1.5 kg", packQty: 1.5, packUnit: "kg", priceCents: 18749, unitCents: 12499, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolChicken, promotion: false, loyalty: false, likeForLike: true, note: "Online listing, retrieved 19 Nov 2026. Promotions in store and online may vary." },
+    { id: "wool-chicken-thigh", store: "woolworths", matchKey: "chicken-boneless", product: "Skinless Chicken Thigh Fillets Avg 700 g", packQty: 0.7, packUnit: "kg", priceCents: 16559, unitCents: 23999, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolChicken, promotion: false, loyalty: false, likeForLike: true, note: "Online listing, retrieved 19 Nov 2026." },
+    { id: "wool-chicken-breast-450", store: "woolworths", matchKey: "chicken-boneless", product: "Skinless Chicken Breast Avg 450 g", packQty: 0.45, packUnit: "kg", priceCents: 7799, unitCents: 12999, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolChicken, promotion: false, loyalty: false, likeForLike: true, note: "Online listing, retrieved 19 Nov 2026." },
+    { id: "wool-chicken-portions", store: "woolworths", matchKey: "chicken-boneless", product: "Chicken Portions Avg 1.5 kg", packQty: 1.5, packUnit: "kg", priceCents: 17249, unitCents: 11499, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolChicken, promotion: false, loyalty: false, likeForLike: false, note: "Bone-in \u2014 not like-for-like with boneless." },
+    { id: "wool-potatoes", store: "woolworths", matchKey: "potatoes", product: "Medium Potatoes 2 kg", packQty: 2, packUnit: "kg", priceCents: 3999, unitCents: 2e3, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolPotatoes, promotion: false, loyalty: false, likeForLike: true, note: "Online listing; pack price and per-kg equivalent are derived from the price records." },
+    { id: "wool-cauliflower", store: "woolworths", matchKey: "cauliflower", product: "Whole Cauliflower Avg 500 g", packQty: 0.5, packUnit: "kg", priceCents: 3504, unitCents: 7300, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolCauli, promotion: false, loyalty: false, likeForLike: true, note: "Single source \u2014 no price at PnP or Spar." },
+    { id: "wool-cucumber", store: "woolworths", matchKey: "cucumber", product: "English Cucumber", packQty: null, packUnit: "each", priceCents: 1999, unitCents: null, validFrom: "2026-11-19", validTo: "2026-11-22", source: "STORE_LISTING", url: SOURCES.woolCucumber, promotion: false, loyalty: false, likeForLike: true, note: "Pack size not stated \u2014 no unit price. Single source." }
+  ];
+  var SHOPPING_LINES = [
+    { id: "l01", name: "Boneless chicken thighs / supremes", qty: 1.8, unit: "kg", category: "Meat & poultry", matchKey: "chicken-boneless", flags: ["CHICKEN_ONLY"] },
+    { id: "l02", name: "Beef / ox tongue (ordered ahead)", qty: 1.5, unit: "kg", category: "Meat & poultry", matchKey: "tongue", flags: ["TONGUE_FOR_THREE", "RED_MEAT_OK"], note: "No verified price at any shop \u2014 order from butcher, enter till-slip price." },
+    { id: "l03", name: "Baby potatoes", qty: 1.5, unit: "kg", category: "Fruit & veg", matchKey: "potatoes", bundleQ: true },
+    { id: "l04", name: "Brown rice", qty: 0.4, unit: "kg", category: "Pantry", matchKey: "brown-rice" },
+    { id: "l05", name: "Brown / red lentils", qty: 0.2, unit: "kg", category: "Pantry", matchKey: "lentils" },
+    { id: "l06", name: "Cornflour (Maizena)", qty: 0.1, unit: "kg", category: "Pantry", matchKey: "cornflour" },
+    { id: "l07", name: "Cauliflower", qty: 2, unit: "head", category: "Fruit & veg", matchKey: "cauliflower" },
+    { id: "l08", name: "Green beans", qty: 0.4, unit: "kg", category: "Fruit & veg", matchKey: "green-beans" },
+    { id: "l09", name: "Baby carrots", qty: 0.4, unit: "kg", category: "Fruit & veg", matchKey: "carrots" },
+    { id: "l10", name: "Courgettes", qty: 0.4, unit: "kg", category: "Fruit & veg", matchKey: "courgettes" },
+    { id: "l11", name: "Mushrooms", qty: 0.4, unit: "kg", category: "Fruit & veg", matchKey: "mushrooms" },
+    { id: "l12", name: "Leeks", qty: 3, unit: "each", category: "Fruit & veg", matchKey: "leeks" },
+    { id: "l13", name: "Celery", qty: 1, unit: "head", category: "Fruit & veg", matchKey: "celery" },
+    { id: "l14", name: "Salad leaves", qty: 2, unit: "head", category: "Fruit & veg", matchKey: "salad-leaves" },
+    { id: "l15", name: "Cucumber", qty: 3, unit: "each", category: "Fruit & veg", matchKey: "cucumber" },
+    { id: "l16", name: "Fennel", qty: 2, unit: "bulb", category: "Fruit & veg", matchKey: "fennel" },
+    { id: "l17", name: "Avocado", qty: 3, unit: "each", category: "Fruit & veg", matchKey: "avocado" },
+    { id: "l18", name: "Radish", qty: 1, unit: "bunch", category: "Fruit & veg", matchKey: "radish" },
+    { id: "l19", name: "Tomatoes", qty: 0.6, unit: "kg", category: "Fruit & veg", matchKey: "tomatoes", bundleQ: true },
+    { id: "l20", name: "Red peppers", qty: 3, unit: "each", category: "Fruit & veg", matchKey: "peppers" },
+    { id: "l21", name: "Basil", qty: 1, unit: "bunch", category: "Herbs", matchKey: "basil" },
+    { id: "l22", name: "Cooked white beans", qty: 0.5, unit: "kg", category: "Pantry", matchKey: "white-beans" },
+    { id: "l23", name: "Rice cakes / rice crackers", qty: 2, unit: "pack", category: "Pantry", matchKey: "rice-cakes" },
+    { id: "l24", name: "Almonds (finely chopped)", qty: 0.2, unit: "kg", category: "Nuts & seeds", matchKey: "almonds" },
+    { id: "l25", name: "Pumpkin seeds (finely chopped)", qty: 0.15, unit: "kg", category: "Nuts & seeds", matchKey: "pumpkin-seeds" },
+    { id: "l26", name: "Sunflower seeds (ground)", qty: 0.1, unit: "kg", category: "Nuts & seeds", matchKey: "sunflower-seeds" },
+    { id: "l27", name: "Pecans (finely chopped)", qty: 0.15, unit: "kg", category: "Nuts & seeds", matchKey: "pecans" },
+    { id: "l28", name: "Coconut milk", qty: 0.8, unit: "L", category: "Pantry", matchKey: "coconut-milk" },
+    { id: "l29", name: "Rice (for coconut pots)", qty: 0.15, unit: "kg", category: "Pantry", matchKey: "rice-dessert" },
+    { id: "l30", name: "Vanilla pod (not extract)", qty: 1, unit: "each", category: "Pantry", matchKey: "vanilla-pod" },
+    { id: "l31", name: "Berries", qty: 0.5, unit: "kg", category: "Fruit & veg", matchKey: "berries" },
+    { id: "l32", name: "Toasted coconut", qty: 0.1, unit: "kg", category: "Pantry", matchKey: "toasted-coconut" },
+    { id: "l33", name: "Pears (small)", qty: 10, unit: "each", category: "Fruit & veg", matchKey: "pears" },
+    { id: "l34", name: "Lemons", qty: 10, unit: "each", category: "Fruit & veg", matchKey: "lemons", note: "Merged from 3 recipes (dip, salad, drinks)." },
+    { id: "l35", name: "Garlic", qty: 2, unit: "head", category: "Fruit & veg", matchKey: "garlic" },
+    { id: "l36", name: "Fresh herbs (rosemary, thyme, parsley, dill, mint)", qty: 1, unit: "bundle", category: "Herbs", matchKey: "herbs" },
+    { id: "l37", name: "Rooibos, mint, decaf coffee, sparkling water, granadilla & lime", qty: 1, unit: "set", category: "Drinks", matchKey: "drinks" },
+    { id: "l38", name: "Olive oil, cinnamon, nutmeg, pepper, sea salt", qty: 1, unit: "set", category: "Pantry", matchKey: "olive-oil" },
+    { id: "l39", name: "Cooler + ice packs, large-print labels, separate board", qty: 1, unit: "set", category: "Kit (bring from home)", matchKey: "kit" }
+  ];
+  var DISHES = [
+    { id: "d1", title: "On arrival", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
+      { id: "s1", title: "Lemon\u2013herb white bean dip", resource: "COUNTER", durationMin: null, handsOn: true, deps: [] },
+      { id: "s2", title: "Finely chop roasted almonds & pumpkin seeds", resource: "COUNTER", durationMin: null, handsOn: true, deps: [] },
+      { id: "s3", title: "Chill the unsweetened rooibos & drinks", resource: "FRIDGE", durationMin: null, handsOn: false, deps: [] }
+    ] },
+    { id: "d2", title: "First course \u2014 chilled salad", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
+      { id: "s4", title: "Shred fennel, slice cucumber & radish thin", resource: "COUNTER", durationMin: null, handsOn: true, deps: ["s1"] },
+      { id: "s5", title: "Dress with lemon juice & olive oil", resource: "COUNTER", durationMin: null, handsOn: true, deps: ["s4"] }
+    ] },
+    { id: "d3", title: "Roast chicken & gravy", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE", "CHICKEN_ONLY"], steps: [
+      { id: "s6", title: "Preheat oven to 200 \xB0C", resource: "OVEN", durationMin: null, handsOn: false, deps: [] },
+      { id: "s7", title: "Roast chicken (top shelf) & potatoes (below)", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s6"] },
+      { id: "s8", title: "Rest the chicken", resource: "COUNTER", durationMin: null, handsOn: false, deps: ["s7"] },
+      { id: "s9", title: "Lemon & parsley gravy with cornflour slurry", resource: "STOVETOP", durationMin: null, handsOn: true, deps: ["s7"] }
+    ] },
+    { id: "d4", title: "Sides", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
+      { id: "s10", title: "Brown rice & lentil pilaf", resource: "STOVETOP", durationMin: null, handsOn: true, deps: [] },
+      { id: "s11", title: "Silky cauliflower pur\xE9e", resource: "STOVETOP", durationMin: null, handsOn: true, deps: [] },
+      { id: "s12", title: "Roast green beans, carrots & courgettes (batch 2)", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"] },
+      { id: "s13", title: "Mushroom, leek & celery stuffing bake (batch 2)", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"] },
+      { id: "s14", title: "Tomato, roast pepper & basil relish", resource: "COUNTER", durationMin: null, handsOn: true, deps: [] }
+    ] },
+    { id: "d5", title: "Tongue \u2014 for three (separate platter)", dietary: ["TONGUE_FOR_THREE", "RED_MEAT_OK", "ALCOHOL_FREE"], steps: [
+      { id: "s15", title: "Slow-poach the ox tongue (no wine, no vinegar brine)", resource: "STOVETOP", durationMin: 240, handsOn: false, deps: [], note: 'MENU.md: "poached for about 4 hours" \u2014 explicit.' },
+      { id: "s16", title: "Peel and slice paper-thin on its own board", resource: "COUNTER", durationMin: null, handsOn: true, deps: ["s15"] },
+      { id: "s17", title: "Parsley, lemon & olive oil salsa", resource: "COUNTER", durationMin: null, handsOn: true, deps: [] }
+    ] },
+    { id: "d6", title: "Dessert", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
+      { id: "s18", title: "Simmer coconut rice pots with vanilla pod", resource: "STOVETOP", durationMin: null, handsOn: true, deps: [] },
+      { id: "s19", title: "Bake pears with cinnamon until very soft", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"] }
+    ] }
+  ];
+  var RUN_SHEET = [
+    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Guest A\u2019s list with her dietitian; check hosts\u2019 diets & the alcohol-free plan.", phase: "prep" },
+    { time: "Two days ahead", task: "Check every label (pudding, mustard, rice cakes, vanilla, mixers); write large-print label cards; pack kit.", phase: "prep" },
+    { time: "Day before", task: "Poach tongue ~4 h; make stocks; dip & relish; chop nuts; portion coconut pots; bake pears; make alcohol-free suet-free pudding; wash salad leaves; chill drinks.", phase: "prep" },
+    { time: "09:30", task: "Preheat oven to 200 \xB0C. Chicken on top shelf, potatoes below. Oven batch 1.", phase: "day" },
+    { time: "10:15", task: "Chicken out to rest. Vegetables + stuffing bake in (oven batch 2). Reheat pilaf & cauliflower pur\xE9e.", phase: "day" },
+    { time: "10:45", task: "Make gravy from pan juices, homemade stock and a cornflour slurry.", phase: "day" },
+    { time: "11:30", task: "Vegetables out; slice tongue paper-thin on its own board/knife; warm in its own pan. Wash hands, change utensils.", phase: "day" },
+    { time: "12:15", task: "Dress salad with lemon. Put out platters, large-print labels, separate tongs. Extras sideboard at the far end. Keep cold dishes in the cooler.", phase: "day" },
+    { time: "12:45", task: "Slice chicken, pour gravy into a labelled jug, fill the drinks jugs.", phase: "day" },
+    { time: "13:00", task: "Serve: salad, then main platters, then dessert. You do the clearing.", phase: "day" }
+  ];
+  var DIETARY_FLAGS = {
+    NO_SUGAR: "No sugar",
+    NO_YEAST: "No yeast",
+    NO_WHEAT: "No wheat",
+    NO_DAIRY: "No dairy",
+    NO_VINEGAR: "No vinegar",
+    ALCOHOL_FREE: "Alcohol-free",
+    CHICKEN_ONLY: "Chicken only",
+    TONGUE_FOR_THREE: "Tongue \u2014 for 3",
+    RED_MEAT_OK: "Red meat at table is fine"
+  };
+  var STORE_CLOSURES = [
+    { store: "spar", date: "2026-12-25", label: "Spar Port Alfred is closed on Christmas Day" }
+  ];
+
+  // recipe-apk/app/js/engine.js
+  var minutesToHHMM = (m) => {
+    if (m == null || !Number.isFinite(m)) return "\u2014";
+    const n = (Math.round(m) % 1440 + 1440) % 1440;
+    return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`;
+  };
+  var formatZAR = (cents) => {
+    if (cents == null || !Number.isFinite(cents)) return "\u2014";
+    return "R" + (cents / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  var isExpired = (entry, today) => !!entry.validTo && entry.validTo < today;
+  var bundleCount = (entry, basketLines2) => {
+    if (!entry.bundle) return Infinity;
+    const keys = entry.bundleQualifyingKeys || [];
+    return basketLines2.filter((l) => l.bundleQ === true || keys.includes(l.matchKey)).length;
+  };
+  function usable(entry, line, ctx2) {
+    const { today, basketLines: basketLines2 = [], hasLoyaltyCard = false } = ctx2;
+    if (entry.excluded) return { ok: false, reason: `Excluded \u2014 ${entry.excluded}` };
+    if (isExpired(entry, today)) return { ok: false, reason: "Expired \u2014 re-check price" };
+    if (entry.priceCents == null) return { ok: false, reason: "No base price listed" };
+    if (entry.unitCents == null) return { ok: false, reason: "No unit price (pack size unknown)" };
+    if (!entry.likeForLike) return { ok: false, reason: entry.note || "Not like-for-like" };
+    if (entry.loyalty && !hasLoyaltyCard) return { ok: false, reason: "Loyalty card required" };
+    if (entry.bundle) {
+      const count = bundleCount(entry, basketLines2);
+      if (count < entry.bundleMinItems) {
+        return { ok: false, reason: `${entry.bundle} \u2014 only ${count} of ${entry.bundleMinItems} qualifying items in basket` };
+      }
+    }
+    const cost = lineCost(line, entry);
+    if (cost == null) return { ok: false, reason: `Unit mismatch: line is ${line.unit}, price is per ${entry.packUnit}` };
+    return { ok: true, reason: "" };
+  }
+  function lineCost(line, entry) {
+    const q = Number(line.qty);
+    if (!Number.isFinite(q) || q <= 0) return null;
+    const weightLike = (u) => u === "kg" || u === "g";
+    const volumeLike = (u) => u === "L" || u === "ml";
+    if (weightLike(line.unit) && entry.packUnit === "kg" && entry.unitCents != null) {
+      return Math.round((line.unit === "g" ? q / 1e3 : q) * entry.unitCents);
+    }
+    if (volumeLike(line.unit) && entry.packUnit === "L" && entry.unitCents != null) {
+      return Math.round((line.unit === "ml" ? q / 1e3 : q) * entry.unitCents);
+    }
+    if (line.unit === entry.packUnit && entry.packQty > 0) {
+      return Math.round(q / entry.packQty * entry.priceCents);
+    }
+    return null;
+  }
+  function compareLine(line, entries, ctx2) {
+    if (!line.matchKey) return { status: "no-price", options: [], reasons: ["No verified product match"] };
+    const candidates = entries.filter((e) => e.matchKey === line.matchKey);
+    const reasons = [];
+    const perStore = /* @__PURE__ */ new Map();
+    for (const e of candidates) {
+      const u = usable(e, line, ctx2);
+      if (!u.ok) {
+        reasons.push(`${e.store}: ${u.reason}`);
+        continue;
+      }
+      const prev = perStore.get(e.store);
+      const cost = lineCost(line, e);
+      if (!prev || e.unitCents < prev.unitCents) {
+        perStore.set(e.store, { entry: e, costCents: cost });
+      }
+    }
+    const options = [...perStore.values()].sort((a, b) => a.costCents - b.costCents);
+    if (options.length === 0) {
+      return { status: "no-price", options: [], reasons };
+    }
+    if (options.length === 1) {
+      return {
+        status: "single",
+        options,
+        reasons,
+        selected: options[0],
+        savingCents: 0,
+        label: "Single source \u2014 insufficient data to compare"
+      };
+    }
+    const dearest = options[options.length - 1];
+    return {
+      status: "compared",
+      options,
+      reasons,
+      selected: options[0],
+      savingCents: Math.max(0, dearest.costCents - options[0].costCents),
+      label: `Cheapest verified: ${options[0].entry.store}`
+    };
+  }
+  function optimiseBasket(lines, entries, ctx2) {
+    const rows = lines.map((line) => ({ line, ...compareLine(line, entries, ctx2) }));
+    const priced = rows.filter((r) => r.selected);
+    const totalCents = priced.reduce((sum, r) => sum + r.selected.costCents, 0);
+    const split = {};
+    for (const r of priced) {
+      const s = r.selected.entry.store;
+      (split[s] || (split[s] = [])).push({ line: r.line, costCents: r.selected.costCents, product: r.selected.entry.product });
+    }
+    const missing = rows.filter((r) => !r.selected).map((r) => r.line);
+    return {
+      rows,
+      totalCents,
+      missing,
+      split,
+      pricedCount: priced.length,
+      totalCount: lines.length,
+      coverage: lines.length ? priced.length / lines.length : 0,
+      complete: missing.length === 0
+    };
+  }
+  var scaleQty = (qty, fromGuests, toGuests) => Math.round(Number(qty) * toGuests / fromGuests * 1e3) / 1e3;
+  function schedule(dishes2, serveMinutes = 780, opts = {}) {
+    var _a;
+    const all = dishes2.flatMap((d) => d.steps.map((s) => ({ ...s, dish: d.title })));
+    const byId = new Map(all.map((s) => [s.id, s]));
+    const untimed = all.filter((s) => !(Number(s.durationMin) > 0));
+    const timed = all.filter((s) => Number(s.durationMin) > 0);
+    const timedIds = new Set(timed.map((s) => s.id));
+    const depsOf = (s) => (s.deps || []).filter((d) => timedIds.has(d));
+    const successors = new Map(timed.map((s) => [s.id, []]));
+    for (const s of timed) for (const d of depsOf(s)) successors.get(d).push(s.id);
+    const indeg = new Map(timed.map((s) => [s.id, depsOf(s).length]));
+    const queue = timed.filter((s) => indeg.get(s.id) === 0).map((s) => s.id);
+    const order = [];
+    while (queue.length) {
+      const id = queue.shift();
+      order.push(id);
+      for (const nxt of successors.get(id) || []) {
+        indeg.set(nxt, indeg.get(nxt) - 1);
+        if (indeg.get(nxt) === 0) queue.push(nxt);
+      }
+    }
+    const cyclic = timed.length !== order.length;
+    const latestStart = /* @__PURE__ */ new Map();
+    for (const id of [...order].reverse()) {
+      const s = byId.get(id);
+      const succ = successors.get(id) || [];
+      const latestFinish = succ.length ? Math.min(...succ.map((n) => latestStart.get(n))) : serveMinutes;
+      latestStart.set(id, latestFinish - Number(s.durationMin));
+    }
+    const scheduled = [];
+    const endById = /* @__PURE__ */ new Map();
+    for (const id of order) {
+      const s = byId.get(id);
+      const depEnds = depsOf(s).map((d) => {
+        var _a2;
+        return (_a2 = endById.get(d)) != null ? _a2 : 0;
+      });
+      const earliest = depEnds.length ? Math.max(...depEnds) : 0;
+      const start = Math.max(earliest, (_a = latestStart.get(id)) != null ? _a : 0);
+      const end = start + Number(s.durationMin);
+      endById.set(id, end);
+      scheduled.push({ ...s, start, end, handsOn: !!s.handsOn });
+    }
+    scheduled.sort((a, b) => a.start - b.start || a.id.localeCompare(b.id));
+    const exclusive = /* @__PURE__ */ new Set(["OVEN", "STOVETOP", "FRIDGE", "FREEZER", "COOLER"]);
+    const conflicts = [];
+    for (let i = 0; i < scheduled.length; i++) {
+      for (let j = i + 1; j < scheduled.length; j++) {
+        const a = scheduled[i], b = scheduled[j];
+        if (!exclusive.has(a.resource) || a.resource !== b.resource || a.canOverlap || b.canOverlap) continue;
+        if (a.start < b.end && b.start < a.end) {
+          const overlap = Math.min(a.end, b.end) - Math.max(a.start, b.start);
+          conflicts.push({
+            a: a.title,
+            b: b.title,
+            resource: a.resource,
+            overlapMinutes: overlap,
+            suggestion: `Shift "${b.title}" ${overlap} min earlier or give it its own ${a.resource.toLowerCase()} slot.`
+          });
+        }
+      }
+    }
+    const warnings = [];
+    for (const s of untimed) warnings.push(`"${s.title}" has no duration in MENU.md \u2014 Set time to include it.`);
+    if (cyclic) warnings.push("A dependency cycle was found \u2014 check step dependencies.");
+    for (const c of conflicts) warnings.push(`${c.resource} conflict: ${c.a} vs ${c.b} (${c.overlapMinutes} min). ${c.suggestion}`);
+    if (scheduled.some((s) => s.end > serveMinutes)) warnings.push("Some steps finish after the target serve time.");
+    return {
+      scheduled,
+      warnings,
+      conflicts,
+      untimed,
+      serveMinutes,
+      freeMinutes: scheduled.length ? serveMinutes - Math.max(...scheduled.map((s) => s.end)) : 0
+    };
+  }
+
+  // recipe-apk/app/js/store.js
+  var KEY = "christmas-lunch-app-v1";
+  var DEFAULT_TODAY = "2026-11-19";
+  function freshState(lines) {
+    return {
+      version: 1,
+      today: DEFAULT_TODAY,
+      guestCount: 10,
+      hasLoyaltyCard: false,
+      travelCostCents: 0,
+      theme: "auto",
+      textScale: 100,
+      highContrast: false,
+      syncUrl: "",
+      syncedAt: "",
+      deviceId: "",
+      lines: lines.map((l) => ({ ...l, ticked: false, pantry: false })),
+      customPrices: [],
+      durations: {},
+      agendaOverrides: {},
+      dismissed: [],
+      timers: []
+    };
+  }
+  function load(lines) {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return freshState(lines);
+      const parsed = JSON.parse(raw);
+      if (parsed.version !== 1) return freshState(lines);
+      if (!Array.isArray(parsed.timers)) parsed.timers = [];
+      const known = new Set(parsed.lines.map((l) => l.id));
+      for (const l of lines) if (!known.has(l.id)) parsed.lines.push({ ...l, ticked: false, pantry: false });
+      return { ...freshState(lines), ...parsed };
+    } catch {
+      return freshState(lines);
+    }
+  }
+  function save(state2) {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(state2));
+    } catch {
+    }
+  }
+  function reset(lines) {
+    const s = freshState(lines);
+    save(s);
+    return s;
+  }
+  function exportJSON(state2) {
+    return JSON.stringify(state2, null, 2);
+  }
+  function importJSON(text, lines) {
+    const parsed = JSON.parse(text);
+    if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.lines)) throw new Error("Not a valid backup file");
+    const s = { ...freshState(lines), ...parsed };
+    save(s);
+    return s;
+  }
+
+  // recipe-apk/app/js/repository.js
+  var SYNC_VERSION = 1;
+  function normaliseBaseUrl(raw) {
+    const url = String(raw || "").trim().replace(/\/+$/, "");
+    if (!/^https?:\/\//i.test(url)) throw new Error("Sync URL must start with http:// or https://");
+    const u = new URL(url);
+    if (u.username || u.password) throw new Error("Do not put credentials in the sync URL");
+    return url;
+  }
+  async function requestJson(baseUrl, path, options = {}) {
+    const base = normaliseBaseUrl(baseUrl);
+    if (typeof globalThis.fetch !== "function") throw new Error("Network is unavailable on this device");
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8e3);
+    try {
+      const res = await fetch(`${base}${path}`, {
+        ...options,
+        signal: controller.signal,
+        headers: { "Content-Type": "application/json", ...options.headers || {} }
+      });
+      const text = await res.text();
+      let body = null;
+      try {
+        body = text ? JSON.parse(text) : null;
+      } catch {
+      }
+      if (!res.ok) throw new Error((body == null ? void 0 : body.error) || `Sync service returned ${res.status}`);
+      return body;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  function validateBackupState(state2) {
+    if (!state2 || state2.version !== 1 || !Array.isArray(state2.lines)) {
+      throw new Error("Remote backup is not a version-1 app state");
+    }
+    return state2;
+  }
+  async function health(baseUrl) {
+    return requestJson(baseUrl, "/v1/health");
+  }
+  async function pullBackup(baseUrl) {
+    const body = await requestJson(baseUrl, "/v1/backup").catch((err) => {
+      if (/404/.test(err.message)) return null;
+      throw err;
+    });
+    return body ? { ...body, state: validateBackupState(body.state) } : null;
+  }
+  async function pushBackup(baseUrl, state2, deviceId) {
+    return requestJson(baseUrl, "/v1/backup", {
+      method: "PUT",
+      body: JSON.stringify({
+        deviceId,
+        version: SYNC_VERSION,
+        updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
+        state: validateBackupState(state2)
+      })
+    });
+  }
+  async function pushPrices(baseUrl, entries, deviceId) {
+    if (!Array.isArray(entries)) throw new Error("Only user-entered PriceEntry records can be pushed");
+    return requestJson(baseUrl, "/v1/prices", {
+      method: "POST",
+      body: JSON.stringify({ deviceId, version: SYNC_VERSION, entries })
+    });
+  }
+  function newer(localUpdatedAt, remoteUpdatedAt) {
+    return String(remoteUpdatedAt || "") > String(localUpdatedAt || "");
+  }
+
+  // recipe-apk/app/js/app.js
+  var state = load(SHOPPING_LINES);
+  var tab = "run";
+  var cookIndex = 0;
+  var costView = "split";
+  var singleShop = "pnp";
+  var shopGroup = "category";
+  var timers = state.timers || (state.timers = []);
+  var timerSeq = Math.max(0, ...timers.map((t) => Number(t.requestCode) || 0));
+  var timerClock = null;
+  var wakeLock = null;
+  var $ = (s, r = document) => r.querySelector(s);
+  var $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  var esc = (s) => String(s != null ? s : "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var storeName = (id) => {
+    var _a;
+    return ((_a = STORES.find((s) => s.id === id)) == null ? void 0 : _a.name) || id;
+  };
+  var shortName = (id) => {
+    var _a;
+    return ((_a = STORES.find((s) => s.id === id)) == null ? void 0 : _a.short) || id;
+  };
+  function native(name, ...args) {
+    const a = globalThis.Android;
+    try {
+      return typeof (a == null ? void 0 : a[name]) === "function" ? a[name](...args) : null;
+    } catch {
+      return null;
+    }
+  }
+  function saveTimers() {
+    state.timers = timers;
+    save(state);
+  }
+  function toast(msg) {
+    const t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(t._t);
+    t._t = setTimeout(() => t.classList.remove("show"), 2600);
+  }
+  function openModal(title, html, onMount) {
+    $("#modal-title").textContent = title;
+    $("#modal-body").innerHTML = html;
+    $("#modal-back").hidden = false;
+    if (onMount) onMount($("#modal-body"));
+  }
+  function closeModal() {
+    $("#modal-back").hidden = true;
+  }
+  var scaledQty = (l) => scaleQty(l.qty, 10, state.guestCount);
+  var basketLines = () => state.lines.map((l) => ({ ...l, qty: scaledQty(l) }));
+  function ctx() {
+    return { today: state.today, basketLines: basketLines(), hasLoyaltyCard: state.hasLoyaltyCard };
+  }
+  var allPrices = () => [...PRICE_ENTRIES, ...state.customPrices];
+  var basket = () => optimiseBasket(basketLines(), allPrices(), ctx());
+  function dishes() {
+    return DISHES.map((d) => ({
+      ...d,
+      steps: d.steps.map((s) => {
+        var _a;
+        return { ...s, durationMin: (_a = state.durations[s.id]) != null ? _a : s.durationMin };
+      })
+    }));
+  }
+  function allSteps() {
+    return dishes().flatMap((d) => d.steps.map((s) => ({ ...s, dish: d.title })));
+  }
+  function applyTheme() {
+    const t = state.theme;
+    document.body.dataset.theme = t === "auto" ? matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" : t;
+    const scale = Math.max(100, Math.min(150, Number(state.textScale) || 100));
+    document.body.style.zoom = String(scale / 100);
+    document.body.classList.toggle("high-contrast", !!state.highContrast);
+    native("setTextZoom", scale);
+  }
+  function renderHeader() {
+    const b = basket();
+    $("#status-pill").textContent = `${state.guestCount} guests \xB7 ${Math.round(b.coverage * 100)}% priced`;
+    $("#foot-meta").textContent = `Prices captured 19 Nov 2026 \xB7 viewing as ${state.today}`;
+  }
+  function renderRun() {
+    const r = schedule(dishes(), 780);
+    const b = basket();
+    const runSheet = RUN_SHEET.map((e) => `
+    <li><b>${esc(e.time)}</b><span>${esc(e.task)}</span><div class="phase">${e.phase === "prep" ? "make-ahead" : "Christmas Day"}</div></li>`).join("");
+    const stepRows = allSteps().map((s) => {
+      var _a;
+      return `
+    <div class="step">
+      <div class="t">${esc(s.title)}</div>
+      <input type="number" min="1" max="720" step="5" data-dur="${esc(s.id)}"
+             value="${(_a = s.durationMin) != null ? _a : ""}" placeholder="Set time" aria-label="Duration in minutes for ${esc(s.title)}">
+      <div class="meta">${esc(s.dish)} \xB7 ${esc(s.resource)} \xB7 ${s.handsOn ? "hands-on" : "unattended"}
+        ${s.durationMin ? `${s.durationMin} min` : '<span class="warn">no duration in MENU.md</span>'}
+        ${s.note ? ` \xB7 ${esc(s.note)}` : ""}</div>
+    </div>`;
+    }).join("");
+    const schedRows = r.scheduled.length ? r.scheduled.map((s) => `
+    <tr><td class="nowrap mono">${minutesToHHMM(s.start)}\u2013${minutesToHHMM(s.end)}</td>
+    <td><strong>${esc(s.title)}</strong><div class="small muted">${esc(s.dish)} \xB7 ${s.handsOn ? "hands-on" : "unattended"}</div></td>
+    <td class="nowrap">${s.durationMin} min</td><td class="nowrap">${esc(s.resource)}</td></tr>`).join("") : '<tr><td colspan="4" class="muted">No steps have a duration yet. Enter minutes above and the schedule appears here.</td></tr>';
+    $("#view").innerHTML = `
+    <h2 class="sec">Run sheet &amp; timeline</h2>
+    <p class="lede">Times below come straight from <code>MENU.md</code>. Nothing is invented \u2014 a step with no documented duration shows \u201CSet time\u201D and stays out of the computed schedule.</p>
+    <div class="rule"></div>
+
+    <div class="banner info"><strong>The documented 09:30 \u2192 13:00 run sheet</strong>
+      One cook, one oven in two batches, alcohol-free, tongue for three on its own platter.</div>
+    <div class="card"><ul class="tl">${runSheet}</ul></div>
+
+    <div class="card">
+      <h3>Computed schedule (serve 13:00)</h3>
+      <p class="lede">Backward pass for latest start, forward pass for earliest feasible start, dependency sort, then resource-conflict detection.</p>
+      <div class="row" style="margin-bottom:10px">
+        <div class="stat"><div class="v">${r.scheduled.length}</div><div class="k">steps scheduled</div></div>
+        <div class="stat"><div class="v">${r.untimed.length}</div><div class="k">\u201CSet time\u201D needed</div></div>
+        <div class="stat"><div class="v">${r.conflicts.length}</div><div class="k">resource conflicts</div></div>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Time</th><th>Step</th><th>Duration</th><th>Resource</th></tr></thead>
+      <tbody>${schedRows}</tbody></table></div>
+      ${r.warnings.length ? `<h4>Assumptions &amp; conflicts</h4><ul class="small">${r.warnings.slice(0, 8).map((w) => `<li>${esc(w)}</li>`).join("")}${r.warnings.length > 8 ? `<li>\u2026and ${r.warnings.length - 8} more \u201CSet time\u201D items</li>` : ""}</ul>` : ""}
+      <div class="banner warn" style="margin-top:12px"><strong>${r.freeMinutes > 0 ? `You are free for ${r.freeMinutes} min before serving` : "Timeline reaches the serve time"}</strong>
+        Only the 4-hour tongue poach has an explicit duration in MENU.md; everything else needs your input.</div>
+    </div>
+
+    <div class="card">
+      <h3>Set step durations</h3>
+      <p class="lede">Enter minutes to include a step. Your entries are saved on this device and never guessed by the app.</p>
+      ${stepRows}
+      <div class="btn-row"><button class="btn small" data-act="clear-durations">Clear my durations</button></div>
+    </div>
+
+    <div class="banner ${b.complete ? "info" : "warn"}"><strong>Cost data is ${Math.round(b.coverage * 100)}% complete</strong>
+      ${b.missing.length} lines still need a price. The cost tab shows a partial subtotal only \u2014 never a final total.</div>`;
+  }
+  function ensureTimerClock() {
+    if (timerClock) return;
+    timerClock = setInterval(() => {
+      processTimers();
+      paintTimers();
+    }, 1e3);
+  }
+  function processTimers() {
+    const now = Date.now();
+    let changed = false;
+    for (const t of timers) {
+      if (t.endsAt <= now && !t.notified) {
+        t.notified = true;
+        changed = true;
+        toast(`Timer done: ${t.label}`);
+        if (!t.native) {
+          speak(`${t.label} timer finished`);
+          if ("Notification" in window && Notification.permission === "granted") {
+            new Notification("Christmas Lunch", { body: `${t.label} \u2014 time's up` });
+          }
+        }
+      }
+    }
+    if (changed) saveTimers();
+  }
+  function paintTimers() {
+    const box = $("#timers-box");
+    if (!box) return;
+    const now = Date.now();
+    box.innerHTML = timers.length ? timers.map((t) => {
+      const left = Math.max(0, t.endsAt - now);
+      const done = left === 0;
+      const pct = Math.round(left / t.totalMs * 100);
+      return `<div class="timer ${done ? "done" : ""}" data-timer-id="${t.id}">
+      <div class="n">${esc(t.label)}</div>
+      <div class="v">${done ? "DONE" : mmss(left)}</div>
+      <div class="progress"><i style="width:${pct}%"></i></div>
+      <button class="btn small" data-act="timer-remove" data-id="${t.id}">Remove</button>
+    </div>`;
+    }).join("") : '<p class="small muted">No timers running. Add one above.</p>';
+  }
+  var mmss = (ms) => `${String(Math.floor(ms / 6e4)).padStart(2, "0")}:${String(Math.floor(ms % 6e4 / 1e3)).padStart(2, "0")}`;
+  function speak(text) {
+    if (native("speak", text)) return;
+    try {
+      if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+        speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+      }
+    } catch {
+    }
+  }
+  async function requestWakeLock() {
+    native("setCookMode", true);
+    native("keepScreenOn", true);
+    try {
+      if ("wakeLock" in navigator && !wakeLock) wakeLock = await navigator.wakeLock.request("screen");
+    } catch {
+    }
+  }
+  function releaseWakeLock() {
+    native("setCookMode", false);
+    native("keepScreenOn", false);
+    try {
+      wakeLock == null ? void 0 : wakeLock.release();
+    } catch {
+    }
+    wakeLock = null;
+  }
+  function renderCook() {
+    const steps = allSteps();
+    const s = steps[Math.min(cookIndex, steps.length - 1)] || { title: "No steps", dish: "" };
+    $("#view").innerHTML = `
+    <h2 class="sec">Cook mode</h2>
+    <p class="lede">One step at a time, huge text, read-aloud and multiple named timers. Screen stays on while you are here.</p>
+    <div class="rule"></div>
+    <div class="cook-step">
+      <div class="k">Step ${cookIndex + 1} of ${steps.length} \xB7 ${esc(s.dish)}</div>
+      <h3>${esc(s.title)}</h3>
+      <div class="dish">${esc(s.resource)} \xB7 ${s.handsOn ? "hands-on" : "unattended"} \xB7 ${s.durationMin ? `${s.durationMin} min` : "Set time in the Run sheet tab"}
+        ${s.note ? ` \xB7 ${esc(s.note)}` : ""}</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" data-act="cook-prev">\u2190 Previous</button>
+      <button class="btn primary" data-act="cook-next">Next step \u2192</button>
+      <button class="btn" data-act="cook-say">\u{1F50A} Read aloud</button>
+      <button class="btn" data-act="cook-timer">\u23F1 Timer for this step</button>
+    </div>
+    <div class="card">
+      <h3>Timers</h3>
+      <div class="row">
+        <label class="field"><span>Label</span><input id="timer-label" value="${esc(s.title)}"></label>
+        <label class="field"><span>Minutes</span><input id="timer-min" type="number" min="1" max="480" value="10"></label>
+        <button class="btn primary" data-act="timer-add" style="flex:0 0 auto">Add timer</button>
+      </div>
+      <div class="timers" id="timers-box"></div>
+    </div>
+    <div class="banner info"><strong>Dietary guardrails</strong>
+      Alcohol-free table for all ten. Tongue has its own board, knife and tongs \u2014 never pass shared gravy over it.
+      Nuts and seeds are finely chopped; hosts in their 80s get boneless chicken and tender vegetables.</div>`;
+    paintTimers();
+    ensureTimerClock();
+    requestWakeLock();
+  }
+  function renderShop() {
+    var _a, _b;
+    const b = basket();
+    const rowById = new Map(b.rows.map((r) => [r.line.id, r]));
+    const groups = {};
+    for (const l of state.lines) {
+      const key = shopGroup === "shop" ? ((_b = (_a = rowById.get(l.id)) == null ? void 0 : _a.selected) == null ? void 0 : _b.entry.store) ? storeName(rowById.get(l.id).selected.entry.store) : "No shop assigned" : l.category;
+      (groups[key] || (groups[key] = [])).push(l);
+    }
+    const body = Object.keys(groups).sort().map((g) => `
+    <div class="group-title">${esc(g)}</div>
+    ${groups[g].map((l) => {
+      const r = rowById.get(l.id);
+      const price = (r == null ? void 0 : r.selected) ? `<span class="tag ${r.status === "compared" ? "" : "gold"}">${r.status === "compared" ? "\u2713 " : ""}${shortName(r.selected.entry.store)} ${formatZAR(r.selected.costCents)}</span>` : '<span class="tag rose">unpriced</span>';
+      return `<div class="line ${l.ticked ? "done" : ""}">
+        <input type="checkbox" data-tick="${esc(l.id)}" ${l.ticked ? "checked" : ""} aria-label="Mark ${esc(l.name)} as bought">
+        <div class="name">${esc(l.name)}${l.note ? `<div class="small muted">${esc(l.note)}</div>` : ""}
+          <div class="small"><label style="display:inline-flex;gap:6px;align-items:center;text-transform:none;letter-spacing:0;font-weight:400;margin:4px 0 0">
+            <input type="checkbox" data-pantry="${esc(l.id)}" ${l.pantry ? "checked" : ""}> Already in pantry</label></div></div>
+        <div class="qty">${scaledQty(l)} ${esc(l.unit)}</div>
+        <div class="price">${price}<br><button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button></div>
+      </div>`;
+    }).join("")}`).join("");
+    const ticked = state.lines.filter((l) => l.ticked).length;
+    $("#view").innerHTML = `
+    <h2 class="sec">Shopping list</h2>
+    <p class="lede">Auto-generated from the menu and scaled to ${state.guestCount} guests. Duplicate ingredients are merged. Everything works offline.</p>
+    <div class="rule"></div>
+    <div class="grid3" style="margin-bottom:14px">
+      <div class="stat"><div class="v">${state.lines.length}</div><div class="k">lines</div></div>
+      <div class="stat"><div class="v">${ticked}</div><div class="k">ticked off</div></div>
+      <div class="stat"><div class="v">${Math.round(b.coverage * 100)}%</div><div class="k">price coverage</div></div>
+    </div>
+    <div class="card">
+      <div class="row" style="margin-bottom:8px">
+        <label class="field"><span>Guests</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
+        <label class="field"><span>Group by</span><select data-set="shopGroup"><option value="category" ${shopGroup === "category" ? "selected" : ""}>Aisle / category</option><option value="shop" ${shopGroup === "shop" ? "selected" : ""}>Cheapest shop</option></select></label>
+      </div>
+      <div class="btn-row">
+        <button class="btn small" data-act="add-adhoc">+ Ad-hoc item</button>
+        <button class="btn small" data-act="export-csv">Export CSV</button>
+        <button class="btn small" data-act="print-cards">Print large-print list</button>
+        <button class="btn small" data-act="untick-all">Clear ticks</button>
+      </div>
+      ${body}
+    </div>
+    <div class="banner warn"><strong>Spar Port Alfred is closed on Christmas Day</strong>
+      Do all shopping by 24 December. The Agenda tab will flag any task placed on the 25th.</div>`;
+  }
+  function renderAgenda() {
+    const closures = STORE_CLOSURES.filter((c) => c.date === state.today);
+    const events = RUN_SHEET.map((e, i) => {
+      const override = state.agendaOverrides[i];
+      const when = override || e.time;
+      const isXmas = /25 December|2026-12-25/.test(when);
+      return `<li><b>${esc(when)} ${isXmas ? '<span class="bad">(shop closed)</span>' : ""}</b>
+      <span>${esc(e.task)}</span>
+      <div class="phase">${e.phase === "prep" ? "make-ahead" : "Christmas Day"} \xB7
+      <button class="btn small" data-act="agenda-move" data-i="${i}">Reschedule</button></div></li>`;
+    }).join("");
+    $("#view").innerHTML = `
+    <h2 class="sec">Agenda</h2>
+    <p class="lede">Seeded from the documented run sheet. Reminders use notifications while the app is open; store closures are checked against your viewing date.</p>
+    <div class="rule"></div>
+    <div class="card">
+      <label class="field"><span>Viewing date</span><input type="date" data-set="today" value="${state.today}"></label>
+      <div class="btn-row">
+        <button class="btn small" data-act="date-preset" data-d="2026-11-19">19 Nov (research)</button>
+        <button class="btn small" data-act="date-preset" data-d="2026-11-23">23 Nov (prices expire)</button>
+        <button class="btn small" data-act="date-preset" data-d="2026-12-25">25 Dec (Christmas)</button>
+      </div>
+    </div>
+    ${closures.length ? `<div class="banner bad"><strong>${esc(closures[0].label)}</strong>
+      Any shopping task on this date must move to 24 December or earlier.</div>` : ""}
+    <div class="card"><h3>Prep &amp; cook calendar</h3><ul class="tl">${events}</ul></div>
+    <div class="card">
+      <h3>Reminders</h3>
+      <p class="lede">Notifications are optional and only requested when you add a timer or reminder.</p>
+      <div class="btn-row"><button class="btn small" data-act="ask-notifications">Enable notifications</button>
+      <button class="btn small" data-act="remind-today">Remind me about today's prep</button></div>
+    </div>
+    <div class="card"><h3>Store hours (Port Alfred)</h3>
+      <div class="table-wrap"><table><thead><tr><th>Shop</th><th>Hours</th><th>Note</th></tr></thead><tbody>
+      ${STORES.map((s) => `<tr><td><strong>${esc(s.name)}</strong></td><td class="small">${esc(s.hours)}</td><td class="small">${esc(s.note)}</td></tr>`).join("")}
+      </tbody></table></div></div>`;
+  }
+  function renderCost() {
+    const prices = allPrices();
+    const b = basket();
+    const compared = b.rows.filter((r) => r.status === "compared");
+    const single = b.rows.filter((r) => r.status === "single");
+    const unpriced = b.rows.filter((r) => !r.selected);
+    const compareRows = b.rows.filter((r) => r.options.length || r.reasons.length).map((r) => {
+      const cells = STORES.map((s) => {
+        const o = r.options.find((x) => x.entry.store === s.id);
+        return `<td class="nowrap">${o ? `<strong>${formatZAR(o.costCents)}</strong><div class="small muted">${formatZAR(o.entry.unitCents)}/unit</div>` : '<span class="muted small">no price</span>'}</td>`;
+      }).join("");
+      return `<tr><td><strong>${esc(r.line.name)}</strong><div class="small muted">${r.line.qty} ${esc(r.line.unit)} \xB7 ${esc(r.status === "compared" ? "cheapest verified" : r.status === "single" ? "single source" : "insufficient data")}</div></td>
+      ${cells}<td class="nowrap">${r.selected ? formatZAR(r.selected.costCents) : "\u2014"}</td>
+      <td><button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button></td></tr>`;
+    }).join("");
+    const split = STORES.map((s) => {
+      const items = b.split[s.id] || [];
+      const subtotal = items.reduce((a, x) => a + x.costCents, 0);
+      return `<div class="card"><h3>${esc(s.name)} <span class="tag">${items.length} lines \xB7 ${formatZAR(subtotal)}</span></h3>
+      ${items.length ? `<ul class="small">${items.map((x) => `<li>${esc(x.line.name)} \u2014 ${formatZAR(x.costCents)} <span class="muted">(${esc(x.product)})</span></li>`).join("")}</ul>` : '<p class="small muted">No priced lines assigned here.</p>'}
+      </div>`;
+    }).join("");
+    const shopLines = state.lines.map((l) => {
+      var _a;
+      const r = b.rows.find((x) => x.line.id === l.id);
+      const here = ((_a = r == null ? void 0 : r.selected) == null ? void 0 : _a.entry.store) === singleShop;
+      return `<div class="line ${l.ticked ? "done" : ""}"><div class="name">${esc(l.name)}</div>
+      <div class="qty">${here ? formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
+    }).join("");
+    const shopTotal = Object.values(b.split[singleShop] || []).reduce((a, x) => a + x.costCents, 0);
+    const freshness = prices.filter((p) => p.validTo || p.excluded).map((p) => {
+      const expired = isExpired(p, state.today);
+      const excluded = !!p.excluded;
+      return `<tr><td>${esc(shortName(p.store))}</td><td><strong>${esc(p.product)}</strong></td>
+      <td class="nowrap">${p.priceCents != null ? formatZAR(p.priceCents) : "\u2014"}</td>
+      <td class="nowrap small">${p.validTo || "user-entered"}</td>
+      <td>${excluded ? '<span class="tag rose">EXCLUDED \xB7 alcohol</span>' : expired ? '<span class="tag rose">Expired \u2014 re-check price</span>' : '<span class="tag">current</span>'}</td></tr>`;
+    }).join("");
+    $("#view").innerHTML = `
+    <h2 class="sec">Cost &amp; cheaper route</h2>
+    <p class="lede">Every figure below is a source-linked record \u2014 never a guess. Pick n Pay, Woolworths and Spar only.</p>
+    <div class="rule"></div>
+
+    <div class="banner ${b.complete ? "info" : "warn"}">
+      <strong>${b.pricedCount} of ${b.totalCount} lines priced (${Math.round(b.coverage * 100)}%) \u2014 ${b.missing.length} prices still needed</strong>
+      No full-basket total is available. The figure below is a <strong>partial subtotal</strong> of priced lines only, valid until the catalogue dates shown.
+    </div>
+    <div class="grid3" style="margin-bottom:14px">
+      <div class="stat"><div class="v">${formatZAR(b.totalCents)}</div><div class="k">partial subtotal</div></div>
+      <div class="stat"><div class="v">${compared.length}</div><div class="k">lines comparable</div></div>
+      <div class="stat"><div class="v">${single.length}</div><div class="k">single-source lines</div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn small ${costView === "split" ? "primary" : ""}" data-act="cost-view" data-v="split">Cheapest split basket</button>
+      <button class="btn small ${costView === "single" ? "primary" : ""}" data-act="cost-view" data-v="single">Single shop</button>
+      <button class="btn small ${costView === "compare" ? "primary" : ""}" data-act="cost-view" data-v="compare">Compare table</button>
+    </div>
+
+    <div id="cost-body">${costView === "split" ? `
+      <div class="banner info"><strong>Cheapest verified route per line</strong>
+        Like-for-like current prices only. Frozen bone-in chicken and non-matching products are excluded, not substituted.</div>
+      ${compared.map((r) => `<div class="card"><h3>${esc(r.line.name)}</h3>
+        <p class="small">Cheapest: <strong>${esc(storeName(r.selected.entry.store))}</strong> \u2014 ${formatZAR(r.selected.costCents)}
+        (${formatZAR(r.selected.entry.unitCents)}/unit). ${r.savingCents ? `Saving ${formatZAR(r.savingCents)} vs the dearest verified option.` : ""}</p>
+        <p class="small muted">${esc(r.selected.entry.note || "")}</p>
+        ${r.reasons.length ? `<p class="small muted">Excluded: ${esc(r.reasons.join(" \xB7 "))}</p>` : ""}</div>`).join("")}
+      <h2 class="sec" style="margin-top:20px">Shop-by-shop split</h2><div class="grid2">${split}</div>` : costView === "single" ? `
+      <div class="card"><label class="field"><span>Buy everything at</span><select data-set="singleShop">
+        ${STORES.map((s) => `<option value="${s.id}" ${singleShop === s.id ? "selected" : ""}>${esc(s.name)}</option>`).join("")}
+      </select></label>
+      <div class="banner warn"><strong>${esc(storeName(singleShop))}: ${formatZAR(shopTotal)} partial</strong>
+        Lines marked \u201Cno price here\u201D have no verified price at this shop. The app does not estimate them.</div>
+      ${shopLines}</div>` : `
+      <div class="table-wrap"><table><thead><tr><th>Line</th>${STORES.map((s) => `<th>${esc(s.short)}</th>`).join("")}<th>Best</th><th></th></tr></thead>
+      <tbody>${compareRows || '<tr><td colspan="6" class="muted">No comparable prices yet.</td></tr>'}</tbody></table></div>
+      <p class="small muted" style="margin-top:10px">A line priced at only one shop is labelled \u201Csingle source\u201D, never \u201Ccheapest\u201D. Fewer than two like-for-like prices = \u201Cinsufficient data to compare\u201D.</p>`}</div>
+
+    <div class="card" style="margin-top:16px"><h3>Price freshness &amp; exclusions</h3>
+      <p class="lede">Catalogue rows expire on their valid-until date and are excluded from all totals. Alcohol-containing items are excluded from the alcohol-free table.</p>
+      <div class="table-wrap"><table><thead><tr><th>Shop</th><th>Product</th><th>Price</th><th>Valid to</th><th>Status</th></tr></thead><tbody>${freshness}</tbody></table></div>
+    </div>
+
+    <div class="card"><h3>Add a price from a till slip</h3>
+      <p class="lede">${unpriced.length} lines still need a price. Two taps, works offline, timestamped and kept in your history.</p>
+      <div class="btn-row">${unpriced.slice(0, 8).map((r) => `<button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ ${esc(r.line.name)}</button>`).join("")}</div>
+      ${unpriced.length > 8 ? `<p class="small muted">\u2026and ${unpriced.length - 8} more in the Shopping tab.</p>` : ""}
+    </div>
+
+    <div class="banner info"><strong>Optional travel cost</strong>
+      Currently ${formatZAR(state.travelCostCents)} per extra shop (you enter it in More). A saving of only a few rand on potatoes is not worth a separate trip.</div>`;
+  }
+  function renderMore() {
+    const flags = Object.entries(DIETARY_FLAGS);
+    $("#view").innerHTML = `
+    <h2 class="sec">More</h2>
+    <p class="lede">Settings, dietary guardrails, backup and printable cards. Nothing leaves this device.</p>
+    <div class="rule"></div>
+
+    <div class="card"><h3>Dietary guardrails</h3>
+      <p class="lede">Labels, not medical advice. Confirm the final ingredient list with Guest A and her oncology dietitian.</p>
+      ${flags.map(([k, v]) => `<span class="tag ${k === "ALCOHOL_FREE" ? "rose" : ""}">${esc(v)}</span>`).join("")}
+      <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
+        PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
+      <div class="banner info"><strong>Shared table is safe for all ten</strong>
+        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Tongue is red meat at the table \u2014 fine \u2014 but only three people eat it, so it has its own board, knife, tongs and label.</div>
+    </div>
+
+    <div class="card"><h3>Settings</h3>
+      <div class="grid2">
+        <label class="field"><span>Viewing date</span><input type="date" data-set="today" value="${state.today}"></label>
+        <label class="field"><span>Guests (scales quantities)</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
+        <label class="field"><span>Travel cost per extra shop (R)</span><input type="number" min="0" step="0.01" data-set="travelCostCents" value="${(state.travelCostCents / 100).toFixed(2)}"></label>
+        <label class="field"><span>Theme</span><select data-set="theme">
+          <option value="auto" ${state.theme === "auto" ? "selected" : ""}>System</option>
+          <option value="light" ${state.theme === "light" ? "selected" : ""}>Light</option>
+          <option value="dark" ${state.theme === "dark" ? "selected" : ""}>Dark (AMOLED)</option></select></label>
+        <label class="field"><span>Text size (large-print)</span><select data-set="textScale">
+          ${[100, 110, 125, 150].map((n) => `<option value="${n}" ${Number(state.textScale) === n ? "selected" : ""}>${n}%</option>`).join("")}</select></label>
+      </div>
+      <label class="row" style="display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;flex:0 0 auto">
+        <input type="checkbox" data-set="hasLoyaltyCard" ${state.hasLoyaltyCard ? "checked" : ""} style="flex:0 0 auto">
+        <span>I have a Smart Shopper card (loyalty prices apply)</span></label>
+      <label class="row" style="display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;flex:0 0 auto">
+        <input type="checkbox" data-set="highContrast" ${state.highContrast ? "checked" : ""} style="flex:0 0 auto">
+        <span>High-contrast mode</span></label>
+    </div>
+
+    <div class="card"><h3>MIUI reliability (Android only)</h3>
+      <p class="lede">Timers use exact alarms, a Cook Mode foreground service and reboot restoration. On Xiaomi, also disable battery restrictions for this app. These buttons do nothing in a browser.</p>
+      <div class="btn-row">
+        <button class="btn small" data-act="open-battery-settings">Battery optimisation</button>
+        <button class="btn small" data-act="open-alarm-settings">Exact alarms</button>
+        <button class="btn small" data-act="open-notification-settings">Notifications</button>
+      </div>
+    </div>
+
+    <div class="card"><h3>Optional LAN sync (off by default)</h3>
+      <p class="lede">Core features work in airplane mode. If you run the included zero-dependency sync service on your own computer, enter its address here; nothing is sent unless you tap a button. Only user-entered prices are ever pushed.</p>
+      <label class="field"><span>Sync service base URL</span><input data-set="syncUrl" value="${esc(state.syncUrl)}" placeholder="http://192.168.1.20:8787"></label>
+      <div class="btn-row">
+        <button class="btn small" data-act="sync-test">Test connection</button>
+        <button class="btn small" data-act="sync-now">Sync backup</button>
+        <button class="btn small" data-act="sync-prices">Push manual prices</button>
+      </div>
+      <p class="small muted">JSON contract: <code>OPTIONAL-SYNC.md</code>. Reference server: <code>sync-service/server.mjs</code>.</p>
+    </div>
+
+    <div class="card"><h3>Backup &amp; data</h3>
+      <div class="btn-row">
+        <button class="btn small" data-act="export-json">Export backup (JSON)</button>
+        <button class="btn small" data-act="import-json">Import backup</button>
+        <button class="btn small" data-act="print-cards">Print large-print cards</button>
+        <button class="btn small" data-act="reset">Reset to seed data</button>
+      </div>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
+      <p class="small muted">Recipes, prices with timestamps, agenda, checklist state and your durations are all included. Import/export round-trip is tested in <code>npm test</code>.</p>
+    </div>
+
+    <div class="card"><h3>Seed sources</h3>
+      <ul class="small">
+        <li><a href="${SOURCES.pnpCatalogue}" target="_blank" rel="noopener">Pick n Pay Eastern Cape catalogue, 16\u201322 Nov 2026</a></li>
+        <li><a href="${SOURCES.sparPortAlfred}" target="_blank" rel="noopener">Spar Port Alfred specials, 09\u201322 Nov 2026</a></li>
+        <li><a href="${SOURCES.woolChicken}" target="_blank" rel="noopener">Woolworths chicken listings</a></li>
+        <li><a href="${SOURCES.woolFood}" target="_blank" rel="noopener">Woolworths \u2014 \u201Cpromotions in store and online may vary\u201D</a></li>
+      </ul>
+      <p class="small muted">Full research with every figure, source and caveat: <code>VERIFIED-PRICES.md</code>.</p>
+    </div>`;
+  }
+  function printCards() {
+    const dishesHtml = DISHES.map((d) => `<h2>${esc(d.title)}</h2><ul>${d.steps.map((s) => `<li>${esc(s.title)}</li>`).join("")}</ul>`).join("");
+    $("#print-sheet").innerHTML = `
+    <h1>Christmas Lunch for Ten</h1>
+    <p>Port Alfred \xB7 13:00 sitting \xB7 fully alcohol-free</p>
+    ${dishesHtml}
+    <h2>Large-print dish labels</h2>
+    <div class="label">SHARED \u2014 SAFE FOR ALL<small>No sugar \xB7 no yeast \xB7 no wheat \xB7 no dairy \xB7 no vinegar \xB7 alcohol-free</small></div>
+    <div class="label">TONGUE \u2014 FOR 3<small>Own board, own knife, own tongs</small></div>
+    <div class="label">EXTRAS SIDEOUT<small>For the nine \xB7 alcohol-free</small></div>
+    <h2>Shopping checklist</h2>
+    <ul>${state.lines.map((l) => `<li>\u2610 ${esc(l.name)} \u2014 ${scaledQty(l)} ${esc(l.unit)}</li>`).join("")}</ul>`;
+    if (native("printPage")) return;
+    window.print();
+  }
+  function download(name, text, type = "text/plain") {
+    if (native("exportText", name, text, type)) return;
+    const blob = new Blob([text], { type });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2e3);
+  }
+  function applyBackupText(text) {
+    state = importJSON(text, SHOPPING_LINES);
+    timers = state.timers || (state.timers = []);
+    timerSeq = Math.max(0, ...timers.map((t) => Number(t.requestCode) || 0));
+    native("cancelAllTimers");
+    const now = Date.now();
+    for (const t of timers) {
+      if (!t.notified && t.endsAt > now) {
+        const mins = Math.max(1, Math.ceil((t.endsAt - now) / 6e4));
+        t.native = !!native("scheduleTimer", t.label, mins, t.requestCode || (t.requestCode = ++timerSeq));
+      }
+    }
+    saveTimers();
+    render();
+    toast("Backup imported");
+  }
+  window.__nativeImport = (b64) => {
+    try {
+      const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+      applyBackupText(new TextDecoder().decode(bytes));
+    } catch (err) {
+      toast(`Import failed: ${err.message}`);
+    }
+  };
+  function syncBase() {
+    const url = String(state.syncUrl || "").trim();
+    if (!url) {
+      toast("Add a LAN sync URL in More first");
+      return null;
+    }
+    try {
+      return normaliseBaseUrl(url);
+    } catch (err) {
+      toast(err.message);
+      return null;
+    }
+  }
+  function ensureDeviceId() {
+    if (!state.deviceId) {
+      state.deviceId = `device-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+      save(state);
+    }
+    return state.deviceId;
+  }
+  async function syncNow() {
+    const base = syncBase();
+    if (!base) return;
+    try {
+      const remote = await pullBackup(base);
+      if (remote && newer(state.syncedAt, remote.updatedAt)) {
+        applyBackupText(JSON.stringify(remote.state));
+        state.syncedAt = remote.updatedAt;
+        save(state);
+        toast("Pulled newer backup from sync service");
+      } else {
+        const result = await pushBackup(base, state, ensureDeviceId());
+        state.syncedAt = (result == null ? void 0 : result.updatedAt) || (/* @__PURE__ */ new Date()).toISOString();
+        save(state);
+        toast("Backup pushed \u2014 sync service is optional");
+      }
+    } catch (err) {
+      toast(`Sync failed: ${err.message}`);
+    }
+  }
+  async function testSync() {
+    const base = syncBase();
+    if (!base) return;
+    try {
+      const h = await health(base);
+      toast(`Sync OK \xB7 ${(h == null ? void 0 : h.service) || "service"}`);
+    } catch (err) {
+      toast(`Sync test failed: ${err.message}`);
+    }
+  }
+  async function syncPrices() {
+    var _a;
+    const base = syncBase();
+    if (!base) return;
+    try {
+      const result = await pushPrices(base, state.customPrices, ensureDeviceId());
+      toast(`${(_a = result == null ? void 0 : result.accepted) != null ? _a : state.customPrices.length} manual prices pushed`);
+    } catch (err) {
+      toast(`Price sync failed: ${err.message}`);
+    }
+  }
+  function exportCSV() {
+    const b = basket();
+    const byId = new Map(b.rows.map((r) => [r.line.id, r]));
+    const q = (v) => `"${String(v != null ? v : "").replace(/"/g, '""')}"`;
+    const rows = [["Item", "Quantity", "Unit", "Category", "Price status", "Cost (ZAR)", "Ticked", "Pantry"].map(q).join(",")];
+    for (const l of state.lines) {
+      const r = byId.get(l.id);
+      rows.push([
+        l.name,
+        scaledQty(l),
+        l.unit,
+        l.category,
+        (r == null ? void 0 : r.status) || "no-price",
+        (r == null ? void 0 : r.selected) ? (r.selected.costCents / 100).toFixed(2) : "",
+        l.ticked ? "yes" : "no",
+        l.pantry ? "yes" : "no"
+      ].map(q).join(","));
+    }
+    download("christmas-lunch-shopping.csv", rows.join("\n"), "text/csv");
+    toast("Shopping list exported");
+  }
+  function addPriceModal(lineId) {
+    const line = state.lines.find((l) => l.id === lineId);
+    if (!line) return;
+    openModal("Add a price", `
+    <p class="lede">${esc(line.name)} \xB7 ${scaledQty(line)} ${esc(line.unit)}. Enter the amount you actually paid \u2014 the app never guesses.</p>
+    <label class="field"><span>Shop</span><select id="p-store">${STORES.map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join("")}</select></label>
+    <label class="field"><span>Amount paid for this line (R)</span><input id="p-amount" type="number" min="0" step="0.01" placeholder="0.00" required></label>
+    <label class="field"><span>Source</span><select id="p-source"><option value="RECEIPT">Till slip</option><option value="MANUAL">Manual entry</option></select></label>
+    <label class="field"><span>Note (optional)</span><input id="p-note" placeholder="e.g. special, 2 kg pack"></label>
+    <div class="btn-row"><button class="btn primary" data-act="save-price" data-id="${esc(line.id)}">Save price</button>
+    <button class="btn" data-act="close-modal">Cancel</button></div>`, (root) => {
+      var _a;
+      return (_a = $("#p-amount", root)) == null ? void 0 : _a.focus();
+    });
+  }
+  function savePrice(lineId) {
+    var _a;
+    const line = state.lines.find((l) => l.id === lineId);
+    const amount = Number((_a = $("#p-amount")) == null ? void 0 : _a.value);
+    if (!line || !Number.isFinite(amount) || amount <= 0) {
+      toast("Enter a valid amount");
+      return;
+    }
+    const cents = Math.round(amount * 100);
+    const qty = Number(scaledQty(line)) || Number(line.qty) || 1;
+    state.customPrices.push({
+      id: `user-${Date.now()}`,
+      store: $("#p-store").value,
+      matchKey: line.matchKey || `custom-${line.id}`,
+      product: `${line.name} (entered)`,
+      packQty: qty,
+      packUnit: line.unit,
+      priceCents: cents,
+      unitCents: Math.round(cents / qty),
+      validFrom: state.today,
+      validTo: null,
+      source: $("#p-source").value,
+      url: null,
+      promotion: false,
+      loyalty: false,
+      likeForLike: true,
+      note: $("#p-note").value || "User-entered \u2014 confirmed"
+    });
+    save(state);
+    closeModal();
+    render();
+    toast(`Price saved for ${line.name}`);
+  }
+  function render() {
+    applyTheme();
+    renderHeader();
+    ({ run: renderRun, cook: renderCook, shop: renderShop, agenda: renderAgenda, cost: renderCost, more: renderMore })[tab]();
+    $$("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+  $("#tabs").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-tab]");
+    if (!btn) return;
+    if (tab === "cook" && btn.dataset.tab !== "cook") releaseWakeLock();
+    tab = btn.dataset.tab;
+    render();
+  });
+  $("#btn-print").addEventListener("click", printCards);
+  $("#modal-close").addEventListener("click", closeModal);
+  $("#modal-back").addEventListener("click", (e) => {
+    if (e.target.id === "modal-back") closeModal();
+  });
+  document.addEventListener("click", (e) => {
+    var _a;
+    const t = e.target.closest("[data-act]");
+    if (!t) return;
+    const { act, id } = t.dataset;
+    switch (act) {
+      case "close-modal":
+        closeModal();
+        break;
+      case "add-price":
+        addPriceModal(id);
+        break;
+      case "save-price":
+        savePrice(id);
+        break;
+      case "clear-durations":
+        state.durations = {};
+        save(state);
+        render();
+        toast("Durations cleared");
+        break;
+      case "cook-next":
+        cookIndex = Math.min(cookIndex + 1, allSteps().length - 1);
+        render();
+        break;
+      case "cook-prev":
+        cookIndex = Math.max(0, cookIndex - 1);
+        render();
+        break;
+      case "cook-say": {
+        const s = allSteps()[cookIndex];
+        speak(`${s.title}. ${s.dish}.`);
+        break;
+      }
+      case "cook-timer":
+        $("#timer-label").value = allSteps()[cookIndex].title;
+        $("#timer-min").focus();
+        break;
+      case "timer-add": {
+        const label = $("#timer-label").value.trim() || "Timer";
+        const min = Math.max(1, Number($("#timer-min").value) || 10);
+        const requestCode = ++timerSeq;
+        const armed = !!native("scheduleTimer", label, min, requestCode);
+        native("requestNotificationPermission");
+        timers.push({
+          id: `t${Date.now()}`,
+          requestCode,
+          label,
+          native: armed,
+          endsAt: Date.now() + min * 6e4,
+          totalMs: min * 6e4,
+          notified: false
+        });
+        if (!armed && "Notification" in window && Notification.permission === "default") Notification.requestPermission();
+        saveTimers();
+        paintTimers();
+        ensureTimerClock();
+        toast(armed ? `${min} min exact-alarm timer started` : `${min} min timer started`);
+        break;
+      }
+      case "timer-remove": {
+        const gone = timers.find((x) => x.id === id);
+        if (gone == null ? void 0 : gone.requestCode) native("cancelTimer", gone.requestCode);
+        timers = timers.filter((x) => x.id !== id);
+        saveTimers();
+        paintTimers();
+        break;
+      }
+      case "add-adhoc":
+        openModal("Add an item", `
+      <label class="field"><span>Name</span><input id="a-name" placeholder="e.g. ice packs"></label>
+      <label class="field"><span>Quantity</span><input id="a-qty" type="number" min="1" value="1"></label>
+      <label class="field"><span>Unit</span><input id="a-unit" value="each"></label>
+      <div class="btn-row"><button class="btn primary" data-act="save-adhoc">Add to list</button>
+      <button class="btn" data-act="close-modal">Cancel</button></div>`);
+        break;
+      case "save-adhoc": {
+        const name = $("#a-name").value.trim();
+        if (!name) {
+          toast("Give the item a name");
+          return;
+        }
+        state.lines.push({
+          id: `adhoc-${Date.now()}`,
+          name,
+          qty: Number($("#a-qty").value) || 1,
+          unit: $("#a-unit").value.trim() || "each",
+          category: "Ad-hoc",
+          matchKey: null,
+          ticked: false,
+          pantry: false
+        });
+        save(state);
+        closeModal();
+        render();
+        toast("Item added");
+        break;
+      }
+      case "export-csv":
+        exportCSV();
+        break;
+      case "export-json":
+        download("christmas-lunch-backup.json", exportJSON(state), "application/json");
+        toast("Backup exported");
+        break;
+      case "import-json":
+        if (!native("importText")) (_a = $("#import-file")) == null ? void 0 : _a.click();
+        break;
+      case "print-cards":
+        printCards();
+        break;
+      case "untick-all":
+        state.lines.forEach((l) => {
+          l.ticked = false;
+        });
+        save(state);
+        render();
+        break;
+      case "reset":
+        native("cancelAllTimers");
+        state = reset(SHOPPING_LINES);
+        timers = state.timers;
+        cookIndex = 0;
+        render();
+        toast("Reset to seed data");
+        break;
+      case "cost-view":
+        costView = t.dataset.v;
+        render();
+        break;
+      case "date-preset":
+        state.today = t.dataset.d;
+        save(state);
+        render();
+        toast(`Viewing as ${state.today}`);
+        break;
+      case "agenda-move": {
+        const i = Number(t.dataset.i);
+        openModal("Reschedule task", `
+        <p class="lede">${esc(RUN_SHEET[i].task)}</p>
+        <label class="field"><span>New date / time label</span><input id="ag-when" value="${esc(state.agendaOverrides[i] || RUN_SHEET[i].time)}"></label>
+        <div class="btn-row"><button class="btn primary" data-act="save-agenda" data-i="${i}">Save</button>
+        <button class="btn" data-act="agenda-24" data-i="${i}">Move to 24 December</button></div>`);
+        break;
+      }
+      case "save-agenda":
+        state.agendaOverrides[Number(t.dataset.i)] = $("#ag-when").value;
+        save(state);
+        closeModal();
+        render();
+        break;
+      case "agenda-24":
+        state.agendaOverrides[Number(t.dataset.i)] = "24 December (before shops close)";
+        save(state);
+        closeModal();
+        render();
+        toast("Moved to 24 December");
+        break;
+      case "ask-notifications":
+        native("requestNotificationPermission");
+        if ("Notification" in window && Notification.permission === "default") {
+          Notification.requestPermission().then(() => toast("Notifications updated"));
+        } else toast("Notifications updated in Android settings if needed");
+        break;
+      case "remind-today":
+        toast(`Today (${state.today}): check the run sheet`);
+        speak("Check today\u2019s preparation tasks");
+        break;
+      case "open-battery-settings":
+        native("openBatterySettings");
+        toast("MIUI: set this app to \u201CNo restrictions\u201D");
+        break;
+      case "open-alarm-settings":
+        native("openExactAlarmSettings");
+        toast("Allow exact alarms for reliable timers");
+        break;
+      case "open-notification-settings":
+        native("openNotificationSettings");
+        toast("Android notification settings");
+        break;
+      case "sync-now":
+        syncNow();
+        break;
+      case "sync-test":
+        testSync();
+        break;
+      case "sync-prices":
+        syncPrices();
+        break;
+    }
+  });
+  document.addEventListener("change", (e) => {
+    var _a;
+    const el = e.target;
+    if (el.dataset.dur !== void 0) {
+      const v = Number(el.value);
+      if (v > 0) state.durations[el.dataset.dur] = v;
+      else delete state.durations[el.dataset.dur];
+      save(state);
+      render();
+      return;
+    }
+    if (el.dataset.tick !== void 0) {
+      const l = state.lines.find((x) => x.id === el.dataset.tick);
+      if (l) {
+        l.ticked = el.checked;
+        save(state);
+        render();
+      }
+      return;
+    }
+    if (el.dataset.pantry !== void 0) {
+      const l = state.lines.find((x) => x.id === el.dataset.pantry);
+      if (l) {
+        l.pantry = el.checked;
+        save(state);
+        render();
+      }
+      return;
+    }
+    if (el.id === "import-file" && ((_a = el.files) == null ? void 0 : _a[0])) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          applyBackupText(String(reader.result));
+        } catch (err) {
+          toast(`Import failed: ${err.message}`);
+        }
+      };
+      reader.readAsText(el.files[0]);
+      return;
+    }
+    if (el.dataset.set) {
+      const k = el.dataset.set;
+      if (k === "shopGroup") {
+        shopGroup = el.value;
+        render();
+        return;
+      }
+      if (k === "singleShop") {
+        singleShop = el.value;
+        render();
+        return;
+      }
+      if (k === "hasLoyaltyCard") state.hasLoyaltyCard = el.checked;
+      else if (k === "highContrast") state.highContrast = el.checked;
+      else if (k === "travelCostCents") state.travelCostCents = Math.round((Number(el.value) || 0) * 100);
+      else if (k === "guestCount") state.guestCount = Math.max(1, Number(el.value) || 10);
+      else if (k === "textScale") state.textScale = Math.max(100, Math.min(150, Number(el.value) || 100));
+      else state[k] = el.value;
+      save(state);
+      render();
+      return;
+    }
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) releaseWakeLock();
+    else if (tab === "cook") requestWakeLock();
+  });
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {
+    }));
+  }
+  if (timers.some((t) => !t.notified && t.endsAt > Date.now())) ensureTimerClock();
+  render();
+})();
+
+</script>
+</body>
+</html>
