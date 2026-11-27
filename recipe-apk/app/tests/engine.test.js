@@ -4,7 +4,7 @@ import {
   isExpired, isActive, usable, lineCost, compareLine, optimiseBasket, mergeLines,
   scaleQty, schedule, hhmmToMinutes, minutesToHHMM, formatZAR, bundleCount,
 } from '../js/engine.js';
-import { PRICE_ENTRIES, SHOPPING_LINES, DISHES, STORES } from '../js/data.js';
+import { PRICE_ENTRIES, SHOPPING_LINES, DISHES, RUN_SHEET, STORES, MENU_PLACEHOLDERS, RETIRED_SHOPPING_LINE_IDS } from '../js/data.js';
 
 const TODAY = '2026-11-19';
 const ctx = { today: TODAY, basketLines: SHOPPING_LINES, hasLoyaltyCard: false };
@@ -111,12 +111,33 @@ test('duplicate ingredients merge and portion scaling works', () => {
   assert.equal(merged.length, 2);
   assert.equal(merged.find((l) => l.unit === 'each').qty, 10);
   assert.equal(scaleQty(10, 10, 12), 12);
+  assert.equal(scaleQty(null, 10, 12), null);
 });
 
 test('lineCost refuses incomparable units', () => {
   const wool = PRICE_ENTRIES.find((e) => e.id === 'wool-potatoes');
   assert.equal(lineCost({ qty: 1.5, unit: 'kg' }, wool), 3000);
   assert.equal(lineCost({ qty: 3, unit: 'each' }, wool), null);
+});
+
+test('menu placeholders stay unpriced and no old rice-based dessert data survives', () => {
+  const pending = SHOPPING_LINES.filter((l) => l.qty === null);
+  assert.equal(pending.length, 2);
+  assert.ok(pending.some((l) => /Smoked gammon/i.test(l.name)));
+  assert.ok(pending.some((l) => /Homemade ice-cream/i.test(l.name)));
+  for (const line of pending) {
+    assert.equal(lineCost(line, PRICE_ENTRIES[0]), null);
+    const comparison = compareLine(line, PRICE_ENTRIES, ctx);
+    assert.equal(comparison.status, 'no-price');
+    assert.match(comparison.reasons.join(' '), /Recipe pending/);
+  }
+  const basket = optimiseBasket(pending, PRICE_ENTRIES, ctx);
+  assert.equal(basket.pricedCount, 0);
+  assert.equal(basket.complete, false);
+  assert.equal(MENU_PLACEHOLDERS.length, 2);
+  assert.ok(SHOPPING_LINES.every((l) => !RETIRED_SHOPPING_LINE_IDS.includes(l.id)));
+  const seedText = JSON.stringify({ SHOPPING_LINES, DISHES, RUN_SHEET, MENU_PLACEHOLDERS });
+  assert.doesNotMatch(seedText, /Coconut rice pots|Rice \(for coconut pots\)|portion coconut/i);
 });
 
 test('schedule: missing durations are reported, explicit ones are scheduled', () => {

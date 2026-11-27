@@ -70,6 +70,18 @@ for (const [t, needle] of [
   console.log(`✓ ${t} tab renders`);
 }
 
+// Menu placeholders are explicit and the retired dessert is absent.
+click('#tabs button[data-tab="run"]');
+assert.match(view(), /Smoked gammon/);
+assert.match(view(), /Homemade ice-cream/);
+assert.match(view(), /recipe to be supplied|recipe[ -]pending/i);
+assert.match(view(), /not for Host A or Guest B/);
+assert.doesNotMatch(view(), /Coconut rice pots|Rice \(for coconut pots\)|portion coconut/i);
+click('#tabs button[data-tab="shop"]');
+assert.match(view(), /recipe pending/i);
+assert.match(view(), /no price entry/i);
+console.log('✓ gammon / ice-cream placeholders render without invented details');
+
 // Accessibility + optional settings are present and persist.
 click('#tabs button[data-tab="more"]');
 assert.match(view(), /Text size/);

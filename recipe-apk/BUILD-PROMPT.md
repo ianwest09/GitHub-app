@@ -88,7 +88,7 @@ Engine requirements:
 - A one-tap "add price from till slip" flow per unpriced line: pick shop, pick item, type amount, save - under 5 taps, works with no signal.
 
 ## FEATURE 5 - Extras that make life easier (build the starred ones first)
-- * Dietary guardrails: per-ingredient and per-recipe flags for NO_SUGAR, NO_YEAST, NO_WHEAT, NO_DAIRY, NO_VINEGAR, ALCOHOL_FREE, CHICKEN_ONLY, TONGUE_FOR_THREE, RED_MEAT_OK. Warn on conflicts; show "shared / for some" labels; remind about a separate board, knife and tongs for the tongue platter. Flag catalogue items that contain alcohol (brandy pudding, brandy Christmas cake) as EXCLUDED. These are labels, not medical advice.
+- * Dietary guardrails: per-ingredient and per-recipe flags for NO_SUGAR, NO_YEAST, NO_WHEAT, NO_DAIRY, NO_VINEGAR, ALCOHOL_FREE, CHICKEN_ONLY, TONGUE_FOR_THREE, RED_MEAT_OK, SEPARATE_PLATTER, NOT_HOST_A_GUEST_B, RECIPE_PENDING. Warn on conflicts; show "shared / for some" labels; remind about separate boards, knives and tongs for the tongue and smoked gammon platters. Keep smoked gammon off Host A's and Guest B's plates, and hold recipe-pending homemade ice-cream until recipe, labels and dietary clearance are supplied. Flag catalogue items that contain alcohol (brandy pudding, brandy Christmas cake) as EXCLUDED. These are labels, not medical advice.
 - * Pantry inventory with quantities and a "use what I have" toggle.
 - * Expiry and cooler reminders for hot, humid Port Alfred weather ("cold dishes out of the cooler for more than 60 min").
 - * Local backup/export/import of everything as JSON + CSV; printable large-print menu cards and dish label cards.
@@ -99,7 +99,7 @@ Engine requirements:
 - No network dependency for ANY core feature; a graceful offline state rather than spinners.
 
 ## SEED DATA
-Seed recipes, ingredients, step order, dependencies and any durations EXPLICITLY present in christmas-lunch-menu/MENU.md (Christmas Lunch for Ten, Port Alfred, 10 people at the table, alcohol-free, tongue for three, 13:00 sitting). Seed PriceEntry rows from VERIFIED-PRICES.md with their source URLs and validFrom/validTo. Do not invent a duration, quantity, product match or price that is not in those documents; mark missing values as "Set time" / "unpriced". The ox tongue has NO verified price at any shop - leave it unpriced and flag it as "order from butcher, enter till-slip price".
+Seed recipes, ingredients, step order, dependencies and any durations EXPLICITLY present in christmas-lunch-menu/MENU.md (Christmas Lunch for Ten, Port Alfred, 10 people at the table, alcohol-free, tongue for three, separate smoked gammon platter, recipe-pending homemade ice-cream, 13:00 sitting). Seed PriceEntry rows from VERIFIED-PRICES.md with their source URLs and validFrom/validTo. Do not invent a duration, quantity, product match or price that is not in those documents; mark missing values as "Set time" / "recipe pending" / "unpriced". The ox tongue has NO verified price at any shop - leave it unpriced and flag it as "order from butcher, enter till-slip price". Migrate persisted local state so retired dessert shopping lines and custom prices do not survive a menu update.
 
 ## EXPLICITLY DO NOT BUILD
 - No invented, estimated, interpolated, demo, sample or AI-guessed prices - ever. Lookups are allowed; guesses are not.

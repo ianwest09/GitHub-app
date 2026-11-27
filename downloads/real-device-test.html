@@ -3,52 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Real-device test — corrected Christmas Lunch debug APK</title>
+<title>Real-device test — current Christmas Lunch debug APK</title>
 <style>
 :root{color-scheme:dark}body{font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:#0d1117;color:#e6edf3;margin:0;padding:28px;max-width:980px}h1{font-size:28px;margin:0 0 6px}h2{font-size:20px;margin:28px 0 10px;border-bottom:1px solid #30363d;padding-bottom:6px}h3{font-size:16px;margin:18px 0 6px}p,li,td,th{color:#c9d1d9}code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}pre{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;overflow:auto;color:#d2a8ff}code{background:#161b22;padding:2px 5px;border-radius:4px}a{color:#58a6ff}.btn,.alt,.stale{display:inline-block;color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:11px 16px;margin:8px 8px 8px 0}.btn{background:#238636}.alt{background:#1f6feb}.stale{background:#57606a}.note{background:#3a2a12;border:1px solid #8a6b2e;border-radius:8px;padding:14px;margin:16px 0}.warn{background:#3d1d1d;border:1px solid #8e3737;border-radius:8px;padding:14px;margin:16px 0}table{border-collapse:collapse;width:100%;margin:10px 0}th,td{border:1px solid #30363d;padding:9px;vertical-align:top}th{background:#161b22;text-align:left}td:first-child{white-space:nowrap;width:22%}small{color:#8b949e}ul{padding-left:22px}.pill{display:inline-block;background:#161b22;border:1px solid #30363d;border-radius:999px;padding:2px 9px;font-size:13px;color:#8b949e}
 </style>
 </head>
 <body>
-<h1>Real-device test pack — corrected build</h1>
-<p><span class="pill">Debug build</span> <span class="pill">Host A correction</span> <span class="pill">Redmi Note 10 Pro</span> <span class="pill">Offline-first</span></p>
-<p>This is a device-test checklist for the installable debug APK built <strong>after</strong> the Host A correction. It is <strong>not</strong> a signed production release.</p>
+<h1>Real-device test pack — current menu build</h1>
+<p><span class="pill">Debug build</span> <span class="pill">Host A correction baseline</span> <span class="pill">Gammon + ice-cream placeholders</span> <span class="pill">Redmi Note 10 Pro</span> <span class="pill">Offline-first</span></p>
+<p>This checklist is for the installable debug APK built <strong>after</strong> the smoked-gammon / homemade-ice-cream menu update. It is <strong>not</strong> a signed production release.</p>
 
 <div class="warn">
-<strong>Do not use the stale workspace APK for this test.</strong> <code>downloads/app-debug.apk</code> was built before the Host A correction. Its SHA-256 is <code>6c1d8a4d05744c8276e373d1ac9d3419c0a953c54eb0cf7c02ae35cd32537634</code>, and it does not include the corrected Host A wording. Use the corrected PR #3 CI artifact below instead.
+<strong>Do not use stale APKs.</strong> The workspace file <code>downloads/app-debug.apk</code> predates the Host A correction and has SHA-256 <code>6c1d8a4d05744c8276e373d1ac9d3419c0a953c54eb0cf7c02ae35cd32537634</code>. The earlier corrected-build artifacts <code>15223116026</code> and <code>15222197008</code> also predate this menu update: they contain neither the separate smoked gammon platter nor the recipe-pending homemade ice-cream. Use the newest successful CI artifact from the menu-change commit or its PR.
 </div>
 
 <div class="note">
-<strong>Corrected source:</strong> branch commit <code>bbf3c78</code>, merged to <code>main</code> as <code>4076cd6</code> via PR #3. The branch and main trees were identical at merge time.<br>
-<strong>Corrected CI:</strong> push run <code>46046271076</code> and PR run <code>46046278994</code> both completed successfully. Both built the corrected app source.
+<strong>Use the newest successful run for branch <code>arena/2b1e7304-github-app</code></strong> (or the PR merge-ref run for the new menu-change PR). Confirm the run’s head SHA matches the menu-change commit, and confirm its web tests and <code>assembleDebug</code> job succeeded. The workflow is <code>.github/workflows/build-android.yml</code>; it uploads one debug APK artifact plus <code>apk.sha256</code>.
 </div>
 
-<h2>1. Get the corrected APK</h2>
-<p><a class="btn" href="https://github.com/ianwest09/GitHub-app/actions/runs/46046271076">Corrected push run (recommended)</a>
-<a class="alt" href="https://github.com/ianwest09/GitHub-app/actions/runs/46046278994">Corrected PR run</a>
+<h2>1. Get the current menu-change APK</h2>
+<p><a class="btn" href="https://github.com/ianwest09/GitHub-app/actions/workflows/build-android.yml">Build Android debug APK — workflow runs</a>
+<a class="alt" href="https://github.com/ianwest09/GitHub-app/actions">All Actions runs</a>
 <a class="stale" href="app-debug.apk">Open stale local APK (reference only)</a></p>
 
-<table>
-<thead><tr><th>Priority</th><th>Artifact</th><th>Details</th></tr></thead>
-<tbody>
-<tr><td>Primary</td><td>Push artifact <code>15223116026</code></td><td>Run <code>46046271076</code>, name <code>christmas-lunch-debug-apk-bbf3c78f65bef8b8ea95bdf14d61be6a3fcf9d04</code>, 2,194,918 bytes, not expired. Built from corrected branch commit <code>bbf3c78</code>.</td></tr>
-<tr><td>Mirror</td><td>PR artifact <code>15222197008</code></td><td>Run <code>46046278994</code>, name <code>christmas-lunch-debug-apk-aeb2ea9a90068ae9149b51f49b320928fcb82489</code>, 2,194,919 bytes, not expired. Built for the PR merge ref; same corrected app source.</td></tr>
-</tbody>
-</table>
+<h3>Find and download with GitHub CLI (recommended)</h3>
+<pre># On your own machine, in a clone with the GitHub CLI authenticated:
+gh run list --workflow build-android.yml \
+  --branch arena/2b1e7304-github-app --limit 10
 
-<h3>Download with GitHub CLI (recommended)</h3>
-<pre>mkdir -p corrected-apk
-gh run download 46046271076 \
-  -n christmas-lunch-debug-apk-bbf3c78f65bef8b8ea95bdf14d61be6a3fcf9d04 \
-  -D corrected-apk
-cd corrected-apk
+# Copy the newest SUCCESSFUL run ID whose head SHA is the menu-change commit.
+gh run view &lt;run-id&gt;
+
+# List the artifact name, then download and verify it.
+gh api repos/ianwest09/GitHub-app/actions/runs/&lt;run-id&gt;/artifacts \
+  --jq '.artifacts[].name'
+gh run download &lt;run-id&gt; -n &lt;artifact-name&gt; -D menu-change-apk
+cd menu-change-apk
 sha256sum -c apk.sha256</pre>
-<p>The artifact contains <code>apk.sha256</code> and <code>recipe-apk/android/app/build/outputs/apk/debug/app-debug.apk</code>. Run <code>sha256sum -c apk.sha256</code> from the extracted artifact root; do not compare against the old stale workspace hash. On Windows, use <code>certutil -hashfile app-debug.apk SHA256</code> and compare with the hash printed in <code>apk.sha256</code>.</p>
+<p>The extracted artifact contains <code>apk.sha256</code> and <code>recipe-apk/android/app/build/outputs/apk/debug/app-debug.apk</code>. Run <code>sha256sum -c apk.sha256</code> from the extracted artifact root. On Windows, use <code>certutil -hashfile app-debug.apk SHA256</code> and compare with the hash printed in <code>apk.sha256</code>. Do not compare against the old stale workspace hash.</p>
 
 <h3>Download from the browser</h3>
 <ol>
-<li>Open the corrected push run above.</li>
-<li>Download the artifact named <code>christmas-lunch-debug-apk-bbf3c78f65bef8b8ea95bdf14d61be6a3fcf9d04</code> from the Artifacts section.</li>
-<li>Unzip it into a folder named <code>corrected-apk</code>.</li>
+<li>Open the workflow runs link above and select the newest successful run for the menu-change commit / PR.</li>
+<li>Download its <code>christmas-lunch-debug-apk-…</code> artifact from the Artifacts section.</li>
+<li>Unzip it into a folder named <code>menu-change-apk</code>.</li>
 <li>Run <code>sha256sum -c apk.sha256</code> from that folder before installing.</li>
 </ol>
 
@@ -61,12 +59,12 @@ sha256sum -c apk.sha256</pre>
 <li>Approve the “Allow USB debugging?” prompt. If <code>adb devices</code> says <code>unauthorized</code>, revoke USB debugging authorisations and reconnect.</li>
 <li>Record: Android version, MIUI version, Android System WebView version, device model, and whether the phone has a SIM/Mi account (this affects some MIUI toggles).</li>
 </ul>
-<div class="warn"><strong>If MIUI blocks Install via USB:</strong> skip ADB and copy the corrected <code>app-debug.apk</code> to the phone, open it from Files, allow “install from this source”, and tap Install. That is an equally valid debug sideload test.</div>
+<div class="warn"><strong>If MIUI blocks Install via USB:</strong> skip ADB and copy the current <code>app-debug.apk</code> to the phone, open it from Files, allow “install from this source”, and tap Install. That is an equally valid debug sideload test.</div>
 
 <h2>3. Install and launch</h2>
 <h3>ADB path</h3>
 <pre>adb devices -l
-adb install -r corrected-apk/recipe-apk/android/app/build/outputs/apk/debug/app-debug.apk
+adb install -r menu-change-apk/recipe-apk/android/app/build/outputs/apk/debug/app-debug.apk
 adb shell monkey -p za.co.portalfred.christmaslunch.debug -c android.intent.category.LAUNCHER 1</pre>
 <p>If you copied the APK to the phone instead, install <code>app-debug.apk</code> from the Files app and launch <strong>Xmas Lunch</strong> manually.</p>
 <h3>Verify installed package</h3>
@@ -87,17 +85,18 @@ adb shell monkey -p za.co.portalfred.christmaslunch.debug -c android.intent.cate
 <table>
 <thead><tr><th>Area</th><th>Steps and expected result</th><th>Pass / fail / notes</th></tr></thead>
 <tbody>
-<tr><td>Cold start / offline</td><td>Turn on airplane mode, force-stop the app, reopen it. The WebView loads from <code>https://appassets.androidplatform.net/assets/www/index.html</code>, not <code>file://</code> or a CDN. No blank screen, no crash, no automatic network prompt. Header shows the people-at-table count and price coverage.</td><td></td></tr>
+<tr><td>Cold start / offline</td><td>Turn on airplane mode, force-stop the app, reopen it. The WebView loads from <code>https://appassets.androidplatform.net/assets/www/index.html</code>, not <code>file://</code> or a CDN. No blank screen, no crash, no automatic network prompt. Service-worker cache <code>christmas-lunch-v3</code> replaces older cached assets. Header shows the people-at-table count and price coverage.</td><td></td></tr>
 <tr><td>Six tabs</td><td>Tap <strong>Run sheet</strong>, <strong>Cook mode</strong>, <strong>Shopping</strong>, <strong>Agenda</strong>, <strong>Cost &amp; route</strong>, <strong>More</strong>. Each renders content; no missing CSS/JS; no external assets.</td><td></td></tr>
-<tr><td>Run sheet</td><td>Verify <code>09:30</code> and <code>13:00</code>, documented run sheet, and <strong>Set time</strong> for steps without explicit durations. No invented cook times.</td><td></td></tr>
+<tr><td>Run sheet</td><td>Verify <code>09:30</code> and <code>13:00</code>, documented run sheet, <strong>Set time</strong> for steps without explicit durations, and a clearly marked <strong>Menu placeholders — do not prepare yet</strong> card. No invented cook times.</td><td></td></tr>
 <tr><td>Cook mode</td><td>Start a named timer. Verify countdown, exact-alarm toast/permission behaviour, notification, TTS if available, screen staying on, and foreground-service notification. Force-stop/reopen: timer state persists. Optional: reboot and confirm native alarm restoration.</td><td></td></tr>
-<tr><td>Shopping</td><td>Verify price coverage percentage, <strong>partial subtotal</strong>, no full-basket total, checklist ticks persist, and a till-slip price can be added and persists after reload.</td><td></td></tr>
-<tr><td>Portion scaling</td><td>In <strong>More</strong>, change <strong>People at the table</strong> from 10 to 12. Shopping quantities scale; cook-time confirmation warnings remain; no guessed durations.</td><td></td></tr>
+<tr><td>Shopping</td><td>Verify price coverage percentage, <strong>partial subtotal</strong>, no full-basket total, checklist ticks persist, and a till-slip price can be added and persists after reload. Pending lines show <strong>recipe pending</strong> and <strong>no price entry</strong>; their <strong>+ price</strong> buttons are absent.</td><td></td></tr>
+<tr><td>Portion scaling</td><td>In <strong>More</strong>, change <strong>People at the table</strong> from 10 to 12. Normal shopping quantities scale; recipe-pending lines remain <strong>recipe pending</strong>; cook-time confirmation warnings remain; no guessed durations.</td><td></td></tr>
 <tr><td>Agenda / dates</td><td>Use presets <strong>19 Nov (research)</strong>, <strong>23 Nov (prices expire)</strong>, <strong>25 Dec (Christmas)</strong>. On 25 Dec, verify <strong>Spar Port Alfred is closed on Christmas Day</strong> and shopping must move to 24 Dec or earlier.</td><td></td></tr>
-<tr><td>Cost &amp; route</td><td>On 23 Nov, seeded catalogue rows show <strong>Expired — re-check price</strong> and are excluded. Alcohol rows are excluded; no verified tongue price; single-source rows are not called “cheapest”; PnP potato bundle requires four qualifying items; travel cost is user-entered only.</td><td></td></tr>
-<tr><td>Host A / dietary guardrails</td><td>Verify the app says <strong>Host A is one of the hosts</strong>; confirm the alcohol-free plan, Host A’s oncology-diet guardrails, tongue for three on its own labelled platter with own board/knife/tongs, prep-last/handwashing notes, and no reintroduction of forbidden ingredients. Red meat remains permitted for the three tongue eaters, separately handled.</td><td></td></tr>
-<tr><td>Accessibility</td><td>Set <strong>Text size</strong> to 125% and enable <strong>High-contrast</strong>. Reload; both persist. Large-print print icon opens Android PrintManager / print preview.</td><td></td></tr>
-<tr><td>Backup / documents</td><td><strong>Export backup (JSON)</strong> opens Android document picker and saves a file. <strong>Import backup</strong> restores it. <strong>Reset to seed data</strong> returns defaults. Export CSV works or fails gracefully if no consumer exists.</td><td></td></tr>
+<tr><td>Cost &amp; route</td><td>On 23 Nov, seeded catalogue rows show <strong>Expired — re-check price</strong> and are excluded. Alcohol rows are excluded; no verified tongue price; single-source rows are not called “cheapest”; PnP potato bundle requires four qualifying items; travel cost is user-entered only; pending menu lines are unpriced.</td><td></td></tr>
+<tr><td>Host A / dietary guardrails</td><td>Verify the app says <strong>Host A is one of the hosts</strong>; confirm the alcohol-free plan, Host A’s oncology-diet guardrails, tongue for three and smoked gammon on separate labelled platters with own boards/knives/tongs, prep-last/handwashing notes, and no reintroduction of forbidden ingredients. Red meat remains permitted for the three tongue eaters, separately handled. Cinnamon-baked pears remain the documented shared-safe dessert.</td><td></td></tr>
+<tr><td>Menu placeholders</td><td>Verify <strong>Smoked gammon</strong> appears as a separate labelled platter, not for Host A or Guest B; <strong>Homemade ice-cream</strong> appears as <strong>recipe to be supplied</strong> / recipe-pending; no invented ingredients, quantities, durations, prices or dietary claims appear; and the old rice-based dessert is absent from shopping, recipes and the run sheet.</td><td></td></tr>
+<tr><td>Accessibility</td><td>Set <strong>Text size</strong> to 125% and enable <strong>High-contrast</strong>. Reload; both persist. Large-print print icon opens Android PrintManager / print preview. Printed labels include separate gammon and recipe-pending ice-cream cards.</td><td></td></tr>
+<tr><td>Backup / documents</td><td><strong>Export backup (JSON)</strong> opens Android document picker and saves a file. <strong>Import backup</strong> restores it. <strong>Reset to seed data</strong> returns defaults. Export CSV works or fails gracefully if no consumer exists. An older backup must migrate away retired dessert lines/custom prices/step durations while preserving settings.</td><td></td></tr>
 <tr><td>Optional LAN sync</td><td>Confirm it is off by default and no automatic sync/network request occurs. Do not test push/pull unless you intentionally start <code>sync-service</code> on a trusted LAN.</td><td></td></tr>
 <tr><td>Android lifecycle</td><td>Rotate portrait/landscape, press Back, switch apps, lock/unlock, and reopen. No reload loop, no lost state, no crash. Service-worker cache works from the internal secure origin.</td><td></td></tr>
 <tr><td>Debug-only limits</td><td>No account, API key, telemetry, analytics, price scraping, cloud backup, automatic network call, or Play Store publishing flow.</td><td></td></tr>
@@ -109,7 +108,7 @@ adb shell monkey -p za.co.portalfred.christmaslunch.debug -c android.intent.cate
 <ul>
 <li>Exact step, tab, viewing date, portion count, and expected vs actual result.</li>
 <li>Android version, MIUI version, WebView version, device model.</li>
-<li>Corrected artifact ID used (<code>15223116026</code> or <code>15222197008</code>) and whether <code>sha256sum -c apk.sha256</code> passed.</li>
+<li>The <strong>current menu-change run ID and artifact ID</strong> used, and whether <code>sha256sum -c apk.sha256</code> passed.</li>
 <li>Whether airplane mode, notification permission, exact alarms, battery “No restrictions”, and Autostart were enabled.</li>
 <li>If available, a filtered logcat from the moment of failure.</li>
 </ul>

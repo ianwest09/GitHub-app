@@ -44,7 +44,7 @@ npm run test:all
 
 `MenuSession` state lives in `store.js`: guest count, viewing date, loyalty flag, travel cost, theme, text size, high contrast, custom prices, user durations, agenda overrides, checklist ticks, timers, optional sync URL and sync timestamp.
 
-The ten portions include both hosts; Host A is one of the hosts. `guestCount` is a portion-count field, not a statement that Host A is a visitor.
+The ten portions include both hosts; Host A is one of the hosts. `guestCount` is a portion-count field, not a statement that Host A is a visitor. Recipe-pending shopping lines use `qty: null` and display “recipe pending”; they are excluded from price comparisons and price entry until a recipe, quantity and source are supplied. `store.js` migrates saved version-1 state so retired dessert lines, their custom prices and their step durations are removed while user settings and other local data are preserved.
 
 ## Scheduling algorithm
 
