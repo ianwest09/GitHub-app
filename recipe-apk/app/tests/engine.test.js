@@ -100,7 +100,7 @@ test('alcohol-containing catalogue items are excluded from any comparison', () =
   assert.equal(usable(pudding, SHOPPING_LINES[0], ctx).ok, false);
 });
 
-test('duplicate ingredients merge and guest scaling works', () => {
+test('duplicate ingredients merge and portion scaling works', () => {
   const lemons = [
     { name: 'Lemons', qty: 4, unit: 'each' },
     { name: 'Lemons', qty: 3, unit: 'each' },

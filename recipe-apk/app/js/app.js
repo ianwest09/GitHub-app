@@ -45,7 +45,7 @@ function openModal(title, html, onMount) {
 function closeModal() { $('#modal-back').hidden = true; }
 
 const scaledQty = (l) => E.scaleQty(l.qty, 10, state.guestCount);
-// Basket lines carry the scaled quantity so costs follow the guest count.
+// Basket lines carry the scaled quantity so costs follow the portion count.
 const basketLines = () => state.lines.map((l) => ({ ...l, qty: scaledQty(l) }));
 function ctx() {
   return { today: state.today, basketLines: basketLines(), hasLoyaltyCard: state.hasLoyaltyCard };
@@ -74,7 +74,7 @@ function applyTheme() {
 
 function renderHeader() {
   const b = basket();
-  $('#status-pill').textContent = `${state.guestCount} guests · ${Math.round(b.coverage * 100)}% priced`;
+  $('#status-pill').textContent = `${state.guestCount} at the table · ${Math.round(b.coverage * 100)}% priced`;
   $('#foot-meta').textContent = `Prices captured 19 Nov 2026 · viewing as ${state.today}`;
 }
 
@@ -224,7 +224,7 @@ function renderCook() {
     </div>
     <div class="banner info"><strong>Dietary guardrails</strong>
       Alcohol-free table for all ten. Tongue has its own board, knife and tongs — never pass shared gravy over it.
-      Nuts and seeds are finely chopped; hosts in their 80s get boneless chicken and tender vegetables.</div>`;
+      Nuts and seeds are finely chopped; both hosts in their 80s, including Host A, get boneless chicken and tender vegetables.</div>`;
   paintTimers();
   ensureTimerClock();
   requestWakeLock();
@@ -261,7 +261,7 @@ function renderShop() {
   const ticked = state.lines.filter((l) => l.ticked).length;
   $('#view').innerHTML = `
     <h2 class="sec">Shopping list</h2>
-    <p class="lede">Auto-generated from the menu and scaled to ${state.guestCount} guests. Duplicate ingredients are merged. Everything works offline.</p>
+    <p class="lede">Auto-generated from the menu and scaled to ${state.guestCount} people at the table. Duplicate ingredients are merged. Everything works offline.</p>
     <div class="rule"></div>
     <div class="grid3" style="margin-bottom:14px">
       <div class="stat"><div class="v">${state.lines.length}</div><div class="k">lines</div></div>
@@ -270,7 +270,7 @@ function renderShop() {
     </div>
     <div class="card">
       <div class="row" style="margin-bottom:8px">
-        <label class="field"><span>Guests</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
+        <label class="field"><span>People at the table</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
         <label class="field"><span>Group by</span><select data-set="shopGroup"><option value="category" ${shopGroup === 'category' ? 'selected' : ''}>Aisle / category</option><option value="shop" ${shopGroup === 'shop' ? 'selected' : ''}>Cheapest shop</option></select></label>
       </div>
       <div class="btn-row">
@@ -433,7 +433,7 @@ function renderMore() {
     <div class="rule"></div>
 
     <div class="card"><h3>Dietary guardrails</h3>
-      <p class="lede">Labels, not medical advice. Confirm the final ingredient list with Guest A and her oncology dietitian.</p>
+      <p class="lede">Host A is one of the hosts. Labels, not medical advice. Confirm the final ingredient list with Host A and her oncology dietitian.</p>
       ${flags.map(([k, v]) => `<span class="tag ${k === 'ALCOHOL_FREE' ? 'rose' : ''}">${esc(v)}</span>`).join('')}
       <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
         PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
@@ -444,7 +444,7 @@ function renderMore() {
     <div class="card"><h3>Settings</h3>
       <div class="grid2">
         <label class="field"><span>Viewing date</span><input type="date" data-set="today" value="${state.today}"></label>
-        <label class="field"><span>Guests (scales quantities)</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
+        <label class="field"><span>People at the table (scales quantities)</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
         <label class="field"><span>Travel cost per extra shop (R)</span><input type="number" min="0" step="0.01" data-set="travelCostCents" value="${(state.travelCostCents / 100).toFixed(2)}"></label>
         <label class="field"><span>Theme</span><select data-set="theme">
           <option value="auto" ${state.theme === 'auto' ? 'selected' : ''}>System</option>

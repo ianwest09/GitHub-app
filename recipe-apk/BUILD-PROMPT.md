@@ -95,11 +95,11 @@ Engine requirements:
 - * Price freshness dashboard: list every expired or soon-to-expire price with a "re-check" action.
 - Recipe import from plain text/Markdown (the user has a MENU.md) plus a manual recipe editor with photo; tags such as Christmas, weekday, batch-cook.
 - Leftovers/storage notes, a per-recipe notes field, and a "what can I prep yesterday?" filter.
-- Units converter and a "10 guests" scaling shortcut.
+- Units converter and a "10 people at the table" scaling shortcut.
 - No network dependency for ANY core feature; a graceful offline state rather than spinners.
 
 ## SEED DATA
-Seed recipes, ingredients, step order, dependencies and any durations EXPLICITLY present in christmas-lunch-menu/MENU.md (Christmas Lunch for Ten, Port Alfred, 10 guests, alcohol-free, tongue for three, 13:00 sitting). Seed PriceEntry rows from VERIFIED-PRICES.md with their source URLs and validFrom/validTo. Do not invent a duration, quantity, product match or price that is not in those documents; mark missing values as "Set time" / "unpriced". The ox tongue has NO verified price at any shop - leave it unpriced and flag it as "order from butcher, enter till-slip price".
+Seed recipes, ingredients, step order, dependencies and any durations EXPLICITLY present in christmas-lunch-menu/MENU.md (Christmas Lunch for Ten, Port Alfred, 10 people at the table, alcohol-free, tongue for three, 13:00 sitting). Seed PriceEntry rows from VERIFIED-PRICES.md with their source URLs and validFrom/validTo. Do not invent a duration, quantity, product match or price that is not in those documents; mark missing values as "Set time" / "unpriced". The ox tongue has NO verified price at any shop - leave it unpriced and flag it as "order from butcher, enter till-slip price".
 
 ## EXPLICITLY DO NOT BUILD
 - No invented, estimated, interpolated, demo, sample or AI-guessed prices - ever. Lookups are allowed; guesses are not.

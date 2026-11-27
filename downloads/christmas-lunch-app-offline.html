@@ -161,7 +161,7 @@ body.high-contrast .tag{border-width:2px}
       <span class="mark" aria-hidden="true">✦</span>
       <div>
         <h1>Christmas Lunch</h1>
-        <p class="sub">Port Alfred · 10 guests · alcohol-free</p>
+        <p class="sub">Port Alfred · 10 at the table · alcohol-free</p>
       </div>
     </div>
     <div class="top-actions">
@@ -217,11 +217,11 @@ body.high-contrast .tag{border-width:2px}
   };
   var PRICE_ENTRIES = [
     { id: "pnp-chicken-breast", store: "pnp", matchKey: "chicken-boneless", product: "PnP Fresh Skinless Chicken Breast Fillets 4s or 12s", packQty: 1, packUnit: "kg", priceCents: 7999, unitCents: 7999, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: true, note: "Per kg. Catalogue valid 16\u201322 Nov 2026. Prices include VAT." },
-    { id: "pnp-chicken-drumstick", store: "pnp", matchKey: "chicken-boneless", product: "PnP Fresh Chicken 4 Drumsticks & 4 Thighs", packQty: 1, packUnit: "kg", priceCents: 7699, unitCents: 7699, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, note: "Bone-in \u2014 NOT like-for-like with the boneless requirement for hosts in their 80s." },
+    { id: "pnp-chicken-drumstick", store: "pnp", matchKey: "chicken-boneless", product: "PnP Fresh Chicken 4 Drumsticks & 4 Thighs", packQty: 1, packUnit: "kg", priceCents: 7699, unitCents: 7699, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, note: "Bone-in \u2014 NOT like-for-like with the boneless requirement for both hosts in their 80s, including Host A." },
     { id: "pnp-potatoes-bundle", store: "pnp", matchKey: "potatoes", product: "PnP All Purpose Potatoes 2 kg (or Tomatoes 1.5 kg / Gem Squash / Carrots bag / Green Peppers 800 g)", packQty: 2, packUnit: "kg", priceCents: 3500, unitCents: 1750, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: true, bundle: "BUY ANY 4 qualifying items (bundle)", bundleMinItems: 4, bundleQualifyingKeys: ["potatoes", "tomatoes"], note: "Bundle-derived price per 2 kg; applies ONLY with 4 qualifying items in the basket." },
     { id: "pnp-blueberries", store: "pnp", matchKey: "berries", product: "PnP Blueberries on the Run", packQty: null, packUnit: "pack", priceCents: 4500, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, bundle: "Two-item bundle (base pack size not stated)", note: "Pack size not stated \u2014 no usable unit price." },
     { id: "pnp-mushrooms", store: "pnp", matchKey: "mushrooms", product: "PnP Chopped Mixed Mushrooms 400 g", packQty: 0.4, packUnit: "kg", priceCents: null, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: true, loyalty: false, likeForLike: false, bundle: "Two-item saving (no base price listed)", note: "No base price in the catalogue \u2014 no usable price." },
-    { id: "pnp-fruitcake-alcfree", store: "pnp", matchKey: "extras-pudding", product: "PnP Fruit Cake Alcohol Free 350 g", packQty: 0.35, packUnit: "kg", priceCents: 5999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: true, dietary: ["SUGAR", "WHEAT", "DAIRY"], note: "Alcohol-free option for the extras sideboard; not for Guest A." },
+    { id: "pnp-fruitcake-alcfree", store: "pnp", matchKey: "extras-pudding", product: "PnP Fruit Cake Alcohol Free 350 g", packQty: 0.35, packUnit: "kg", priceCents: 5999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: true, dietary: ["SUGAR", "WHEAT", "DAIRY"], note: "Alcohol-free option for the extras sideboard; not for Host A (one of the hosts)." },
     { id: "pnp-brandy-pudding", store: "pnp", matchKey: "extras-pudding", product: "PnP Brandy Pudding 450 g", packQty: 0.45, packUnit: "kg", priceCents: 14999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: false, excluded: "ALCOHOL_FREE", note: "EXCLUDED \u2014 contains alcohol." },
     { id: "pnp-brandy-cake", store: "pnp", matchKey: "extras-pudding", product: "PnP Brandy Christmas Fruit Cake 350 g", packQty: 0.35, packUnit: "kg", priceCents: 7999, unitCents: null, validFrom: "2026-11-16", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.pnpCatalogue, promotion: false, loyalty: false, likeForLike: false, excluded: "ALCOHOL_FREE", note: "EXCLUDED \u2014 contains alcohol." },
     { id: "spar-chicken-frozen", store: "spar", matchKey: "chicken-boneless", product: "SPAR IQF Mixed Chicken Portions 2 kg", packQty: 2, packUnit: "kg", priceCents: 7999, unitCents: 4e3, validFrom: "2026-11-09", validTo: "2026-11-22", source: "CATALOGUE", url: SOURCES.sparPortAlfred, promotion: true, loyalty: false, likeForLike: false, note: "Cheapest per kg but FROZEN, bone-in, mixed portions \u2014 not like-for-like." },
@@ -311,7 +311,7 @@ body.high-contrast .tag{border-width:2px}
     ] }
   ];
   var RUN_SHEET = [
-    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Guest A\u2019s list with her dietitian; check hosts\u2019 diets & the alcohol-free plan.", phase: "prep" },
+    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Host A\u2019s list with her dietitian; check both hosts\u2019 diets (Host A included) & the alcohol-free plan.", phase: "prep" },
     { time: "Two days ahead", task: "Check every label (pudding, mustard, rice cakes, vanilla, mixers); write large-print label cards; pack kit.", phase: "prep" },
     { time: "Day before", task: "Poach tongue ~4 h; make stocks; dip & relish; chop nuts; portion coconut pots; bake pears; make alcohol-free suet-free pudding; wash salad leaves; chill drinks.", phase: "prep" },
     { time: "09:30", task: "Preheat oven to 200 \xB0C. Chicken on top shelf, potatoes below. Oven batch 1.", phase: "day" },
@@ -736,7 +736,7 @@ body.high-contrast .tag{border-width:2px}
   }
   function renderHeader() {
     const b = basket();
-    $("#status-pill").textContent = `${state.guestCount} guests \xB7 ${Math.round(b.coverage * 100)}% priced`;
+    $("#status-pill").textContent = `${state.guestCount} at the table \xB7 ${Math.round(b.coverage * 100)}% priced`;
     $("#foot-meta").textContent = `Prices captured 19 Nov 2026 \xB7 viewing as ${state.today}`;
   }
   function renderRun() {
@@ -893,7 +893,7 @@ body.high-contrast .tag{border-width:2px}
     </div>
     <div class="banner info"><strong>Dietary guardrails</strong>
       Alcohol-free table for all ten. Tongue has its own board, knife and tongs \u2014 never pass shared gravy over it.
-      Nuts and seeds are finely chopped; hosts in their 80s get boneless chicken and tender vegetables.</div>`;
+      Nuts and seeds are finely chopped; both hosts in their 80s, including Host A, get boneless chicken and tender vegetables.</div>`;
     paintTimers();
     ensureTimerClock();
     requestWakeLock();
@@ -924,7 +924,7 @@ body.high-contrast .tag{border-width:2px}
     const ticked = state.lines.filter((l) => l.ticked).length;
     $("#view").innerHTML = `
     <h2 class="sec">Shopping list</h2>
-    <p class="lede">Auto-generated from the menu and scaled to ${state.guestCount} guests. Duplicate ingredients are merged. Everything works offline.</p>
+    <p class="lede">Auto-generated from the menu and scaled to ${state.guestCount} people at the table. Duplicate ingredients are merged. Everything works offline.</p>
     <div class="rule"></div>
     <div class="grid3" style="margin-bottom:14px">
       <div class="stat"><div class="v">${state.lines.length}</div><div class="k">lines</div></div>
@@ -933,7 +933,7 @@ body.high-contrast .tag{border-width:2px}
     </div>
     <div class="card">
       <div class="row" style="margin-bottom:8px">
-        <label class="field"><span>Guests</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
+        <label class="field"><span>People at the table</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
         <label class="field"><span>Group by</span><select data-set="shopGroup"><option value="category" ${shopGroup === "category" ? "selected" : ""}>Aisle / category</option><option value="shop" ${shopGroup === "shop" ? "selected" : ""}>Cheapest shop</option></select></label>
       </div>
       <div class="btn-row">
@@ -1083,7 +1083,7 @@ body.high-contrast .tag{border-width:2px}
     <div class="rule"></div>
 
     <div class="card"><h3>Dietary guardrails</h3>
-      <p class="lede">Labels, not medical advice. Confirm the final ingredient list with Guest A and her oncology dietitian.</p>
+      <p class="lede">Host A is one of the hosts. Labels, not medical advice. Confirm the final ingredient list with Host A and her oncology dietitian.</p>
       ${flags.map(([k, v]) => `<span class="tag ${k === "ALCOHOL_FREE" ? "rose" : ""}">${esc(v)}</span>`).join("")}
       <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
         PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
@@ -1094,7 +1094,7 @@ body.high-contrast .tag{border-width:2px}
     <div class="card"><h3>Settings</h3>
       <div class="grid2">
         <label class="field"><span>Viewing date</span><input type="date" data-set="today" value="${state.today}"></label>
-        <label class="field"><span>Guests (scales quantities)</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
+        <label class="field"><span>People at the table (scales quantities)</span><input type="number" min="1" max="40" data-set="guestCount" value="${state.guestCount}"></label>
         <label class="field"><span>Travel cost per extra shop (R)</span><input type="number" min="0" step="0.01" data-set="travelCostCents" value="${(state.travelCostCents / 100).toFixed(2)}"></label>
         <label class="field"><span>Theme</span><select data-set="theme">
           <option value="auto" ${state.theme === "auto" ? "selected" : ""}>System</option>

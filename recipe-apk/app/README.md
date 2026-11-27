@@ -44,6 +44,8 @@ npm run test:all
 
 `MenuSession` state lives in `store.js`: guest count, viewing date, loyalty flag, travel cost, theme, text size, high contrast, custom prices, user durations, agenda overrides, checklist ticks, timers, optional sync URL and sync timestamp.
 
+The ten portions include both hosts; Host A is one of the hosts. `guestCount` is a portion-count field, not a statement that Host A is a visitor.
+
 ## Scheduling algorithm
 
 1. Merge persisted user durations over seed durations. Unknown durations become warnings and are excluded from arithmetic; they are never guessed.
@@ -51,7 +53,7 @@ npm run test:all
 3. Backward pass from the 13:00 target computes latest start times for known-duration steps.
 4. Forward pass emits one merged ordered timeline, preserving the documented `09:30 → 13:00` run sheet as an always-available authoritative view.
 5. Resource conflicts are detected (one oven, one stovetop, one cook). The two documented oven batches are respected; conflicts are shown as warnings, not silently double-booked.
-6. Guest-count scaling uses `scaleQty(baseQty, 10, guestCount)` and flags cook-time confirmation rather than inventing a new time.
+6. Portion-count scaling uses `scaleQty(baseQty, 10, guestCount)` and flags cook-time confirmation rather than inventing a new time.
 
 Cook Mode adds named timers, native exact alarms on Android, notifications/TTS, wake lock and a foreground service. Timers persist in `state.timers` and survive a page reload; `BootReceiver` restores native alarms after reboot.
 
