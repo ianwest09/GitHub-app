@@ -9,6 +9,7 @@ Prices for the *Christmas Lunch for Ten* shopping list, looked up at Pick n Pay,
 3. **Catalogue PDF text extraction garbles cents** (e.g. `79¹⁹¹` = R79.99, `49£99` = R49,99). Figures below are read as `Rxx.99`; confirm against the catalogue image before buying.
 4. **Store vs online may differ.** Pick n Pay's catalogue says "Selected products may not be available at all stores" and is "Only available at Pick n Pay Supermarkets and Hypermarkets in the Eastern Cape" [2](https://cdnm.heyzine.com/flip-book/pdf/2e4baf279fe06cfb532f5802ec2764b23103d818.pdf). Woolworths states "Promotions in store and online may vary" [9](https://www.woolworths.co.za/browse/food).
 5. **Loyalty conditions apply.** Several Pick n Pay prices are "Smart Shopper price" only, and several are multi-buy bundles. These are conditions, not straight unit prices.
+6. **Host A is one of the two hosts in their 80s.** Use “Host A” for the stage 4 breast cancer dietary brief; boneless-chicken and dietary notes for the hosts include Host A.
 
 ## The three shops in Port Alfred (confirmed)
 
@@ -36,9 +37,9 @@ Full PDF: [2](https://cdnm.heyzine.com/flip-book/pdf/2e4baf279fe06cfb532f5802ec2
 | PnP Blueberries on the Run | BUY 2 FOR R45 | multi-buy | ⚠️ berries — pack size not stated in the catalogue, cannot compute unit price |
 | PnP Chopped Mixed Mushrooms 400 g | BUY ANY 2 SAVE R10 | no base price given | ⚠️ mushrooms — **no usable price** |
 | PnP Classic / Greek / Summer Crunch Side Salad 170–275 g | BUY ANY 2 SAVE 20% | no base price given | ⚠️ **no usable price** |
-| PnP Fruit Cake **Alcohol Free** 350 g | R59.99 | — | ✅ alcohol-free option for the extras sideboard (still contains sugar/wheat/dairy — not for Guest A) |
+| PnP Fruit Cake **Alcohol Free** 350 g | R59.99 | — | ✅ alcohol-free option for the extras sideboard (still contains sugar/wheat/dairy — not for Host A) |
 | PnP Brandy Pudding 450 g / Brandy Christmas Fruit Cake 350 g | R149.99 / R79.99 | — | 🚫 **EXCLUDE — contains alcohol** |
-| 2 × PnP Rotisserie Whole Chicken | R170 (Sat & Sun only) | marinade unknown | 🚫 not for Guest A (check marinade for sugar/yeast extract) |
+| 2 × PnP Rotisserie Whole Chicken | R170 (Sat & Sun only) | marinade unknown | 🚫 not for Host A (check marinade for sugar/yeast extract) |
 
 ## Source 2 — Spar Port Alfred specials, valid 09–22 Nov 2026
 
@@ -49,7 +50,7 @@ Source: [4](https://www.guzzle.co.za/spar/port-alfred) (catalogues: *SPAR Easter
 | SPAR IQF Mixed Chicken Portions 2 kg | **R79.99** | R40.00 / kg | ⚠️ cheapest chicken, but frozen & bone-in mixed portions |
 | Spekko Long Grain Parboiled White Rice 2 kg | R32.99 | R16.50 / kg | ⚠️ not like-for-like with brown rice + lentils |
 | B-Well Omega 3 Cooking Oil 2 L | R59.99 | R30.00 / L | ⚠️ not like-for-like with olive oil |
-| Itau Maize Meal 10 kg + Itau Cake Wheat Flour 10 kg + Allsome Parboiled Rice 10 kg (combo) | R299.99 | — | ❌ wheat flour — not for Guest A |
+| Itau Maize Meal 10 kg + Itau Cake Wheat Flour 10 kg + Allsome Parboiled Rice 10 kg (combo) | R299.99 | — | ❌ wheat flour — not for Host A |
 | SPAR Margarine Brick 500 g / D'Lite Fat Spread 1 kg | R21.99 / R34.99 | — | ❌ dairy-containing spread — not on the shared menu |
 | SPAR Extra Shelf Life Milk 2 L / Bonnita UHT Milk 10 × 500 ml | R31.99 / R89.99 | — | ❌ dairy — not on the shared menu |
 | Harvestime Frozen Mixed Vegetables 1 kg | R46.99 | — | ⚠️ from the **expired** 07–18 Oct 2026 catalogue — do not treat as current |
@@ -82,7 +83,7 @@ This is the only honest comparison the data supports. Derived amounts below are 
 | Shop / item | Verified | Derived cost for 1.8 kg | Suitable? |
 | --- | --- | --- | --- |
 | **Pick n Pay** — Fresh Skinless Chicken Breast Fillets | R79.99/kg | **R143.98** | ✅ **Best verified route for boneless** |
-| Spar — IQF Mixed Chicken Portions 2 kg | R79.99 / 2 kg = R40.00/kg | R79.99 for the 2 kg pack (≈R72.00 for 1.8 kg equivalent) | ❌ frozen, bone-in, mixed — conflicts with "boneless for hosts in their 80s" |
+| Spar — IQF Mixed Chicken Portions 2 kg | R79.99 / 2 kg = R40.00/kg | R79.99 for the 2 kg pack (≈R72.00 for 1.8 kg equivalent) | ❌ frozen, bone-in, mixed — conflicts with "boneless for both hosts in their 80s, including Host A" |
 | Pick n Pay — 4 Drumsticks & 4 Thighs | R76.99/kg | R138.58 | ❌ bone-in |
 | Woolworths — Skinless Breast Fillets 1.5 kg | R124.99/kg | R224.98 | ✅ but ~R81 more than Pick n Pay |
 | Woolworths — Skinless Thigh Fillets | R239.99/kg | R431.98 | ✅ but far dearer |

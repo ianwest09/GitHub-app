@@ -1,0 +1,4 @@
+# Keep generated binaries out of text diff/whitespace checks.
+*.pdf binary
+*.apk binary
+*.zip binary
