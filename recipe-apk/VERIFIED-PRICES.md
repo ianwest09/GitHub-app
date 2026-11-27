@@ -10,7 +10,7 @@ Prices for the *Christmas Lunch for Ten* shopping list, looked up at Pick n Pay,
 4. **Store vs online may differ.** Pick n Pay's catalogue says "Selected products may not be available at all stores" and is "Only available at Pick n Pay Supermarkets and Hypermarkets in the Eastern Cape" [2](https://cdnm.heyzine.com/flip-book/pdf/2e4baf279fe06cfb532f5802ec2764b23103d818.pdf). Woolworths states "Promotions in store and online may vary" [9](https://www.woolworths.co.za/browse/food).
 5. **Loyalty conditions apply.** Several Pick n Pay prices are "Smart Shopper price" only, and several are multi-buy bundles. These are conditions, not straight unit prices.
 6. **Host A is one of the two hosts in their 80s.** Use “Host A” for the stage 4 breast cancer dietary brief; boneless-chicken and dietary notes for the hosts include Host A.
-7. **Held menu lines are unpriced.** Smoked gammon, homemade ice-cream and the optional coconut rice pudding ingredients have no verified price entries; do not add inferred prices until the recipe/preparation details, quantity, source, labels and any required Host A/dietitian clearance are supplied.
+7. **Held menu lines are unpriced.** Smoked gammon, the supplied ice-cream bombe base/mix-ins and the optional coconut rice pudding ingredients have no verified price entries; do not add inferred prices until preparation details, crowd batch count, mix-in quantities, source, labels and any required Host A/dietitian clearance are supplied.
 
 ## The three shops in Port Alfred (confirmed)
 

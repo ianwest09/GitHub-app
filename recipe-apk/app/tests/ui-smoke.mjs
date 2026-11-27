@@ -70,22 +70,25 @@ for (const [t, needle] of [
   console.log(`✓ ${t} tab renders`);
 }
 
-// Held menu items are explicit; the old dessert is not presented as cleared or shared.
+// Held menu items are explicit; supplied recipes are not presented as cleared or shared.
 click('#tabs button[data-tab="run"]');
 assert.match(view(), /Smoked gammon/);
 assert.match(view(), /Homemade ice-cream/);
 assert.match(view(), /Coconut rice pudding/);
 assert.match(view(), /Host A clearance pending/);
-assert.match(view(), /recipe to be supplied|recipe[ -]pending/i);
+assert.match(view(), /Recipe supplied/i);
+assert.match(view(), /Dietary clearance pending/i);
+assert.match(view(), /Preparation pending/i);
 assert.match(view(), /not a safety claim/i);
 assert.match(view(), /not for Host A or Guest B/);
-assert.doesNotMatch(view(), /Coconut rice pots|Rice \(for coconut pots\)|portion coconut/i);
+assert.doesNotMatch(view(), /Coconut rice pots|Rice \(for coconut pots\)|portion coconut|recipe to be supplied|recipe[ -]pending/i);
 click('#tabs button[data-tab="shop"]');
-assert.match(view(), /recipe pending/i);
+assert.match(view(), /Dietary clearance pending/i);
+assert.match(view(), /Preparation pending/i);
 assert.match(view(), /Host A clearance pending/i);
 assert.match(view(), /clearance pending/i);
 assert.match(view(), /no price entry/i);
-console.log('✓ gammon / ice-cream / coconut-rice held items render without safety claims');
+console.log('✓ gammon / supplied ice-cream bombe / coconut-rice held items render without safety claims');
 
 // Accessibility + optional settings are present and persist.
 click('#tabs button[data-tab="more"]');

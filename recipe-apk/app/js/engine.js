@@ -70,7 +70,12 @@ export function lineCost(line, entry) {
 
 /** Compare the three shops for one line. Never guesses a missing shop. */
 export function compareLine(line, entries, ctx) {
-  if (line.qty == null) return { status: 'no-price', options: [], reasons: ['Recipe pending — no quantity yet'] };
+  if (line.qty == null) {
+    const reason = line.dietClearancePending ? 'Dietary clearance pending — no quantity yet'
+      : line.preparationPending ? 'Preparation pending — no quantity yet'
+      : 'Recipe pending — no quantity yet';
+    return { status: 'no-price', options: [], reasons: [reason] };
+  }
   if (!line.matchKey) return { status: 'no-price', options: [], reasons: ['No verified product match'] };
   const candidates = entries.filter((e) => e.matchKey === line.matchKey);
   const reasons = [];
@@ -126,7 +131,7 @@ export const mergeLines = (lines) => {
     const key = `${l.name.trim().toLowerCase()}|${l.unit}`;
     const prev = map.get(key);
     if (prev) {
-      // A recipe-pending duplicate stays pending; adding null as zero would invent a quantity.
+      // A held duplicate stays pending; adding null as zero would invent a quantity.
       if (prev.qty == null || l.qty == null) prev.qty = null;
       else prev.qty = Number(prev.qty) + Number(l.qty);
     } else map.set(key, { ...l });

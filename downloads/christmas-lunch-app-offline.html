@@ -151,6 +151,7 @@ body.high-contrast .tag{border-width:2px}
   #print-sheet .label{border:2pt solid #16442f;border-radius:6pt;padding:14pt;margin:10pt 0;font-size:20pt;font-weight:bold;text-align:center;break-inside:avoid}
   #print-sheet .label small{display:block;font-size:11pt;font-weight:normal;margin-top:6pt}
 }
+
 </style>
 </head>
 <body>
@@ -247,9 +248,9 @@ body.high-contrast .tag{border-width:2px}
     },
     {
       id: "icecream",
-      status: "Recipe pending",
-      title: "Homemade ice-cream \u2014 recipe to be supplied",
-      detail: "Recipe-pending placeholder only. Do not buy ingredients, prepare, treat as shared-safe, or serve to Host A or Guest B until the recipe, ingredient labels and Host A\u2019s dietitian check are complete."
+      status: "Recipe supplied \u2014 dietary clearance pending",
+      title: "Homemade ice-cream bombe \u2014 recipe supplied",
+      detail: "Recipe supplied from the linked Allrecipes 2-Ingredient Ice Cream page (https://www.allrecipes.com/recipe/256234/2-ingredient-ice-cream/) and the user's frozen pudding bombe method. Base: 1 pint heavy whipping cream + 1 (14 ounce) can sweetened condensed milk; beat cream in a chilled glass or metal bowl to soft peaks, add condensed milk and beat until thick and well combined. Linked method freezes in a shallow container until solid, about 6 hours, and serves 4. Bombe: a frozen pudding shape holds better on the table than individual scoops in hot weather; line a medium round glass or stainless-steel bowl with two overlapping layers of cling wrap leaving overhang, fold in fruit mince + chopped pecans + glac\xE9 cherries, pack firmly, smooth the top, cover tightly and freeze overnight. This is a frozen ice-cream bombe shaped like pudding, not the alcohol-free Christmas pudding on the extras sideboard. Not cleared: cream/condensed milk are dairy and contain sugar; glac\xE9 cherries contain sugar; fruit-mince labels may include sugar, alcohol, suet/other animal fat or other restricted ingredients. Guest B's chicken-only rule and the alcohol-free table require label checks. No crowd batch count, mix-in quantities, numeric minutes for overnight, prices or dietary clearance have been supplied. Do not buy, prepare, serve to anyone including Host A or Guest B, or treat it as shared-safe until Host A and her oncology dietitian clear the final ingredient list and every packaged label. This ingredient note is not a safety claim."
     },
     {
       id: "coconut-rice",
@@ -293,13 +294,16 @@ body.high-contrast .tag{border-width:2px}
     { id: "l37", name: "Rooibos, mint, decaf coffee, sparkling water, granadilla & lime", qty: 1, unit: "set", category: "Drinks", matchKey: "drinks" },
     { id: "l38", name: "Olive oil, cinnamon, nutmeg, pepper, sea salt", qty: 1, unit: "set", category: "Pantry", matchKey: "olive-oil" },
     { id: "l39", name: "Cooler + ice packs, large-print labels, separate boards/knives/tongs", qty: 1, unit: "set", category: "Kit (bring from home)", matchKey: "kit", note: "Separate boards, knives and tongs for the tongue and smoked gammon platters." },
-    { id: "l40", name: "Smoked gammon", qty: null, unit: "pending", category: "Menu placeholders", matchKey: null, note: "Separate labelled platter; quantity/source/label to be supplied \u2014 do not buy yet. Not for Host A or Guest B." },
-    { id: "l41", name: "Homemade ice-cream ingredients", qty: null, unit: "pending", category: "Menu placeholders", matchKey: null, note: "Recipe to be supplied \u2014 do not buy yet; dietary status unconfirmed." },
+    { id: "l40", name: "Smoked gammon", qty: null, unit: "pending", category: "Menu placeholders", matchKey: null, preparationPending: true, flags: ["PREPARATION_PENDING"], note: "Separate labelled platter; quantity/source/label to be supplied \u2014 do not buy yet. Not for Host A or Guest B." },
+    { id: "l41", name: "Ice-cream bombe \u2014 heavy whipping cream (recipe-supplied, held)", qty: null, unit: "review", category: "Recipe-supplied ice-cream (held)", matchKey: null, recipeSupplied: true, dietClearancePending: true, flags: ["RECIPE_SUPPLIED", "DIETARY_CLEARANCE_PENDING"], note: "Linked base recipe: 1 pint per 4 servings; crowd batch count pending. Dairy/sugar label and Host A/dietitian clearance required \u2014 do not buy yet." },
     { id: "l42", name: "Optional coconut milk (coconut rice pudding candidate)", qty: 0.8, unit: "L", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
     { id: "l43", name: "Optional dessert rice (coconut rice pudding candidate)", qty: 0.15, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
     { id: "l44", name: "Optional vanilla pod, not extract (coconut rice pudding candidate)", qty: 1, unit: "each", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
     { id: "l45", name: "Optional berries (coconut rice pudding candidate)", qty: 0.5, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
-    { id: "l46", name: "Optional toasted coconut (coconut rice pudding candidate)", qty: 0.1, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." }
+    { id: "l46", name: "Optional toasted coconut (coconut rice pudding candidate)", qty: 0.1, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
+    { id: "l47", name: "Ice-cream bombe \u2014 sweetened condensed milk (recipe-supplied, held)", qty: null, unit: "review", category: "Recipe-supplied ice-cream (held)", matchKey: null, recipeSupplied: true, dietClearancePending: true, flags: ["RECIPE_SUPPLIED", "DIETARY_CLEARANCE_PENDING"], note: "Linked base recipe: 1 (14 ounce) can per 4 servings; crowd batch count pending. Dairy/sugar label and Host A/dietitian clearance required \u2014 do not buy yet." },
+    { id: "l48", name: "Ice-cream bombe \u2014 fruit mince, chopped pecans, glac\xE9 cherries (mix-ins)", qty: null, unit: "review", category: "Recipe-supplied ice-cream (held)", matchKey: null, recipeSupplied: true, dietClearancePending: true, flags: ["RECIPE_SUPPLIED", "DIETARY_CLEARANCE_PENDING"], note: "User-supplied festive mix-ins; quantities not supplied. Check labels for sugar, alcohol, suet/other animal fat and other restricted ingredients \u2014 do not buy yet." },
+    { id: "l49", name: "Ice-cream bombe \u2014 bowl + cling wrap (bombe equipment)", qty: null, unit: "review", category: "Recipe-supplied ice-cream (held)", matchKey: null, recipeSupplied: true, dietClearancePending: true, flags: ["RECIPE_SUPPLIED", "DIETARY_CLEARANCE_PENDING"], note: "User-supplied equipment: medium round glass/stainless-steel bowl, two overlapping layers of cling wrap with overhang. Bring from home; no quantity or price supplied." }
   ];
   var DISHES = [
     { id: "d1", title: "On arrival", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
@@ -330,20 +334,20 @@ body.high-contrast .tag{border-width:2px}
       { id: "s17", title: "Parsley, lemon & olive oil salsa", resource: "COUNTER", durationMin: null, handsOn: true, deps: [] }
     ] },
     { id: "d6", title: "Dessert \u2014 cinnamon-baked pears (shared-safe)", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
-      { id: "s19", title: "Bake pears with cinnamon until very soft", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"], note: "Documented shared-safe dessert; homemade ice-cream is recipe-pending and coconut rice pudding is clearance-pending." }
+      { id: "s19", title: "Bake pears with cinnamon until very soft", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"], note: "Documented shared-safe dessert; ice-cream bombe recipe is supplied but dietary-clearance-pending; coconut rice pudding is Host A clearance-pending." }
     ] }
   ];
   var RUN_SHEET = [
-    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Host A\u2019s list with her dietitian, including the optional coconut rice pudding ingredient list; do not buy it yet; keep smoked gammon quantity/source/label and the homemade ice-cream recipe pending; check both hosts\u2019 diets (Host A included) & the alcohol-free plan.", phase: "prep" },
-    { time: "Two days ahead", task: "Check every label (pudding, mustard, rice cakes, vanilla flavouring, mixers, recipe-supplied ice-cream ingredients, optional coconut rice pudding labels if cleared, gammon packaging once sourced); write large-print cards for the tongue, smoked gammon, recipe-pending ice-cream and clearance-pending coconut rice pudding; pack kit.", phase: "prep" },
-    { time: "Day before", task: "Poach tongue ~4 h; make stocks; dip & relish; chop nuts; bake pears; make alcohol-free suet-free pudding; DO NOT prepare homemade ice-cream, smoked gammon or optional coconut rice pudding \u2014 recipe/preparation, labels and Host A clearance pending; wash salad leaves; chill drinks.", phase: "prep" },
+    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Host A\u2019s list with her dietitian, including the supplied ice-cream bombe recipe/labels and optional coconut rice pudding ingredient list; do not buy them yet; keep smoked gammon quantity/source/label pending; keep ice-cream crowd batch count, mix-in quantities and dietary clearance pending; check both hosts\u2019 diets (Host A included) & the alcohol-free plan.", phase: "prep" },
+    { time: "Two days ahead", task: "Check every label (pudding, mustard, rice cakes, vanilla flavouring, mixers, ice-cream base and mix-ins, especially fruit mince, glac\xE9 cherries, cream, condensed milk and pecans, optional coconut rice pudding labels if cleared, gammon packaging once sourced); write large-print cards for the tongue, smoked gammon, dietary-clearance-pending ice-cream bombe and clearance-pending coconut rice pudding; pack kit.", phase: "prep" },
+    { time: "Day before", task: "Poach tongue ~4 h; make stocks; dip & relish; chop nuts; bake pears; make alcohol-free suet-free pudding; DO NOT prepare ice-cream bombe, smoked gammon or optional coconut rice pudding \u2014 dietary clearance, labels, crowd batch count and mix-in quantities pending. If bombe is cleared, beat base, fold in cleared mix-ins, pack lined bowl, cover and freeze overnight; no numeric minutes entered; wash salad leaves; chill drinks.", phase: "prep" },
     { time: "09:30", task: "Preheat oven to 200 \xB0C. Chicken on top shelf, potatoes below. Oven batch 1.", phase: "day" },
     { time: "10:15", task: "Chicken out to rest. Vegetables + stuffing bake in (oven batch 2). Reheat pilaf & cauliflower pur\xE9e.", phase: "day" },
     { time: "10:45", task: "Make gravy from pan juices, homemade stock and a cornflour slurry.", phase: "day" },
     { time: "11:30", task: "Vegetables out; slice tongue paper-thin on its own board/knife; warm in its own pan. If smoked gammon preparation is supplied, prepare/slice it last on its own board/knife/tongs. Wash hands, change utensils.", phase: "day" },
-    { time: "12:15", task: "Dress salad with lemon. Put out platters, large-print labels, separate tongs. Set tongue and smoked gammon platters apart; extras sideboard at the far end. Hold recipe-pending ice-cream and clearance-pending coconut rice pudding off the shared table until cleared. Keep cold dishes in the cooler.", phase: "day" },
+    { time: "12:15", task: "Dress salad with lemon. Put out platters, large-print labels, separate tongs. Set tongue and smoked gammon platters apart; extras sideboard at the far end. Hold dietary-clearance-pending ice-cream bombe and clearance-pending coconut rice pudding off the shared table until cleared. Keep cold dishes in the cooler.", phase: "day" },
     { time: "12:45", task: "Slice chicken, pour gravy into a labelled jug, fill the drinks jugs.", phase: "day" },
-    { time: "13:00", task: "Serve: salad, then main platters, then cleared desserts. Hold recipe-pending ice-cream and clearance-pending coconut rice pudding until recipe/labels, Host A clearance and dietary clearance are supplied. You do the clearing.", phase: "day" }
+    { time: "13:00", task: "Serve: salad, then main platters, then cleared desserts. Hold dietary-clearance-pending ice-cream bombe and clearance-pending coconut rice pudding until labels, Host A/dietitian clearance and dietary clearance are supplied. You do the clearing.", phase: "day" }
   ];
   var DIETARY_FLAGS = {
     NO_SUGAR: "No sugar",
@@ -358,6 +362,9 @@ body.high-contrast .tag{border-width:2px}
     SEPARATE_PLATTER: "Separate labelled platter",
     NOT_HOST_A_GUEST_B: "Not for Host A or Guest B",
     RECIPE_PENDING: "Recipe / preparation pending",
+    PREPARATION_PENDING: "Preparation pending",
+    RECIPE_SUPPLIED: "Recipe supplied \u2014 clearance pending",
+    DIETARY_CLEARANCE_PENDING: "Dietary clearance pending",
     HOST_A_CLEARANCE_PENDING: "Host A clearance pending"
   };
   var STORE_CLOSURES = [
@@ -416,7 +423,10 @@ body.high-contrast .tag{border-width:2px}
     return null;
   }
   function compareLine(line, entries, ctx2) {
-    if (line.qty == null) return { status: "no-price", options: [], reasons: ["Recipe pending \u2014 no quantity yet"] };
+    if (line.qty == null) {
+      const reason = line.dietClearancePending ? "Dietary clearance pending \u2014 no quantity yet" : line.preparationPending ? "Preparation pending \u2014 no quantity yet" : "Recipe pending \u2014 no quantity yet";
+      return { status: "no-price", options: [], reasons: [reason] };
+    }
     if (!line.matchKey) return { status: "no-price", options: [], reasons: ["No verified product match"] };
     const candidates = entries.filter((e) => e.matchKey === line.matchKey);
     const reasons = [];
@@ -752,11 +762,15 @@ body.high-contrast .tag{border-width:2px}
     $("#modal-back").hidden = true;
   }
   var isPendingLine = (l) => l.qty == null;
-  var heldStatus = (l) => isPendingLine(l) ? "recipe pending" : l.clearancePending ? "Host A clearance pending" : null;
+  var heldStatus = (l) => l.dietClearancePending ? "Dietary clearance pending" : l.clearancePending ? "Host A clearance pending" : l.preparationPending ? "Preparation pending" : isPendingLine(l) ? "recipe pending" : null;
   var isHeldLine = (l) => heldStatus(l) !== null;
   var scaledQty = (l) => isPendingLine(l) ? null : scaleQty(l.qty, 10, state.guestCount);
-  var qtyText = (l) => isPendingLine(l) ? "recipe pending" : `${scaledQty(l)} ${esc(l.unit)}${l.clearancePending ? " \xB7 clearance pending" : ""}`;
-  var qtyValue = (l) => isPendingLine(l) ? "recipe pending" : scaledQty(l);
+  var qtyText = (l) => {
+    const status = heldStatus(l);
+    if (isPendingLine(l)) return status || "recipe pending";
+    return `${scaledQty(l)} ${esc(l.unit)}${l.clearancePending ? " \xB7 clearance pending" : ""}${l.dietClearancePending ? " \xB7 dietary clearance pending" : ""}`;
+  };
+  var qtyValue = (l) => isPendingLine(l) ? heldStatus(l) || "recipe pending" : scaledQty(l);
   var placeholdersHtml = () => MENU_PLACEHOLDERS.map((x) => `<li><strong>${esc(x.title)}</strong><span>${x.status ? `<em>${esc(x.status)}</em> \u2014 ` : ""}${esc(x.detail)}</span></li>`).join("");
   var basketLines = () => state.lines.map((l) => ({ ...l, qty: scaledQty(l) }));
   function ctx() {
@@ -810,11 +824,11 @@ body.high-contrast .tag{border-width:2px}
     <div class="rule"></div>
 
     <div class="banner info"><strong>The documented 09:30 \u2192 13:00 run sheet</strong>
-      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; homemade ice-cream is recipe-pending and coconut rice pudding is clearance-pending.</div>
+      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; the ice-cream bombe recipe is supplied but dietary-clearance-pending, and coconut rice pudding is clearance-pending.</div>
     <div class="card"><ul class="tl">${runSheet}</ul></div>
 
     <div class="card"><h3>Menu options / placeholders \u2014 not cleared yet</h3>
-      <p class="lede">Held items are not to be bought, prepared or served until recipe/preparation, labels or Host A/dietitian clearance are supplied. Gammon and ice-cream have no invented details; coconut rice pudding restores the previous ingredient list for review only.</p>
+      <p class="lede">Held items are not to be bought, prepared or served until preparation details, labels, crowd batch count, mix-in quantities or Host A/dietitian clearance are supplied. The ice-cream recipe is supplied where noted, but no numeric minutes for "overnight", crowd quantities, prices or dietary claims are invented. Coconut rice pudding restores the previous ingredient list for review only.</p>
       <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card">
@@ -940,7 +954,7 @@ body.high-contrast .tag{border-width:2px}
       <div class="timers" id="timers-box"></div>
     </div>
     <div class="banner info"><strong>Dietary guardrails</strong>
-      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs \u2014 prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. Homemade ice-cream is recipe-pending and coconut rice pudding is Host A clearance-pending; neither is served until cleared.
+      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs \u2014 prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. The ice-cream bombe recipe is supplied but dietary clearance is pending, and coconut rice pudding is Host A clearance-pending; neither is served until cleared.
       Nuts and seeds are finely chopped; both hosts in their 80s, including Host A, get boneless chicken and tender vegetables.</div>`;
     paintTimers();
     ensureTimerClock();
@@ -1138,13 +1152,13 @@ body.high-contrast .tag{border-width:2px}
       <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
         PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
       <div class="banner info"><strong>Shared table is safe for all ten</strong>
-        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; homemade ice-cream is held back until its recipe, labels and dietary clearance are supplied, and optional coconut rice pudding is held back until Host A/dietitian clearance. Tongue is red meat at the table \u2014 fine \u2014 but only three people eat it, so it has its own board, knife, tongs and label.</div>
+        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; the ice-cream bombe is held back until its supplied recipe's dairy, sugar, fruit-mince, glac\xE9-cherry and other labels are cleared, and optional coconut rice pudding is held back until Host A/dietitian clearance. Tongue is red meat at the table \u2014 fine \u2014 but only three people eat it, so it has its own board, knife, tongs and label.</div>
       <div class="banner warn"><strong>Three menu items are not cleared</strong>
-        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. Homemade ice-cream is recipe-pending, with no invented ingredients, quantities, durations, prices or dietary claims. Coconut rice pudding is an optional candidate whose previous ingredient list is for Host A review only; it is not a safety claim and is not served until cleared.</div>
+        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. The ice-cream bombe recipe is supplied, with no invented crowd batch count, mix-in quantities, numeric "overnight" minutes, prices or dietary claims; dairy, sugar, fruit-mince/alcohol/suet and glac\xE9-cherry label risks remain. Coconut rice pudding is an optional candidate whose previous ingredient list is for Host A review only; it is not a safety claim and is not served until cleared.</div>
     </div>
 
     <div class="card"><h3>Menu options / placeholders</h3>
-      <p class="lede">Recipe/preparation details, labels and Host A/dietitian clearance are pending where noted. These are guardrails, not medical advice.</p>
+      <p class="lede">The ice-cream recipe is supplied where noted; preparation details, labels, crowd batch count, mix-in quantities and Host A/dietitian clearance are pending where noted. These are guardrails, not medical advice.</p>
       <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card"><h3>Settings</h3>
@@ -1218,7 +1232,7 @@ body.high-contrast .tag{border-width:2px}
     <div class="label">SHARED \u2014 SAFE FOR ALL<small>No sugar \xB7 no yeast \xB7 no wheat \xB7 no dairy \xB7 no vinegar \xB7 alcohol-free</small></div>
     <div class="label">TONGUE \u2014 FOR 3<small>Own board, own knife, own tongs</small></div>
     <div class="label">SMOKED GAMMON \u2014 NOT FOR HOST A OR GUEST B<small>Own board, own knife, own tongs \xB7 quantity/preparation pending</small></div>
-    <div class="label">ICE-CREAM \u2014 RECIPE PENDING<small>Do not serve until recipe, labels and dietary clearance</small></div>
+    <div class="label">ICE-CREAM BOMBE \u2014 DIETARY CLEARANCE PENDING<small>Recipe supplied \xB7 check dairy/sugar/fruit-mince/glac\xE9-cherry labels \xB7 do not serve until cleared</small></div>
     <div class="label">COCONUT RICE PUDDING \u2014 HOST A CLEARANCE PENDING<small>Previous ingredient list for review only \xB7 do not serve until cleared</small></div>
     <div class="label">EXTRAS SIDEBOARD<small>For the nine \xB7 alcohol-free</small></div>
     <h2>Shopping checklist</h2>
@@ -1668,6 +1682,7 @@ body.high-contrast .tag{border-width:2px}
   if (timers.some((t) => !t.notified && t.endsAt > Date.now())) ensureTimerClock();
   render();
 })();
+
 </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // Offline cache. No CDN, no analytics, no automatic network calls.
 // Optional LAN sync is initiated by the user in the UI and is never cached here.
-const CACHE = 'christmas-lunch-v4';
+const CACHE = 'christmas-lunch-v5';
 const ASSETS = [
   './', './index.html', './styles.css', './manifest.json', './icon.svg',
   './js/data.js', './js/engine.js', './js/store.js', './js/repository.js', './js/app.js',
