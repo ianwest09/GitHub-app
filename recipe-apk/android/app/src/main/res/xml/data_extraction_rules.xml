@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <!-- Local device transfer is allowed; cloud backup is not needed. -->
+    <cloud-backup>
+        <exclude domain="root" path="." />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="root" path="." />
+    </device-transfer>
+</data-extraction-rules>

@@ -1,0 +1,16 @@
+{
+  "name": "christmas-lunch-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline-first Christmas lunch recipe, agenda and cost app",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:ui": "node tests/ui-smoke.mjs",
+    "test:all": "npm run check && npm test && npm run test:ui",
+    "check": "node --check js/data.js && node --check js/engine.js && node --check js/store.js && node --check js/repository.js && node --check js/app.js && node --check sw.js"
+  },
+  "devDependencies": {
+    "linkedom": "^0.18.12"
+  }
+}

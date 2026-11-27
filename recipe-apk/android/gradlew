@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Wrapper-free Gradle bootstrap for this project.
+# Android Studio can open the project directly; this script is for CLI builds on
+# Linux/macOS. It fetches Gradle 8.9 once into .gradle-dist (gitignored), then
+# runs it. No gradle-wrapper.jar binary is checked in.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VERSION="8.9"
+DIST="$ROOT/.gradle-dist"
+ZIP="$DIST/gradle-$VERSION-bin.zip"
+GRADLE_BIN="$DIST/gradle-$VERSION/bin/gradle"
+
+if [ ! -x "$GRADLE_BIN" ]; then
+  if command -v gradle >/dev/null 2>&1 && gradle --version 2>/dev/null | grep -q "Gradle $VERSION"; then
+    exec gradle "$@"
+  fi
+  mkdir -p "$DIST"
+  echo "Downloading Gradle $VERSION to $DIST ..." >&2
+  if command -v curl >/dev/null 2>&1; then
+    curl -fL "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip" -o "$ZIP"
+  elif command -v wget >/dev/null 2>&1; then
+    wget -O "$ZIP" "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip"
+  else
+    echo "Need curl or wget, or install Gradle $VERSION / open the project in Android Studio." >&2
+    exit 1
+  fi
+  unzip -q -o "$ZIP" -d "$DIST"
+  rm -f "$ZIP"
+fi
+
+exec "$GRADLE_BIN" "$@"

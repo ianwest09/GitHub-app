@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christmas Lunch for Ten — Port Alfred</title>
+<style>
+  :root{
+    --paper:#fbf8f1;
+    --card:#ffffff;
+    --ink:#25332b;
+    --muted:#6a756c;
+    --green:#16442f;
+    --green-soft:#e9f0e9;
+    --gold:#b18b46;
+    --gold-soft:#f5eddc;
+    --berry:#8d3242;
+    --berry-soft:#f8ecee;
+    --line:#e2ddcf;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:#eee9dd;
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    max-width:940px;
+    margin:32px auto 60px;
+    background:var(--paper);
+    box-shadow:0 14px 60px rgba(22,52,35,.15);
+    border:1px solid var(--line);
+    padding:0 0 54px;
+  }
+  .print-btn{
+    position:fixed;top:18px;right:20px;z-index:20;
+    font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+    color:#fff;background:var(--green);border:0;border-radius:99px;
+    padding:12px 18px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.18);
+  }
+  .print-btn:hover{background:#0d2f20}
+
+  /* ---- hero ---- */
+  .hero{
+    background:var(--green);
+    color:#f6f1e4;
+    text-align:center;
+    padding:48px 40px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero:before,.hero:after{
+    content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(177,139,70,.28);border-radius:50%;
+  }
+  .hero:before{top:-140px;left:-70px}
+  .hero:after{bottom:-160px;right:-60px}
+  .kicker{
+    font:600 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;
+    color:#d9bd85;margin:0 0 20px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(38px,6vw,60px);line-height:1.08;
+    margin:0 0 14px;letter-spacing:-.01em;
+  }
+  .hero h1 em{font-style:italic;color:#e6cf9e}
+  .hero .sub{
+    font-family:var(--serif);font-style:italic;font-size:19px;
+    color:#e2e9df;margin:0 auto;max-width:600px;
+  }
+  .sprig{margin:22px auto 16px;display:block;width:104px;height:36px}
+  .meta{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:8px 0;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#cfe0d3;
+  }
+  .meta span{padding:0 16px;border-right:1px solid rgba(255,255,255,.22)}
+  .meta span:last-child{border-right:0}
+
+  /* ---- layout ---- */
+  main{padding:0 52px}
+  section{margin-top:46px}
+  h2{
+    font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.2;
+    color:var(--green);margin:0 0 6px;letter-spacing:-.005em;
+  }
+  h2 .num{
+    display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.1em;
+    color:var(--gold);vertical-align:middle;margin-right:12px;
+    border:1px solid var(--gold);border-radius:50%;width:26px;height:26px;
+    text-align:center;line-height:24px;
+  }
+  .lede{color:var(--muted);margin:0 0 22px;font-size:14px;max-width:700px}
+  .rule{height:1px;background:linear-gradient(90deg,var(--gold),rgba(177,139,70,.15));margin:0 0 22px}
+
+  /* ---- brief cards ---- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.four{grid-template-columns:repeat(4,1fr);margin-top:14px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);
+    border-radius:3px;padding:18px 18px 16px;
+  }
+  .cards.four .card{border-top-color:var(--green)}
+  .card .who{font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--berry);margin:0 0 9px}
+  .cards.four .card .who{color:var(--green)}
+  .card .brief{font-family:var(--serif);font-size:16px;color:var(--green);margin:0 0 9px;line-height:1.35}
+  .card p{font-size:12.5px;color:#4d5a51;margin:0;line-height:1.55}
+  .cards.four .card p{font-size:12px}
+
+  .note{
+    margin-top:20px;background:var(--gold-soft);border-left:3px solid var(--gold);
+    padding:16px 20px;border-radius:0 3px 3px 0;font-size:13px;color:#5a4b30;
+  }
+  .note strong{color:#46371f}
+  .note.rose{background:var(--berry-soft);border-left-color:var(--berry);color:#653640}
+  .note.rose strong{color:var(--berry)}
+
+  /* ---- courses ---- */
+  .course{
+    background:var(--card);border:1px solid var(--line);border-radius:3px;
+    padding:22px 26px 20px;margin-bottom:14px;break-inside:avoid;page-break-inside:avoid;
+  }
+  .course.special{background:var(--berry-soft);border-color:#ecd6da}
+  .course.extras{border-style:dashed;background:transparent}
+  .course-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .course-head h3{
+    font-family:var(--serif);font-weight:400;font-size:22px;color:var(--green);margin:0;
+  }
+  .course.special .course-head h3{color:var(--berry)}
+  .tag{
+    font:600 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+    background:var(--green-soft);color:var(--green);border:1px solid #d5e2d6;
+    border-radius:99px;padding:6px 11px;white-space:nowrap;
+  }
+  .tag.rose{background:#fff;color:var(--berry);border-color:#e8ccd1}
+  .tag.gold{background:#fff;color:#8a6b2e;border-color:#e6d7b6}
+  ul.dishes{list-style:none;margin:0;padding:0}
+  ul.dishes li{
+    display:grid;grid-template-columns:minmax(0,1fr);gap:2px;
+    padding:9px 0 9px 18px;border-top:1px solid #f0ece1;position:relative;font-size:14px;
+  }
+  ul.dishes li:first-child{border-top:0}
+  ul.dishes li:before{
+    content:"";position:absolute;left:0;top:18px;width:6px;height:6px;
+    background:var(--gold);border-radius:50%;
+  }
+  ul.dishes b{font-family:var(--serif);font-weight:600;font-size:15.5px;color:var(--green)}
+  .course.special ul.dishes b{color:var(--berry)}
+  ul.dishes span{color:#536156}
+  .fine{font-size:12.5px;color:var(--muted);font-style:italic;margin:12px 0 0}
+
+  /* ---- tables ---- */
+  .table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:3px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th{
+    background:var(--green);color:#f4f0e4;text-align:left;font-weight:600;
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:11px 14px;
+  }
+  td{padding:10px 14px;border-top:1px solid #eeeade;vertical-align:top;color:#455248}
+  tbody tr:nth-child(even){background:#fdfbf6}
+  td strong{color:var(--green)}
+  .yes{color:var(--green);font-weight:700;text-align:center}
+  .no{color:#b9b2a2;text-align:center}
+  .maybe{color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.06em;text-align:center}
+  .matrix td:first-child{font-weight:600;color:var(--green)}
+  .matrix th:not(:first-child),.matrix td:not(:first-child){text-align:center}
+  .twocol td:first-child{width:26%;font-weight:600;color:var(--green)}
+  .caption{font-size:12.5px;color:var(--muted);margin:10px 0 0;font-style:italic}
+
+  /* ---- lists / timeline ---- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px}
+  .swap{
+    margin-top:16px;background:var(--green-soft);border-radius:3px;padding:14px 18px;
+    font-size:13px;color:#2c4a37;
+  }
+  .swap b{color:var(--green)}
+  .timeline{list-style:none;margin:0;padding:0}
+  .timeline li{position:relative;padding:0 0 16px 34px;border-left:1px solid #dcd6c5;margin-left:8px}
+  .timeline li:last-child{border-left-color:transparent;padding-bottom:0}
+  .timeline li:before{
+    content:"";position:absolute;left:-6px;top:5px;width:11px;height:11px;
+    background:var(--paper);border:2px solid var(--gold);border-radius:50%;
+  }
+  .timeline b{display:block;font:700 11px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--berry);margin-bottom:3px}
+  .timeline span{font-size:13.5px;color:#455248}
+  ol.serving{margin:0;padding-left:20px;font-size:13.5px;color:#455248}
+  ol.serving li{padding:5px 0}
+  ol.serving li::marker{color:var(--gold);font-weight:700}
+  .confirm{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .confirm .card{border-top-color:var(--berry)}
+
+  footer{
+    margin:52px 52px 0;padding-top:20px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8c938a;
+  }
+  footer .star{color:var(--gold);letter-spacing:0}
+
+  @media (max-width:800px){
+    .cards.four{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:700px){
+    .sheet{margin:0;border:0}
+    main{padding:0 22px}
+    footer{margin:40px 22px 0}
+    .hero{padding:38px 22px 32px}
+    .cards,.cols,.confirm{grid-template-columns:1fr}
+    .cards.four{grid-template-columns:1fr}
+    .course{padding:18px}
+  }
+  @page{size:A4;margin:14mm}
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .sheet{max-width:none;margin:0;border:0;box-shadow:none;padding-bottom:0}
+    .print-btn{display:none}
+    .hero{
+      background:var(--green) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;
+      padding:26px 30px 22px;
+    }
+    .hero h1{font-size:38pt}
+    .hero .sub{font-size:12pt}
+    .sprig{margin:12px auto 8px}
+    main{padding:0 8mm}
+    footer{margin:24px 8mm 0}
+    section{margin-top:24px}
+    h2{font-size:17pt}
+    .course{padding:12px 16px;margin-bottom:9px}
+    .course-head h3{font-size:14pt}
+    ul.dishes li{font-size:9.5pt;padding:5px 0 5px 16px}
+    ul.dishes b{font-size:11pt}
+    .card,.note,.table-wrap,.course,.timeline li,.swap{break-inside:avoid;page-break-inside:avoid}
+    th,td,.timeline span,ol.serving{font-size:9pt}
+    .cards{gap:9px}
+    .cards.four{grid-template-columns:repeat(4,1fr);gap:9px}
+    .card{padding:11px 12px}
+    .card .brief{font-size:11pt}
+    .card p{font-size:8.5pt}
+    .note{font-size:9pt}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+<div class="sheet">
+
+  <header class="hero">
+    <p class="kicker">Port Alfred · Eastern Cape · Christmas lunch</p>
+    <h1>Christmas Lunch<br><em>for Ten</em></h1>
+    <p class="sub">One menu everyone can share — plus tongue for three. Cooked by one person, served alcohol-free, in the shade.</p>
+    <svg class="sprig" viewBox="0 0 104 36" fill="none" aria-hidden="true">
+      <path d="M4 20 C26 20 42 16 60 8 M4 20 C26 22 44 24 64 28" stroke="#d9bd85" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M22 20c-2-7 1-11 7-12 1 6-1 10-7 12Zm10 1c3-6 7-8 12-6-2 5-6 7-12 6Zm14-6c-1-6 2-10 8-10 0 6-3 9-8 10Zm10 9c3-5 8-6 12-4-3 4-7 5-12 4Z" fill="#d9bd85" opacity=".85"/>
+      <circle cx="60" cy="8" r="3.2" fill="#b8545f"/><circle cx="67" cy="5" r="2.6" fill="#b8545f"/><circle cx="64" cy="13" r="2.6" fill="#b8545f"/>
+      <path d="M78 26c-2-6 1-10 7-11 1 5-2 9-7 11Zm12 2c2-5 6-7 11-5-2 4-6 6-11 5Z" fill="#d9bd85" opacity=".85"/>
+    </svg>
+    <div class="meta"><span>10 guests</span><span>4 shared courses</span><span>2 hosts in their 80s</span><span>Fully alcohol-free</span></div>
+  </header>
+
+  <main>
+
+    <section id="approach">
+      <h2><span class="num">1</span>What this menu now accounts for</h2>
+      <p class="lede">The dietary briefs are unchanged; the four new details change how the lunch is bought, cooked and served.</p>
+      <div class="rule"></div>
+      <div class="cards">
+        <div class="card">
+          <p class="who">Guest A</p>
+          <p class="brief">No sugar, yeast, wheat, dairy, vinegar — or "foods causing cancer".</p>
+          <p>Stage 4 breast cancer. Every shared dish is free of all six, with no processed or cured meat, charred cooking, refined sugar or ultra-processed ingredients.</p>
+        </div>
+        <div class="card">
+          <p class="who">Guest B</p>
+          <p class="brief">Eats chicken, and no other meat.</p>
+          <p>Chicken is the main for all ten. No bacon, suet, beef stock, anchovies, lard or gelatine in the shared dishes.</p>
+        </div>
+        <div class="card">
+          <p class="who">Three guests</p>
+          <p class="brief">A request for tongue.</p>
+          <p>Red meat at the table is fine. One slow-poached tongue on a separate, labelled platter with its own knife and tongs, at one end of the table — apart so only the three who asked are served it.</p>
+        </div>
+      </div>
+      <div class="cards four">
+        <div class="card">
+          <p class="who">Recovering alcoholic</p>
+          <p class="brief">One guest.</p>
+          <p>The <b>whole table is alcohol-free</b> — no wine, beer, brandy custard, vanilla extract or alcohol in cooking. One drinks menu for everyone, so nobody is singled out.</p>
+        </div>
+        <div class="card">
+          <p class="who">Port Alfred</p>
+          <p class="brief">Eastern Cape coast.</p>
+          <p>Small town, hot and humid. Order the tongue ahead, bring specialty items from Gqeberha or East London, use the pantry swaps, keep cold food in a cooler.</p>
+        </div>
+        <div class="card">
+          <p class="who">The hosts</p>
+          <p class="brief">Both in their 80s.</p>
+          <p>Softer textures, finely chopped nuts, paper-thin tongue, light seasoning, an earlier sitting, large-print labels and short service. You do setup and clearing.</p>
+        </div>
+        <div class="card">
+          <p class="who">You are cooking</p>
+          <p class="brief">One cook, one oven.</p>
+          <p>Almost everything is make-ahead. The oven works in two batches, there is a clock-based schedule, and you bring your own kit.</p>
+        </div>
+      </div>
+      <div class="note">
+        <strong>Please read.</strong> "Foods causing cancer" is not a single defined list. I have read it as the categories most consistently flagged in cancer-prevention guidance — processed and cured meats, alcohol, charred meat, added or refined sugar, and heavily processed foods — and built the shared menu from whole, fresh ingredients. This is a menu, not medical advice or a treatment claim. Please confirm the final ingredient list with Guest A and her oncology dietitian, check every packaged label, and quietly check with the hosts about medication-related diets (for example warfarin/vitamin K, low salt or diabetes) and any chewing or swallowing considerations.
+      </div>
+      <div class="note rose">
+        <strong>On the alcohol-free table.</strong> I have also left out alcohol-free beers and wines, which some people in recovery prefer not to have around — easy to add back if your guest is happy with them. There is no need to explain the absence of wine: the alcohol-free drinks menu is simply what is being served to all ten.
+      </div>
+    </section>
+
+    <section id="menu">
+      <h2><span class="num">2</span>The menu</h2>
+      <p class="lede">Everything marked <em>shared</em> is safe for all ten, including Guest A and the chicken-only guest. Lemon and lime do the work vinegar normally would.</p>
+      <div class="rule"></div>
+
+      <div class="course">
+        <div class="course-head"><h3>On arrival</h3><span class="tag">Shared · alcohol-free</span></div>
+        <ul class="dishes">
+          <li><b>Lemon–herb white bean dip</b><span>White beans, lemon, garlic, olive oil and parsley — no tahini needed. Serve with soft vegetable batons and lettuce cups, plus plain rice cakes or 100%-rice crackers (label-checked for wheat, yeast and sugar). In doubt, use more lettuce cups.</span></li>
+          <li><b>Rosemary roasted almonds and pumpkin seeds, finely chopped</b><span>Easy to chew for the hosts — or swap for soft avocado and cucumber cups.</span></li>
+          <li><b>One drinks menu for everyone</b><span>Unsweetened iced rooibos with mint and lemon, cucumber–lemon water, sparkling water with citrus. A lightly sweetened granadilla &amp; lime spritzer jug lives on the extras sideboard; Guest A's jug stays unsweetened. No wine, no beer, no look-alikes.</span></li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <div class="course-head"><h3>First course</h3><span class="tag">Shared · all ten</span></div>
+        <ul class="dishes">
+          <li><b>Chilled fennel, cucumber &amp; avocado salad</b><span>Baby leaves, thinly sliced radish, dill or parsley and finely ground toasted sunflower seeds, dressed with lemon juice, extra-virgin olive oil, black pepper and sea salt. Shred the fennel and slice the cucumber thin. No vinegar, mustard or honey.</span></li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <div class="course-head"><h3>The main table</h3><span class="tag">Shared · all ten</span></div>
+        <ul class="dishes">
+          <li><b>Rosemary, lemon &amp; garlic roast chicken</b><span>10 boneless chicken thighs or supremes (~180 g each) — easier to serve and to chew than three whole birds. Olive oil rather than butter, no sugar glaze, no wine, no stock cubes, no charred edges.</span></li>
+          <li><b>Lemon &amp; parsley pan gravy</b><span>Homemade chicken stock reduced with lemon and herbs, thickened with cornflour (Maizena). No flour, yeast extract, wine or cream.</span></li>
+          <li><b>Olive oil &amp; rosemary roast baby potatoes</b><span>Crisp outside, soft inside. No butter, no duck fat.</span></li>
+          <li><b>Brown rice &amp; lentil pilaf</b><span>Herbs, lemon zest and spring onion, cooked in homemade vegetable stock — no cubes. Quinoa and wild rice are lovely if you can get them; brown rice and lentils are the reliable local version.</span></li>
+          <li><b>Silky cauliflower purée</b><span>Cauliflower, garlic, olive oil and a pinch of nutmeg, blended until creamy. No cream, butter or cheese.</span></li>
+          <li><b>Roasted green beans, baby carrots &amp; courgettes</b><span>With thyme and lemon, cooked until tender rather than al dente.</span></li>
+          <li><b>Mushroom, leek &amp; celery "stuffing" bake</b><span>Bound with rice, baked in its own dish. No bread, yeast, sausage, bacon or suet.</span></li>
+          <li><b>Fresh tomato, roast pepper &amp; basil relish</b><span>The sugar-free, vinegar-free stand-in for cranberry sauce.</span></li>
+        </ul>
+      </div>
+
+      <div class="course special">
+        <div class="course-head"><h3>For the three who asked</h3><span class="tag rose">Separate platter · own utensils</span></div>
+        <ul class="dishes">
+          <li><b>Slow-poached beef/ox tongue</b><span>1 large tongue (~1.5 kg), simmered about 4 hours with bay leaves, peppercorns, onion and celery — no wine, no vinegar brine — then peeled and sliced paper-thin, served warm. Order it from the butcher a week ahead.</span></li>
+          <li><b>Parsley, lemon &amp; olive oil salsa</b><span>Fresh herbs, lemon zest, garlic and olive oil. No vinegar, mustard or brined capers.</span></li>
+        </ul>
+        <p class="fine">Beef tongue is red meat and offal, and only three people eat it, so it has its own platter, board, knife and tongs: it never touches the chicken, the shared gravy or the shared serving spoons. Red meat at the table is perfectly fine — the separation simply keeps the shared dishes clean for everyone and respects the chicken-only guest. Mustard and pickles for these three go on the extras sideboard, clearly labelled with their own spoon.</p>
+      </div>
+
+      <div class="course">
+        <div class="course-head"><h3>Dessert</h3><span class="tag">Shared · all ten</span></div>
+        <ul class="dishes">
+          <li><b>Coconut rice pots</b><span>Rice simmered in coconut milk with cinnamon and a vanilla pod (not vanilla extract), layered with berries and toasted coconut. Soft, with no added sugar, dairy, wheat or gelatine.</span></li>
+          <li><b>Cinnamon-baked pears with finely chopped toasted pecans</b><span>Baked until very soft, sweetened only by the fruit itself.</span></li>
+        </ul>
+        <p class="fine">To finish: unsweetened rooibos, mint tea, coffee (decaf available). The sugar bowl lives on the extras sideboard, not on the shared table.</p>
+      </div>
+
+      <div class="course extras">
+        <div class="course-head"><h3>The optional extras sideboard</h3><span class="tag gold">For the nine · alcohol-free</span></div>
+        <ul class="dishes">
+          <li><b>Christmas pudding without brandy or rum</b><span>Moisten with rooibos or orange juice instead. Suet-free (butter-based, so no beef fat for the chicken-only guest), with custard.</span></li>
+          <li><b>Mustard, pickles and chutneys</b><span>For the tongue, with their own spoon.</span></li>
+          <li><b>Sugar bowl, salt bowl and the sweetened spritzer jug</b><span>Kept away from Guest A's place setting; the unsweetened jug stays on the table.</span></li>
+          <li><b>No wine, no beer, no alcohol-free look-alikes</b><span>And no alcohol-based flavourings anywhere in the lunch.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="matrix">
+      <h2><span class="num">3</span>Who eats what</h2>
+      <div class="rule"></div>
+      <div class="table-wrap">
+        <table class="matrix">
+          <thead><tr><th>Dish</th><th>Guest A</th><th>Guest B<br><small style="font-weight:400;letter-spacing:0;text-transform:none">chicken only</small></th><th>3 tongue guests</th><th>Other 5</th></tr></thead>
+          <tbody>
+            <tr><td>Welcome nibbles &amp; drinks</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>First course</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Roast chicken, gravy &amp; all sides</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Tongue platter</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Desserts</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Extras sideboard</td><td class="no">—</td><td class="maybe">optional</td><td class="maybe">optional</td><td class="maybe">optional</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">The drinks are the same for all ten — nobody gets a "special" glass.</p>
+    </section>
+
+    <section id="checklist">
+      <h2><span class="num">4</span>The hidden-ingredient checklist</h2>
+      <p class="lede">Take this to the shop. These are the ones that catch people out.</p>
+      <div class="rule"></div>
+      <div class="table-wrap">
+        <table class="twocol">
+          <thead><tr><th>Avoid</th><th>Often hides in</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Sugar</strong></td><td>Also honey, maple, agave, coconut sugar, dextrose, maltose, syrups — in glazes, cranberry sauce, cured meats, stock powders, crackers, spice blends, chutneys, desserts and soft drinks.</td></tr>
+            <tr><td><strong>Yeast</strong></td><td>Also yeast extract, brewer's yeast, nutritional yeast, hydrolysed protein — in stock cubes, gravy granules, bouillon, Marmite, soy sauce, Worcestershire sauce, bread, beer and some spice blends.</td></tr>
+            <tr><td><strong>Wheat</strong></td><td>Bread, stuffing, couscous, pasta, soy sauce, gravy thickener, malt vinegar, some crackers and spice blends.</td></tr>
+            <tr><td><strong>Dairy</strong></td><td>Butter, ghee, cream, cheese, yoghurt, custard, many margarines and chocolates, some stock powders.</td></tr>
+            <tr><td><strong>Vinegar</strong></td><td>All kinds, including balsamic and malt — in vinaigrettes, mustard, mayonnaise, ketchup, hot sauce, Worcestershire, pickles, relishes, brined capers and olives, sauerkraut.</td></tr>
+            <tr><td><strong>Other meats</strong> <small>(for Guest B)</small></td><td>Bacon in stuffing, suet in pudding, beef stock, anchovies/Worcestershire, lard, gelatine.</td></tr>
+            <tr><td><strong>Charred bits &amp; alcohol in cooking</strong></td><td>Braai marks, burnt roast edges, wine in gravy, brandy in sauces.</td></tr>
+            <tr><td><strong>Alcohol</strong> <small>(recovery)</small></td><td>Brandy or rum in Christmas pudding, mince pies and custard; wine in gravy and poaching liquid; beer in batters; vanilla and other flavour extracts; liqueur-soaked dried fruit; some mustards; wine vinegar; kombucha and "non-alcoholic" beers (up to 0.5%).</td></tr>
+            <tr><td><strong>Hard or whole nuts/seeds</strong> <small>(hosts)</small></td><td>Roasted almonds, pumpkin seeds, sunflower seeds, toasted pecans — chop or grind them finely.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swap"><b>Five easy swaps:</b> lemon or lime juice wherever you'd reach for vinegar · cornflour instead of flour · olive oil instead of butter · homemade stock instead of cubes · a vanilla pod and rooibos instead of vanilla extract and brandy.</div>
+    </section>
+
+    <section id="sourcing">
+      <h2><span class="num">5</span>Sourcing in Port Alfred</h2>
+      <p class="lede">Port Alfred is a small town on the Eastern Cape Sunshine Coast. Order anything unusual ahead, or bring it from Gqeberha (Port Elizabeth) or East London.</p>
+      <div class="rule"></div>
+      <div class="table-wrap">
+        <table class="twocol">
+          <thead><tr><th>Item</th><th>Plan</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Beef/ox tongue</strong></td><td>Order from the local butcher a week ahead. If unavailable, bring one chilled from a butcher in Gqeberha or East London.</td></tr>
+            <tr><td><strong>Quinoa, wild rice, chia, tahini, arrowroot, pomegranate, fresh tarragon</strong></td><td>Often not stocked. Bring them if you want them, or use the swaps: brown rice + lentils, cornflour, vanilla pod, coconut milk, local berries, parsley/rosemary/thyme/mint.</td></tr>
+            <tr><td><strong>Rice cakes / rice crackers</strong></td><td>Check labels for wheat, yeast and sugar. If in doubt, use lettuce cups and soft vegetable batons.</td></tr>
+            <tr><td><strong>Coconut milk, tinned white beans, cornflour (Maizena), rooibos, brown rice, lentils</strong></td><td>Reliable South African pantry staples.</td></tr>
+            <tr><td><strong>Chicken, potatoes, cauliflower, beans, carrots, courgettes, mushrooms, leeks, celery, tomatoes, peppers, lemons, garlic, herbs</strong></td><td>Standard supermarket and greengrocer.</td></tr>
+            <tr><td><strong>Fresh fish</strong></td><td>Port Alfred has excellent seafood, but it is deliberately left off: the "chicken and no other meat" brief makes it ambiguous.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note" style="margin-top:16px"><strong>Hot, humid and often windy at Christmas:</strong> keep cold dishes in a cooler with ice packs until serving, serve in the shade, and do not leave the dip or coconut dishes out in the heat for more than an hour. Resist the braai for the shared dishes — charred meat is off Guest A's plate.</div>
+    </section>
+
+    <section id="shopping">
+      <h2><span class="num">6</span>Shopping list for ten</h2>
+      <div class="rule"></div>
+      <div class="cols">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Item</th><th>Quantity</th></tr></thead>
+            <tbody>
+              <tr><td>Boneless chicken thighs / supremes</td><td>10 × ~180 g (or 3 whole chickens)</td></tr>
+              <tr><td>Beef/ox tongue</td><td>1 × ~1.5 kg, ordered ahead</td></tr>
+              <tr><td>Baby potatoes</td><td>1.5 kg</td></tr>
+              <tr><td>Brown rice / lentils</td><td>400 g / 200 g dry</td></tr>
+              <tr><td>Cornflour (Maizena)</td><td>100 g</td></tr>
+              <tr><td>Cauliflower</td><td>2 large heads</td></tr>
+              <tr><td>Green beans, carrots, courgettes</td><td>400 g each</td></tr>
+              <tr><td>Mushrooms, leeks, celery</td><td>400 g / 3 / 1 head</td></tr>
+              <tr><td>Salad leaves, cucumber, fennel, avocado, radish</td><td>2 heads / 3 / 2 bulbs / 3 / 1 bunch</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Item</th><th>Quantity</th></tr></thead>
+            <tbody>
+              <tr><td>Tomatoes, red peppers, basil</td><td>600 g / 3 / 1 bunch</td></tr>
+              <tr><td>Cooked white beans, rice cakes</td><td>500 g (2 tins) / 2 packs</td></tr>
+              <tr><td>Almonds, pumpkin seeds, sunflower seeds, pecans</td><td>200 g / 150 g / 100 g / 150 g — finely chopped</td></tr>
+              <tr><td>Coconut milk, rice, vanilla pod, berries, toasted coconut, pears</td><td>2 × 400 ml / 150 g / 1 / 500 g / 100 g / 10 small</td></tr>
+              <tr><td>Lemons, garlic</td><td>10 / 2 heads</td></tr>
+              <tr><td>Fresh herbs</td><td>Rosemary, thyme, parsley, dill, mint — generous bunches</td></tr>
+              <tr><td>Drinks &amp; pantry</td><td>Rooibos, mint, coffee (incl. decaf), sparkling water, granadilla &amp; lime, olive oil, cinnamon, nutmeg, pepper, sea salt</td></tr>
+              <tr><td><strong>Bring from home</strong></td><td>Sharp knife, a separate board for the tongue, spoons/tongs, large-print label cards, cooler + ice packs, printed menu card</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2><span class="num">7</span>One-cook schedule (for a 13:00 sitting)</h2>
+      <p class="lede">The point of the make-ahead day is that on Christmas morning you only handle the chicken, potatoes, vegetables, gravy and the final salad toss.</p>
+      <div class="rule"></div>
+      <ul class="timeline">
+        <li><b>A week ahead</b><span>Order the tongue. Buy or order specialty items. Confirm Guest A's list with her dietitian. Quietly check with the hosts about medication-related diets, salt/sugar, chewing or swallowing, and whether a fully alcohol-free table suits the guest in recovery.</span></li>
+        <li><b>Two days ahead</b><span>Check every label, including the pudding, mustard, rice cakes, vanilla and drink mixers. Write the large-print label cards. Pack your kit.</span></li>
+        <li><b>Day before · make-ahead day</b><span>Poach the tongue for about 4 hours; cool, peel and refrigerate in its own sealed container. Make chicken and vegetable stocks (no cubes). Make the white bean dip and tomato relish. Roast and finely chop the nuts. Simmer and portion the coconut rice pots. Bake the pears. Make the alcohol-free, suet-free pudding. Wash and dry salad leaves, cut vegetables, store in sealed containers. Chill the drinks.</span></li>
+        <li><b>09:30</b><span>Preheat the oven to 200 °C. Chicken and potatoes in: chicken on the top shelf, potatoes below. One oven, first batch.</span></li>
+        <li><b>10:15</b><span>Chicken out to rest. Vegetables and the stuffing bake go in (second batch). Reheat the pilaf and cauliflower purée on the stovetop.</span></li>
+        <li><b>10:45</b><span>Make the gravy from the pan juices, homemade stock and a cornflour slurry.</span></li>
+        <li><b>11:30</b><span>Vegetables out; warm the pears briefly if you like. Slice the tongue paper-thin on its own board with its own knife; warm gently in its own pan. Wash hands and change utensils before returning to shared dishes.</span></li>
+        <li><b>12:15</b><span>Dress the salad with lemon. Put out platters, large-print labels and separate tongs; set the extras sideboard at the far end. Keep cold dishes in the cooler until the last minute.</span></li>
+        <li><b>12:45</b><span>Slice the chicken, pour the gravy into a labelled jug, fill the drinks jugs.</span></li>
+        <li><b>13:00</b><span>Serve: salad first, then the main platters, then dessert. Keep the sitting comfortable in length. You do the clearing.</span></li>
+      </ul>
+    </section>
+
+    <section id="serving">
+      <h2><span class="num">8</span>Serving plan, so nothing crosses</h2>
+      <div class="rule"></div>
+      <ol class="serving">
+        <li>One shared table, entirely alcohol-free; only the tongue platter and the extras sideboard are "for some". Do not explain the absence of wine — the alcohol-free drinks menu is simply what is being served.</li>
+        <li>Prep the tongue last, on a separate board with a separate knife; wash hands and change utensils before returning to the shared dishes.</li>
+        <li>Every platter gets its own serving spoon or tongs and a <b>large-print</b> label card — "Shared · safe for all" or "Tongue · for 3".</li>
+        <li>Set the tongue platter at one end of the table with its own label and tongs. Never pass shared gravy, or a shared serving spoon, over it — the shared dishes stay clean for all ten.</li>
+        <li>Keep mustard, pickles, the sugar bowl, the salt bowl and the sweetened spritzer on the sideboard; the unsweetened jug stays on the table for everyone.</li>
+        <li>For the hosts: put everything within reach, pass platters or plate for them rather than asking them to get up, offer smaller portions, and keep seasoning gentle with salt available at the table.</li>
+      </ol>
+    </section>
+
+    <section id="confirm">
+      <h2><span class="num">9</span>Two quick things to confirm</h2>
+      <div class="rule"></div>
+      <div class="confirm">
+        <div class="card">
+          <p class="who">With Guest A &amp; her dietitian</p>
+          <p class="brief">The final ingredient list.</p>
+          <p>Plus every packaged label. Red meat at the table is settled — the tongue platter stays, with its own board, knife and tongs.</p>
+        </div>
+        <div class="card">
+          <p class="who">With the hosts</p>
+          <p class="brief">Comfort and medications.</p>
+          <p>Any medication-related diet needs (warfarin/vitamin K, low salt, diabetes), chewing/swallowing or denture considerations, and — discreetly — whether the fully alcohol-free plan suits the guest in recovery. It is the safest default and nobody needs to be singled out.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Christmas Lunch for Ten · Port Alfred · a fully alcohol-free table</span>
+    <span class="star">✦ &nbsp; Shop labels carefully · cook gently · enjoy</span>
+  </footer>
+</div>
+</body>
+</html>
