@@ -48,23 +48,32 @@ export const RETIRED_SHOPPING_LINE_IDS = ['l28', 'l29', 'l30', 'l31', 'l32'];
 export const RETIRED_PRICE_MATCH_KEYS = ['coconut-milk', 'rice-dessert', 'vanilla-pod', 'berries', 'toasted-coconut'];
 export const RETIRED_STEP_IDS = ['s18'];
 
-// Explicit menu placeholders. No ingredients, quantities, durations, prices or
-// dietary claims are recorded until the recipe/preparation details are supplied.
+// Explicit held menu items: recipe/preparation placeholders and an optional
+// candidate whose previous ingredient list is supplied for Host A review only.
 export const MENU_PLACEHOLDERS = [
   {
     id: 'gammon',
+    status: 'Preparation pending',
     title: 'Smoked gammon — separate labelled platter',
     detail: 'Cured/processed pork; not for Host A or Guest B. Quantity, preparation, source and label to be supplied. Keep it on its own platter with its own board, knife and tongs, apart from the shared dishes and the tongue platter; prep last, wash hands and change utensils. No dietary claims are made.',
   },
   {
     id: 'icecream',
+    status: 'Recipe pending',
     title: 'Homemade ice-cream — recipe to be supplied',
     detail: 'Recipe-pending placeholder only. Do not buy ingredients, prepare, treat as shared-safe, or serve to Host A or Guest B until the recipe, ingredient labels and Host A’s dietitian check are complete.',
+  },
+  {
+    id: 'coconut-rice',
+    status: 'Host A clearance pending',
+    title: 'Coconut rice pudding — optional candidate',
+    detail: 'Restored as an option to review, not as a cleared shared dessert. Previous ingredient list: rice simmered in coconut milk with cinnamon and a vanilla pod (not extract), layered with berries and toasted coconut. The previous menu described it as soft, with no added sugar, dairy, wheat or gelatine; that description is a review item, not a safety claim. Do not buy, prepare, serve to anyone including Host A or Guest B, or treat it as shared-safe until Host A and her oncology dietitian clear the final ingredient list and every packaged label.',
   },
 ];
 
 // matchKey links a shopping line to comparable price entries. null = no verified price anywhere.
-// qty: null is a recipe-pending line; the UI shows "recipe pending" and never prices it.
+// qty: null is a recipe-pending line; clearancePending lines show quantities for review
+// but stay held from shopping and price entry until Host A/dietitian clearance.
 export const SHOPPING_LINES = [
   { id: 'l01', name: 'Boneless chicken thighs / supremes', qty: 1.8, unit: 'kg', category: 'Meat & poultry', matchKey: 'chicken-boneless', flags: ['CHICKEN_ONLY'] },
   { id: 'l02', name: 'Beef / ox tongue (ordered ahead)', qty: 1.5, unit: 'kg', category: 'Meat & poultry', matchKey: 'tongue', flags: ['TONGUE_FOR_THREE', 'RED_MEAT_OK'], note: 'No verified price at any shop — order from butcher, enter till-slip price.' },
@@ -102,6 +111,11 @@ export const SHOPPING_LINES = [
   { id: 'l39', name: 'Cooler + ice packs, large-print labels, separate boards/knives/tongs', qty: 1, unit: 'set', category: 'Kit (bring from home)', matchKey: 'kit', note: 'Separate boards, knives and tongs for the tongue and smoked gammon platters.' },
   { id: 'l40', name: 'Smoked gammon', qty: null, unit: 'pending', category: 'Menu placeholders', matchKey: null, note: 'Separate labelled platter; quantity/source/label to be supplied — do not buy yet. Not for Host A or Guest B.' },
   { id: 'l41', name: 'Homemade ice-cream ingredients', qty: null, unit: 'pending', category: 'Menu placeholders', matchKey: null, note: 'Recipe to be supplied — do not buy yet; dietary status unconfirmed.' },
+  { id: 'l42', name: 'Optional coconut milk (coconut rice pudding candidate)', qty: 0.8, unit: 'L', category: 'Optional dessert candidate', matchKey: null, clearancePending: true, flags: ['HOST_A_CLEARANCE_PENDING'], note: 'Host A/dietitian clearance pending — do not buy yet; label check required.' },
+  { id: 'l43', name: 'Optional dessert rice (coconut rice pudding candidate)', qty: 0.15, unit: 'kg', category: 'Optional dessert candidate', matchKey: null, clearancePending: true, flags: ['HOST_A_CLEARANCE_PENDING'], note: 'Host A/dietitian clearance pending — do not buy yet; label check required.' },
+  { id: 'l44', name: 'Optional vanilla pod, not extract (coconut rice pudding candidate)', qty: 1, unit: 'each', category: 'Optional dessert candidate', matchKey: null, clearancePending: true, flags: ['HOST_A_CLEARANCE_PENDING'], note: 'Host A/dietitian clearance pending — do not buy yet; label check required.' },
+  { id: 'l45', name: 'Optional berries (coconut rice pudding candidate)', qty: 0.5, unit: 'kg', category: 'Optional dessert candidate', matchKey: null, clearancePending: true, flags: ['HOST_A_CLEARANCE_PENDING'], note: 'Host A/dietitian clearance pending — do not buy yet; label check required.' },
+  { id: 'l46', name: 'Optional toasted coconut (coconut rice pudding candidate)', qty: 0.1, unit: 'kg', category: 'Optional dessert candidate', matchKey: null, clearancePending: true, flags: ['HOST_A_CLEARANCE_PENDING'], note: 'Host A/dietitian clearance pending — do not buy yet; label check required.' },
 ];
 
 // Steps: durationMin is null unless MENU.md states it explicitly. "Set time" is a feature, not a guess.
@@ -134,22 +148,22 @@ export const DISHES = [
     { id: 's17', title: 'Parsley, lemon & olive oil salsa', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [] },
   ]},
   { id: 'd6', title: 'Dessert — cinnamon-baked pears (shared-safe)', dietary: ['NO_SUGAR', 'NO_YEAST', 'NO_WHEAT', 'NO_DAIRY', 'NO_VINEGAR', 'ALCOHOL_FREE'], steps: [
-    { id: 's19', title: 'Bake pears with cinnamon until very soft', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'], note: 'Documented shared-safe dessert; homemade ice-cream is recipe-pending.' },
+    { id: 's19', title: 'Bake pears with cinnamon until very soft', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'], note: 'Documented shared-safe dessert; homemade ice-cream is recipe-pending and coconut rice pudding is clearance-pending.' },
   ]},
 ];
 
 // Explicit clock times from MENU.md's one-cook schedule. No invented durations.
 export const RUN_SHEET = [
-  { time: 'A week ahead', task: 'Order the tongue; buy specialty items; confirm Host A’s list with her dietitian; keep smoked gammon quantity/source/label and the homemade ice-cream recipe pending; check both hosts’ diets (Host A included) & the alcohol-free plan.', phase: 'prep' },
-  { time: 'Two days ahead', task: 'Check every label (pudding, mustard, rice cakes, vanilla flavouring, mixers, recipe-supplied ice-cream ingredients, gammon packaging once sourced); write large-print cards for the tongue, smoked gammon and recipe-pending ice-cream; pack kit.', phase: 'prep' },
-  { time: 'Day before', task: 'Poach tongue ~4 h; make stocks; dip & relish; chop nuts; bake pears; make alcohol-free suet-free pudding; DO NOT prepare homemade ice-cream or smoked gammon — recipe/preparation and labels pending; wash salad leaves; chill drinks.', phase: 'prep' },
+  { time: 'A week ahead', task: 'Order the tongue; buy specialty items; confirm Host A’s list with her dietitian, including the optional coconut rice pudding ingredient list; do not buy it yet; keep smoked gammon quantity/source/label and the homemade ice-cream recipe pending; check both hosts’ diets (Host A included) & the alcohol-free plan.', phase: 'prep' },
+  { time: 'Two days ahead', task: 'Check every label (pudding, mustard, rice cakes, vanilla flavouring, mixers, recipe-supplied ice-cream ingredients, optional coconut rice pudding labels if cleared, gammon packaging once sourced); write large-print cards for the tongue, smoked gammon, recipe-pending ice-cream and clearance-pending coconut rice pudding; pack kit.', phase: 'prep' },
+  { time: 'Day before', task: 'Poach tongue ~4 h; make stocks; dip & relish; chop nuts; bake pears; make alcohol-free suet-free pudding; DO NOT prepare homemade ice-cream, smoked gammon or optional coconut rice pudding — recipe/preparation, labels and Host A clearance pending; wash salad leaves; chill drinks.', phase: 'prep' },
   { time: '09:30', task: 'Preheat oven to 200 °C. Chicken on top shelf, potatoes below. Oven batch 1.', phase: 'day' },
   { time: '10:15', task: 'Chicken out to rest. Vegetables + stuffing bake in (oven batch 2). Reheat pilaf & cauliflower purée.', phase: 'day' },
   { time: '10:45', task: 'Make gravy from pan juices, homemade stock and a cornflour slurry.', phase: 'day' },
   { time: '11:30', task: 'Vegetables out; slice tongue paper-thin on its own board/knife; warm in its own pan. If smoked gammon preparation is supplied, prepare/slice it last on its own board/knife/tongs. Wash hands, change utensils.', phase: 'day' },
-  { time: '12:15', task: 'Dress salad with lemon. Put out platters, large-print labels, separate tongs. Set tongue and smoked gammon platters apart; extras sideboard at the far end. Hold recipe-pending ice-cream off the shared table until cleared. Keep cold dishes in the cooler.', phase: 'day' },
+  { time: '12:15', task: 'Dress salad with lemon. Put out platters, large-print labels, separate tongs. Set tongue and smoked gammon platters apart; extras sideboard at the far end. Hold recipe-pending ice-cream and clearance-pending coconut rice pudding off the shared table until cleared. Keep cold dishes in the cooler.', phase: 'day' },
   { time: '12:45', task: 'Slice chicken, pour gravy into a labelled jug, fill the drinks jugs.', phase: 'day' },
-  { time: '13:00', task: 'Serve: salad, then main platters, then cleared desserts. Hold recipe-pending ice-cream until recipe, labels and dietary clearance are supplied. You do the clearing.', phase: 'day' },
+  { time: '13:00', task: 'Serve: salad, then main platters, then cleared desserts. Hold recipe-pending ice-cream and clearance-pending coconut rice pudding until recipe/labels, Host A clearance and dietary clearance are supplied. You do the clearing.', phase: 'day' },
 ];
 
 export const DIETARY_FLAGS = {
@@ -157,7 +171,7 @@ export const DIETARY_FLAGS = {
   NO_VINEGAR: 'No vinegar', ALCOHOL_FREE: 'Alcohol-free', CHICKEN_ONLY: 'Chicken only',
   TONGUE_FOR_THREE: 'Tongue — for 3', RED_MEAT_OK: 'Red meat at table is fine',
   SEPARATE_PLATTER: 'Separate labelled platter', NOT_HOST_A_GUEST_B: 'Not for Host A or Guest B',
-  RECIPE_PENDING: 'Recipe / preparation pending',
+  RECIPE_PENDING: 'Recipe / preparation pending', HOST_A_CLEARANCE_PENDING: 'Host A clearance pending',
 };
 
 export const STORE_CLOSURES = [

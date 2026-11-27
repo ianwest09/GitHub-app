@@ -70,22 +70,29 @@ for (const [t, needle] of [
   console.log(`✓ ${t} tab renders`);
 }
 
-// Menu placeholders are explicit and the retired dessert is absent.
+// Held menu items are explicit; the old dessert is not presented as cleared or shared.
 click('#tabs button[data-tab="run"]');
 assert.match(view(), /Smoked gammon/);
 assert.match(view(), /Homemade ice-cream/);
+assert.match(view(), /Coconut rice pudding/);
+assert.match(view(), /Host A clearance pending/);
 assert.match(view(), /recipe to be supplied|recipe[ -]pending/i);
+assert.match(view(), /not a safety claim/i);
 assert.match(view(), /not for Host A or Guest B/);
 assert.doesNotMatch(view(), /Coconut rice pots|Rice \(for coconut pots\)|portion coconut/i);
 click('#tabs button[data-tab="shop"]');
 assert.match(view(), /recipe pending/i);
+assert.match(view(), /Host A clearance pending/i);
+assert.match(view(), /clearance pending/i);
 assert.match(view(), /no price entry/i);
-console.log('✓ gammon / ice-cream placeholders render without invented details');
+console.log('✓ gammon / ice-cream / coconut-rice held items render without safety claims');
 
 // Accessibility + optional settings are present and persist.
 click('#tabs button[data-tab="more"]');
 assert.match(view(), /Text size/);
 assert.match(view(), /High-contrast/);
+assert.match(view(), /Three menu items are not cleared/);
+assert.match(view(), /Menu options \/ placeholders/);
 assert.match(view(), /MIUI reliability/);
 assert.match(view(), /Optional LAN sync/);
 change('[data-set="textScale"]', 'value', '125');

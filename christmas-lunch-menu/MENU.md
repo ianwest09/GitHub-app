@@ -50,10 +50,11 @@
 - **Smoked gammon — quantity/preparation to be supplied.** Cured/processed pork; **not for Host A or Guest B**. Keep it on its own labelled platter with its own board, knife and tongs, apart from the shared dishes and the tongue platter. No ingredients, quantities, durations, prices or dietary claims are invented here.
 - Beef tongue is red meat/offal and only three people eat it, so it has its own platter, board, knife and tongs: it never touches the chicken, the shared gravy or the shared serving spoons. Red meat at the table is perfectly fine — the separation is simply about keeping the shared dishes clean for everyone and respecting the chicken-only guest. A small pot of mustard and pickles can go on the extras sideboard for these three, clearly labelled, with its own spoon.
 
-## Dessert — *recipe pending · dietary status unconfirmed*
+## Dessert — *shared-safe pears · options pending clearance*
 
 - **Homemade ice-cream — recipe to be supplied.** Placeholder only: no ingredients, quantities, durations, prices or dietary claims are recorded yet. Do not treat it as shared-safe or serve it to Host A or Guest B until the recipe, labels and Host A's dietitian check are complete.
 - **Cinnamon-baked pears with finely chopped toasted pecans**, baked until very soft — sweetened only by the fruit itself. These remain the documented shared-safe dessert.
+- **Optional candidate — Coconut rice pudding — Host A clearance pending.** Restored as an option to review, not as a cleared shared dessert. Previous ingredient list: rice simmered in coconut milk with cinnamon and a vanilla **pod** (not vanilla extract), layered with berries and toasted coconut; the previous menu described it as soft, with no added sugar, dairy, wheat or gelatine. That description is a review item, not a safety claim. Do not buy, prepare, serve to anyone including Host A or Guest B, or treat it as shared-safe until Host A and her oncology dietitian clear the final ingredient list and every packaged label.
 - To finish: unsweetened rooibos, mint tea, coffee (decaf available). The sugar bowl lives on the extras sideboard, not on the shared table.
 
 ## The optional extras sideboard — *for the nine · alcohol-free*
@@ -76,9 +77,10 @@
 | Smoked gammon platter | — | — | pending | pending |
 | Cinnamon-baked pears | ✓ | ✓ | ✓ | ✓ |
 | Homemade ice-cream (recipe pending) | pending | pending | pending | pending |
+| Coconut rice pudding (clearance pending) | pending | pending | pending | pending |
 | Extras sideboard | — | optional | optional | optional |
 
-*pending = quantity/preparation/recipe, ingredient labels and dietary clearance not supplied; do not serve yet. The drinks are the same for all ten — nobody gets a "special" glass.*
+*pending = quantity/preparation/recipe, ingredient labels, Host A/dietitian clearance or dietary clearance not supplied; do not serve yet. The drinks are the same for all ten — nobody gets a "special" glass.*
 
 ## Hidden-ingredient checklist
 
@@ -106,8 +108,9 @@ Port Alfred is a small town on the Eastern Cape Sunshine Coast. Order anything u
 | Item | Plan |
 | --- | --- |
 | Beef/ox tongue | Order from the local butcher a week ahead. If unavailable, bring one chilled from a butcher in Gqeberha or East London. |
-| Quinoa, wild rice, chia, tahini, arrowroot, pomegranate, fresh tarragon | Often not stocked. Bring them if you want them, or use the documented swaps: brown rice + lentils, cornflour, lemon or lime juice, olive oil, homemade stock, rooibos and parsley/rosemary/thyme/mint. Do not buy any ice-cream ingredients until the recipe is supplied. |
+| Quinoa, wild rice, chia, tahini, arrowroot, pomegranate, fresh tarragon | Often not stocked. Bring them if you want them, or use the documented swaps: brown rice + lentils, cornflour, lemon or lime juice, olive oil, homemade stock, rooibos and parsley/rosemary/thyme/mint. Do not buy any ice-cream ingredients until the recipe is supplied, or optional coconut rice pudding ingredients until cleared. |
 | Rice cakes / rice crackers | Check labels for wheat, yeast and sugar. If in doubt, use lettuce cups and soft vegetable batons. |
+| Optional coconut rice pudding ingredients | Source and label check only after Host A/dietitian clearance; no verified price is recorded. Do not buy yet. |
 | Canned white beans, cornflour (Maizena), rooibos, brown rice, lentils | Reliable South African pantry staples. |
 | Chicken, potatoes, cauliflower, green beans, carrots, courgettes, mushrooms, leeks, celery, tomatoes, peppers, lemons, garlic, herbs | Standard supermarket and greengrocer. |
 | Fresh fish | Port Alfred has excellent seafood, but it is deliberately left off: the "chicken and no other meat" brief makes it ambiguous. |
@@ -133,6 +136,7 @@ Hot, humid and often windy at Christmas: keep cold dishes in a cooler with ice p
 | Pears (small) | 10 small |
 | Homemade ice-cream ingredients | recipe to be supplied — do not buy yet |
 | Smoked gammon | quantity/source/label to be supplied — do not buy yet |
+| Optional coconut rice pudding ingredients — Host A clearance pending | 2 × 400 ml coconut milk / 150 g dessert rice / 1 vanilla pod / 500 g berries / 100 g toasted coconut — do not buy yet |
 | Lemons, garlic, fresh herbs (rosemary, thyme, parsley, dill, mint) | 10 / 2 heads / generous bunches |
 | Rooibos, mint, coffee (incl. decaf), sparkling water, granadilla & lime | pantry |
 | Extra-virgin olive oil, cinnamon, nutmeg, black pepper, sea salt | pantry |
@@ -142,27 +146,28 @@ Hot, humid and often windy at Christmas: keep cold dishes in a cooler with ice p
 
 The point of the make-ahead day is that on Christmas morning you only handle the chicken, potatoes, vegetables, gravy and the final salad toss.
 
-- **A week ahead** — Order the tongue. Buy or order specialty items. Confirm Host A's list with her dietitian. Keep smoked gammon quantity/source/label and the homemade ice-cream recipe marked as pending. Quietly check with both hosts (Host A included) about medication-related diets, salt/sugar, chewing or swallowing, and whether a fully alcohol-free table suits the recovering-alcoholic guest (it is the safest default).
-- **Two days ahead** — Check every label, including the pudding, mustard, rice cakes, any vanilla flavouring, drink mixers, any recipe-supplied ice-cream ingredients and any smoked gammon packaging once the source is confirmed. Write large-print label cards for the tongue, smoked gammon and recipe-pending ice-cream. Pack your kit.
-- **Day before (make-ahead day)** — Poach the tongue for about 4 hours; cool, peel and refrigerate in its own sealed container. Make chicken and vegetable stocks (no cubes). Make the white bean dip and the tomato relish. Roast and finely chop the nuts. Bake the pears. Make the alcohol-free, suet-free pudding. **Do not prepare the homemade ice-cream or smoked gammon yet** — recipe/preparation and labels are still pending. Wash and dry salad leaves, cut vegetables, store in sealed containers. Chill the drinks.
+- **A week ahead** — Order the tongue. Buy or order specialty items. Confirm Host A's list with her dietitian, including the optional coconut rice pudding ingredient list; do not buy it yet. Keep smoked gammon quantity/source/label and the homemade ice-cream recipe marked as pending. Quietly check with both hosts (Host A included) about medication-related diets, salt/sugar, chewing or swallowing, and whether a fully alcohol-free table suits the recovering-alcoholic guest (it is the safest default).
+- **Two days ahead** — Check every label, including the pudding, mustard, rice cakes, any vanilla flavouring, drink mixers, any recipe-supplied ice-cream ingredients, any optional coconut rice pudding labels if cleared, and any smoked gammon packaging once the source is confirmed. Write large-print label cards for the tongue, smoked gammon, recipe-pending ice-cream and clearance-pending coconut rice pudding. Pack your kit.
+- **Day before (make-ahead day)** — Poach the tongue for about 4 hours; cool, peel and refrigerate in its own sealed container. Make chicken and vegetable stocks (no cubes). Make the white bean dip and the tomato relish. Roast and finely chop the nuts. Bake the pears. Make the alcohol-free, suet-free pudding. **Do not prepare the homemade ice-cream, smoked gammon or optional coconut rice pudding yet** — recipe/preparation, labels and Host A clearance are still pending. Wash and dry salad leaves, cut vegetables, store in sealed containers. Chill the drinks.
 - **09:30** — Preheat the oven to 200 °C. Chicken and potatoes in: chicken on the top shelf, potatoes below. One oven, first batch.
 - **10:15** — Chicken out to rest. Vegetables and the stuffing bake go in (second batch). Reheat the pilaf and cauliflower purée on the stovetop.
 - **10:45** — Make the gravy from the pan juices, homemade stock and a cornflour slurry.
 - **11:30** — Vegetables out; warm the pears briefly if you like. Slice the tongue paper-thin on its own board with its own knife; warm gently in its own pan. If smoked gammon preparation details have since been supplied, prepare and slice it last on its own board with its own knife and tongs. Wash hands and change utensils before returning to shared dishes.
-- **12:15** — Dress the salad with lemon. Put out platters, large-print labels and separate tongs; set the separate tongue and smoked gammon platters apart, and the extras sideboard at the far end. Hold the recipe-pending ice-cream off the shared table until cleared. Keep cold dishes in the cooler until the last minute.
+- **12:15** — Dress the salad with lemon. Put out platters, large-print labels and separate tongs; set the separate tongue and smoked gammon platters apart, and the extras sideboard at the far end. Hold the recipe-pending ice-cream and clearance-pending coconut rice pudding off the shared table until cleared. Keep cold dishes in the cooler until the last minute.
 - **12:45** — Slice the chicken, pour the gravy into a labelled jug, fill the drinks jugs.
-- **13:00** — Serve: salad first, then the main platters, then the cleared desserts. Hold the recipe-pending ice-cream until its recipe, labels and dietary clearance are supplied. Keep the sitting comfortable in length. You do the clearing.
+- **13:00** — Serve: salad first, then the main platters, then the cleared desserts. Hold the recipe-pending ice-cream and clearance-pending coconut rice pudding until their recipe/labels, Host A clearance and dietary clearance are supplied. Keep the sitting comfortable in length. You do the clearing.
 
 ## Serving plan (so nothing crosses)
 
 1. One shared table, entirely alcohol-free; only the tongue platter, smoked gammon platter and extras sideboard are "for some". Do not explain the absence of wine — the alcohol-free drinks menu is simply what is being served.
 2. Prep the tongue and smoked gammon last, each on its own separate board with its own knife and tongs; wash hands and change utensils before returning to the shared dishes.
-3. Every platter gets its own serving spoon or tongs and a **large-print** label card — "Shared · safe for all", "Tongue · for 3", "Smoked gammon · not for Host A or Guest B", or "Ice-cream · recipe pending".
+3. Every platter gets its own serving spoon or tongs and a **large-print** label card — "Shared · safe for all", "Tongue · for 3", "Smoked gammon · not for Host A or Guest B", "Ice-cream · recipe pending", or "Coconut rice pudding · clearance pending".
 4. Set the tongue and smoked gammon platters apart, each with its own label, board, knife and tongs. Never pass shared gravy, or a shared serving spoon, over either platter — the shared dishes stay clean for all ten.
 5. Keep mustard, pickles, the sugar bowl, the salt bowl and the sweetened spritzer on the sideboard; the unsweetened jug stays on the table for everyone.
 6. For both hosts (including Host A): put everything within reach, pass platters or plate for them rather than asking them to get up, offer smaller portions, and keep seasoning gentle with salt available at the table.
+7. Hold the optional coconut rice pudding off the shared table until Host A and her oncology dietitian clear the final ingredient list and every packaged label. If cleared, give it its own clearly labelled dish and spoon; do not treat the previous ingredient note as automatic clearance.
 
 ## Two quick things to confirm
 
-- **With Host A and her oncology dietitian:** the final ingredient list and every packaged label. Red meat at the table is settled — the tongue platter stays. Smoked gammon stays off Host A's plate and the homemade ice-cream stays off the shared plan until its recipe and labels are cleared.
+- **With Host A and her oncology dietitian:** the final ingredient list and every packaged label, including the optional coconut rice pudding ingredient list and labels. Red meat at the table is settled — the tongue platter stays. Smoked gammon stays off Host A's plate; the homemade ice-cream stays off the shared plan until its recipe and labels are cleared; and the optional coconut rice pudding stays off every plate until cleared.
 - **With both hosts (including Host A):** any medication-related diet needs (warfarin/vitamin K, low salt, diabetes), any chewing/swallowing or denture considerations, and — discreetly — whether the fully alcohol-free plan suits the guest in recovery. It is the safest default and nobody needs to be singled out.

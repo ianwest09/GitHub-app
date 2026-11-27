@@ -45,10 +45,12 @@ function openModal(title, html, onMount) {
 function closeModal() { $('#modal-back').hidden = true; }
 
 const isPendingLine = (l) => l.qty == null;
+const heldStatus = (l) => isPendingLine(l) ? 'recipe pending' : l.clearancePending ? 'Host A clearance pending' : null;
+const isHeldLine = (l) => heldStatus(l) !== null;
 const scaledQty = (l) => isPendingLine(l) ? null : E.scaleQty(l.qty, 10, state.guestCount);
-const qtyText = (l) => isPendingLine(l) ? 'recipe pending' : `${scaledQty(l)} ${esc(l.unit)}`;
+const qtyText = (l) => isPendingLine(l) ? 'recipe pending' : `${scaledQty(l)} ${esc(l.unit)}${l.clearancePending ? ' · clearance pending' : ''}`;
 const qtyValue = (l) => isPendingLine(l) ? 'recipe pending' : scaledQty(l);
-const placeholdersHtml = () => D.MENU_PLACEHOLDERS.map((x) => `<li><strong>${esc(x.title)}</strong><span>${esc(x.detail)}</span></li>`).join('');
+const placeholdersHtml = () => D.MENU_PLACEHOLDERS.map((x) => `<li><strong>${esc(x.title)}</strong><span>${x.status ? `<em>${esc(x.status)}</em> — ` : ''}${esc(x.detail)}</span></li>`).join('');
 // Basket lines carry the scaled quantity so costs follow the portion count.
 const basketLines = () => state.lines.map((l) => ({ ...l, qty: scaledQty(l) }));
 function ctx() {
@@ -111,11 +113,11 @@ function renderRun() {
     <div class="rule"></div>
 
     <div class="banner info"><strong>The documented 09:30 → 13:00 run sheet</strong>
-      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; homemade ice-cream is recipe-pending.</div>
+      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; homemade ice-cream is recipe-pending and coconut rice pudding is clearance-pending.</div>
     <div class="card"><ul class="tl">${runSheet}</ul></div>
 
-    <div class="card"><h3>Menu placeholders — do not prepare yet</h3>
-      <p class="lede">These entries have no invented ingredients, quantities, durations, prices or dietary claims.</p>
+    <div class="card"><h3>Menu options / placeholders — not cleared yet</h3>
+      <p class="lede">Held items are not to be bought, prepared or served until recipe/preparation, labels or Host A/dietitian clearance are supplied. Gammon and ice-cream have no invented details; coconut rice pudding restores the previous ingredient list for review only.</p>
       <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card">
@@ -231,7 +233,7 @@ function renderCook() {
       <div class="timers" id="timers-box"></div>
     </div>
     <div class="banner info"><strong>Dietary guardrails</strong>
-      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs — prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. Homemade ice-cream is recipe-pending and must not be served until cleared.
+      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs — prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. Homemade ice-cream is recipe-pending and coconut rice pudding is Host A clearance-pending; neither is served until cleared.
       Nuts and seeds are finely chopped; both hosts in their 80s, including Host A, get boneless chicken and tender vegetables.</div>`;
   paintTimers();
   ensureTimerClock();
@@ -253,9 +255,9 @@ function renderShop() {
     <div class="group-title">${esc(g)}</div>
     ${groups[g].map((l) => {
       const r = rowById.get(l.id);
-      const pending = isPendingLine(l);
-      const price = pending
-        ? '<span class="tag gold">recipe pending</span>'
+      const heldLabel = heldStatus(l);
+      const price = heldLabel
+        ? `<span class="tag gold">${esc(heldLabel)}</span>`
         : r?.selected
           ? `<span class="tag ${r.status === 'compared' ? '' : 'gold'}">${r.status === 'compared' ? '✓ ' : ''}${shortName(r.selected.entry.store)} ${E.formatZAR(r.selected.costCents)}</span>`
           : '<span class="tag rose">unpriced</span>';
@@ -265,7 +267,7 @@ function renderShop() {
           <div class="small"><label style="display:inline-flex;gap:6px;align-items:center;text-transform:none;letter-spacing:0;font-weight:400;margin:4px 0 0">
             <input type="checkbox" data-pantry="${esc(l.id)}" ${l.pantry ? 'checked' : ''}> Already in pantry</label></div></div>
         <div class="qty">${qtyText(l)}</div>
-        <div class="price">${price}<br>${pending ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button>`}</div>
+        <div class="price">${price}<br>${heldLabel ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button>`}</div>
       </div>`;
     }).join('')}`).join('');
 
@@ -345,15 +347,15 @@ function renderCost() {
   const unpriced = b.rows.filter((r) => !r.selected);
 
   const compareRows = b.rows.filter((r) => r.options.length || r.reasons.length).map((r) => {
-    const pending = isPendingLine(r.line);
+    const heldLabel = heldStatus(r.line);
     const cells = D.STORES.map((s) => {
       const o = r.options.find((x) => x.entry.store === s.id);
       return `<td class="nowrap">${o ? `<strong>${E.formatZAR(o.costCents)}</strong><div class="small muted">${E.formatZAR(o.entry.unitCents)}/unit</div>` : '<span class="muted small">no price</span>'}</td>`;
     }).join('');
-    const statusText = pending ? 'recipe pending' : r.status === 'compared' ? 'cheapest verified' : r.status === 'single' ? 'single source' : 'insufficient data';
+    const statusText = heldLabel || (r.status === 'compared' ? 'cheapest verified' : r.status === 'single' ? 'single source' : 'insufficient data');
     return `<tr><td><strong>${esc(r.line.name)}</strong><div class="small muted">${qtyText(r.line)} · ${esc(statusText)}</div></td>
       ${cells}<td class="nowrap">${r.selected ? E.formatZAR(r.selected.costCents) : '—'}</td>
-      <td>${pending ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button>`}</td></tr>`;
+      <td>${heldLabel ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button>`}</td></tr>`;
   }).join('');
 
   const split = D.STORES.map((s) => {
@@ -367,8 +369,9 @@ function renderCost() {
   const shopLines = state.lines.map((l) => {
     const r = b.rows.find((x) => x.line.id === l.id);
     const here = r?.selected?.entry.store === singleShop;
+    const heldLabel = heldStatus(l);
     return `<div class="line ${l.ticked ? 'done' : ''}"><div class="name">${esc(l.name)}</div>
-      <div class="qty">${isPendingLine(l) ? '<span class="tag gold">recipe pending</span>' : here ? E.formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
+      <div class="qty">${heldLabel ? `<span class="tag gold">${esc(heldLabel)}</span>` : here ? E.formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
   }).join('');
   const shopTotal = Object.values(b.split[singleShop] || []).reduce((a, x) => a + x.costCents, 0);
 
@@ -451,13 +454,13 @@ function renderMore() {
       <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
         PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
       <div class="banner info"><strong>Shared table is safe for all ten</strong>
-        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; homemade ice-cream is held back until its recipe, labels and dietary clearance are supplied. Tongue is red meat at the table — fine — but only three people eat it, so it has its own board, knife, tongs and label.</div>
-      <div class="banner warn"><strong>Two menu placeholders are not cleared</strong>
-        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. Homemade ice-cream is recipe-pending. No ingredients, quantities, durations, prices or dietary claims are invented for either item.</div>
+        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; homemade ice-cream is held back until its recipe, labels and dietary clearance are supplied, and optional coconut rice pudding is held back until Host A/dietitian clearance. Tongue is red meat at the table — fine — but only three people eat it, so it has its own board, knife, tongs and label.</div>
+      <div class="banner warn"><strong>Three menu items are not cleared</strong>
+        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. Homemade ice-cream is recipe-pending, with no invented ingredients, quantities, durations, prices or dietary claims. Coconut rice pudding is an optional candidate whose previous ingredient list is for Host A review only; it is not a safety claim and is not served until cleared.</div>
     </div>
 
-    <div class="card"><h3>Menu placeholders</h3>
-      <p class="lede">Recipe/preparation details will be supplied later. These are guardrails, not medical advice.</p>
+    <div class="card"><h3>Menu options / placeholders</h3>
+      <p class="lede">Recipe/preparation details, labels and Host A/dietitian clearance are pending where noted. These are guardrails, not medical advice.</p>
       <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card"><h3>Settings</h3>
@@ -534,6 +537,7 @@ function printCards() {
     <div class="label">TONGUE — FOR 3<small>Own board, own knife, own tongs</small></div>
     <div class="label">SMOKED GAMMON — NOT FOR HOST A OR GUEST B<small>Own board, own knife, own tongs · quantity/preparation pending</small></div>
     <div class="label">ICE-CREAM — RECIPE PENDING<small>Do not serve until recipe, labels and dietary clearance</small></div>
+    <div class="label">COCONUT RICE PUDDING — HOST A CLEARANCE PENDING<small>Previous ingredient list for review only · do not serve until cleared</small></div>
     <div class="label">EXTRAS SIDEBOARD<small>For the nine · alcohol-free</small></div>
     <h2>Shopping checklist</h2>
     <ul>${state.lines.map((l) => `<li>☐ ${esc(l.name)} — ${qtyText(l)}</li>`).join('')}</ul>`;
@@ -625,7 +629,7 @@ function exportCSV() {
   for (const l of state.lines) {
     const r = byId.get(l.id);
     rows.push([l.name, qtyValue(l), l.unit, l.category,
-      isPendingLine(l) ? 'recipe pending' : r?.status || 'no-price', r?.selected ? (r.selected.costCents / 100).toFixed(2) : '',
+      heldStatus(l) ?? (r?.status || 'no-price'), r?.selected ? (r.selected.costCents / 100).toFixed(2) : '',
       l.ticked ? 'yes' : 'no', l.pantry ? 'yes' : 'no'].map(q).join(','));
   }
   download('christmas-lunch-shopping.csv', rows.join('\n'), 'text/csv');
@@ -635,7 +639,7 @@ function exportCSV() {
 /* ---------------- ADD PRICE MODAL ---------------- */
 function addPriceModal(lineId) {
   const line = state.lines.find((l) => l.id === lineId);
-  if (!line || isPendingLine(line)) return;
+  if (!line || isHeldLine(line)) return;
   openModal('Add a price', `
     <p class="lede">${esc(line.name)} · ${qtyText(line)}. Enter the amount you actually paid — the app never guesses.</p>
     <label class="field"><span>Shop</span><select id="p-store">${D.STORES.map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></label>
@@ -648,7 +652,7 @@ function addPriceModal(lineId) {
 function savePrice(lineId) {
   const line = state.lines.find((l) => l.id === lineId);
   const amount = Number($('#p-amount')?.value);
-  if (!line || isPendingLine(line)) { toast('Recipe pending — no quantity or price entry yet'); return; }
+  if (!line || isHeldLine(line)) { toast(`${heldStatus(line) || 'Held item'} — no price entry yet`); return; }
   if (!Number.isFinite(amount) || amount <= 0) { toast('Enter a valid amount'); return; }
   const cents = Math.round(amount * 100);
   const qty = Number(scaledQty(line)) || Number(line.qty) || 1;

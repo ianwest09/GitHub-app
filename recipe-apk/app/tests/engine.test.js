@@ -120,7 +120,7 @@ test('lineCost refuses incomparable units', () => {
   assert.equal(lineCost({ qty: 3, unit: 'each' }, wool), null);
 });
 
-test('menu placeholders stay unpriced and no old rice-based dessert data survives', () => {
+test('held menu items stay unpriced and retired dessert data is absent', () => {
   const pending = SHOPPING_LINES.filter((l) => l.qty === null);
   assert.equal(pending.length, 2);
   assert.ok(pending.some((l) => /Smoked gammon/i.test(l.name)));
@@ -131,10 +131,20 @@ test('menu placeholders stay unpriced and no old rice-based dessert data survive
     assert.equal(comparison.status, 'no-price');
     assert.match(comparison.reasons.join(' '), /Recipe pending/);
   }
-  const basket = optimiseBasket(pending, PRICE_ENTRIES, ctx);
+  const clearance = SHOPPING_LINES.filter((l) => l.clearancePending === true);
+  assert.equal(clearance.length, 5);
+  assert.ok(clearance.every((l) => l.matchKey === null && typeof l.qty === 'number'));
+  assert.ok(clearance.some((l) => /Coconut rice pudding/i.test(l.name)));
+  for (const line of clearance) {
+    const comparison = compareLine(line, PRICE_ENTRIES, ctx);
+    assert.equal(comparison.status, 'no-price');
+    assert.match(comparison.reasons.join(' '), /No verified product match/);
+  }
+  const basket = optimiseBasket([...pending, ...clearance], PRICE_ENTRIES, ctx);
   assert.equal(basket.pricedCount, 0);
   assert.equal(basket.complete, false);
-  assert.equal(MENU_PLACEHOLDERS.length, 2);
+  assert.equal(MENU_PLACEHOLDERS.length, 3);
+  assert.ok(MENU_PLACEHOLDERS.some((x) => /Coconut rice pudding/i.test(x.title) && /Host A clearance pending/i.test(x.status)));
   assert.ok(SHOPPING_LINES.every((l) => !RETIRED_SHOPPING_LINE_IDS.includes(l.id)));
   const seedText = JSON.stringify({ SHOPPING_LINES, DISHES, RUN_SHEET, MENU_PLACEHOLDERS });
   assert.doesNotMatch(seedText, /Coconut rice pots|Rice \(for coconut pots\)|portion coconut/i);

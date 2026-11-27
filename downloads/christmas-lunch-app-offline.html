@@ -241,13 +241,21 @@ body.high-contrast .tag{border-width:2px}
   var MENU_PLACEHOLDERS = [
     {
       id: "gammon",
+      status: "Preparation pending",
       title: "Smoked gammon \u2014 separate labelled platter",
       detail: "Cured/processed pork; not for Host A or Guest B. Quantity, preparation, source and label to be supplied. Keep it on its own platter with its own board, knife and tongs, apart from the shared dishes and the tongue platter; prep last, wash hands and change utensils. No dietary claims are made."
     },
     {
       id: "icecream",
+      status: "Recipe pending",
       title: "Homemade ice-cream \u2014 recipe to be supplied",
       detail: "Recipe-pending placeholder only. Do not buy ingredients, prepare, treat as shared-safe, or serve to Host A or Guest B until the recipe, ingredient labels and Host A\u2019s dietitian check are complete."
+    },
+    {
+      id: "coconut-rice",
+      status: "Host A clearance pending",
+      title: "Coconut rice pudding \u2014 optional candidate",
+      detail: "Restored as an option to review, not as a cleared shared dessert. Previous ingredient list: rice simmered in coconut milk with cinnamon and a vanilla pod (not extract), layered with berries and toasted coconut. The previous menu described it as soft, with no added sugar, dairy, wheat or gelatine; that description is a review item, not a safety claim. Do not buy, prepare, serve to anyone including Host A or Guest B, or treat it as shared-safe until Host A and her oncology dietitian clear the final ingredient list and every packaged label."
     }
   ];
   var SHOPPING_LINES = [
@@ -286,7 +294,12 @@ body.high-contrast .tag{border-width:2px}
     { id: "l38", name: "Olive oil, cinnamon, nutmeg, pepper, sea salt", qty: 1, unit: "set", category: "Pantry", matchKey: "olive-oil" },
     { id: "l39", name: "Cooler + ice packs, large-print labels, separate boards/knives/tongs", qty: 1, unit: "set", category: "Kit (bring from home)", matchKey: "kit", note: "Separate boards, knives and tongs for the tongue and smoked gammon platters." },
     { id: "l40", name: "Smoked gammon", qty: null, unit: "pending", category: "Menu placeholders", matchKey: null, note: "Separate labelled platter; quantity/source/label to be supplied \u2014 do not buy yet. Not for Host A or Guest B." },
-    { id: "l41", name: "Homemade ice-cream ingredients", qty: null, unit: "pending", category: "Menu placeholders", matchKey: null, note: "Recipe to be supplied \u2014 do not buy yet; dietary status unconfirmed." }
+    { id: "l41", name: "Homemade ice-cream ingredients", qty: null, unit: "pending", category: "Menu placeholders", matchKey: null, note: "Recipe to be supplied \u2014 do not buy yet; dietary status unconfirmed." },
+    { id: "l42", name: "Optional coconut milk (coconut rice pudding candidate)", qty: 0.8, unit: "L", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
+    { id: "l43", name: "Optional dessert rice (coconut rice pudding candidate)", qty: 0.15, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
+    { id: "l44", name: "Optional vanilla pod, not extract (coconut rice pudding candidate)", qty: 1, unit: "each", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
+    { id: "l45", name: "Optional berries (coconut rice pudding candidate)", qty: 0.5, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." },
+    { id: "l46", name: "Optional toasted coconut (coconut rice pudding candidate)", qty: 0.1, unit: "kg", category: "Optional dessert candidate", matchKey: null, clearancePending: true, flags: ["HOST_A_CLEARANCE_PENDING"], note: "Host A/dietitian clearance pending \u2014 do not buy yet; label check required." }
   ];
   var DISHES = [
     { id: "d1", title: "On arrival", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
@@ -317,20 +330,20 @@ body.high-contrast .tag{border-width:2px}
       { id: "s17", title: "Parsley, lemon & olive oil salsa", resource: "COUNTER", durationMin: null, handsOn: true, deps: [] }
     ] },
     { id: "d6", title: "Dessert \u2014 cinnamon-baked pears (shared-safe)", dietary: ["NO_SUGAR", "NO_YEAST", "NO_WHEAT", "NO_DAIRY", "NO_VINEGAR", "ALCOHOL_FREE"], steps: [
-      { id: "s19", title: "Bake pears with cinnamon until very soft", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"], note: "Documented shared-safe dessert; homemade ice-cream is recipe-pending." }
+      { id: "s19", title: "Bake pears with cinnamon until very soft", resource: "OVEN", durationMin: null, handsOn: false, deps: ["s7"], note: "Documented shared-safe dessert; homemade ice-cream is recipe-pending and coconut rice pudding is clearance-pending." }
     ] }
   ];
   var RUN_SHEET = [
-    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Host A\u2019s list with her dietitian; keep smoked gammon quantity/source/label and the homemade ice-cream recipe pending; check both hosts\u2019 diets (Host A included) & the alcohol-free plan.", phase: "prep" },
-    { time: "Two days ahead", task: "Check every label (pudding, mustard, rice cakes, vanilla flavouring, mixers, recipe-supplied ice-cream ingredients, gammon packaging once sourced); write large-print cards for the tongue, smoked gammon and recipe-pending ice-cream; pack kit.", phase: "prep" },
-    { time: "Day before", task: "Poach tongue ~4 h; make stocks; dip & relish; chop nuts; bake pears; make alcohol-free suet-free pudding; DO NOT prepare homemade ice-cream or smoked gammon \u2014 recipe/preparation and labels pending; wash salad leaves; chill drinks.", phase: "prep" },
+    { time: "A week ahead", task: "Order the tongue; buy specialty items; confirm Host A\u2019s list with her dietitian, including the optional coconut rice pudding ingredient list; do not buy it yet; keep smoked gammon quantity/source/label and the homemade ice-cream recipe pending; check both hosts\u2019 diets (Host A included) & the alcohol-free plan.", phase: "prep" },
+    { time: "Two days ahead", task: "Check every label (pudding, mustard, rice cakes, vanilla flavouring, mixers, recipe-supplied ice-cream ingredients, optional coconut rice pudding labels if cleared, gammon packaging once sourced); write large-print cards for the tongue, smoked gammon, recipe-pending ice-cream and clearance-pending coconut rice pudding; pack kit.", phase: "prep" },
+    { time: "Day before", task: "Poach tongue ~4 h; make stocks; dip & relish; chop nuts; bake pears; make alcohol-free suet-free pudding; DO NOT prepare homemade ice-cream, smoked gammon or optional coconut rice pudding \u2014 recipe/preparation, labels and Host A clearance pending; wash salad leaves; chill drinks.", phase: "prep" },
     { time: "09:30", task: "Preheat oven to 200 \xB0C. Chicken on top shelf, potatoes below. Oven batch 1.", phase: "day" },
     { time: "10:15", task: "Chicken out to rest. Vegetables + stuffing bake in (oven batch 2). Reheat pilaf & cauliflower pur\xE9e.", phase: "day" },
     { time: "10:45", task: "Make gravy from pan juices, homemade stock and a cornflour slurry.", phase: "day" },
     { time: "11:30", task: "Vegetables out; slice tongue paper-thin on its own board/knife; warm in its own pan. If smoked gammon preparation is supplied, prepare/slice it last on its own board/knife/tongs. Wash hands, change utensils.", phase: "day" },
-    { time: "12:15", task: "Dress salad with lemon. Put out platters, large-print labels, separate tongs. Set tongue and smoked gammon platters apart; extras sideboard at the far end. Hold recipe-pending ice-cream off the shared table until cleared. Keep cold dishes in the cooler.", phase: "day" },
+    { time: "12:15", task: "Dress salad with lemon. Put out platters, large-print labels, separate tongs. Set tongue and smoked gammon platters apart; extras sideboard at the far end. Hold recipe-pending ice-cream and clearance-pending coconut rice pudding off the shared table until cleared. Keep cold dishes in the cooler.", phase: "day" },
     { time: "12:45", task: "Slice chicken, pour gravy into a labelled jug, fill the drinks jugs.", phase: "day" },
-    { time: "13:00", task: "Serve: salad, then main platters, then cleared desserts. Hold recipe-pending ice-cream until recipe, labels and dietary clearance are supplied. You do the clearing.", phase: "day" }
+    { time: "13:00", task: "Serve: salad, then main platters, then cleared desserts. Hold recipe-pending ice-cream and clearance-pending coconut rice pudding until recipe/labels, Host A clearance and dietary clearance are supplied. You do the clearing.", phase: "day" }
   ];
   var DIETARY_FLAGS = {
     NO_SUGAR: "No sugar",
@@ -344,7 +357,8 @@ body.high-contrast .tag{border-width:2px}
     RED_MEAT_OK: "Red meat at table is fine",
     SEPARATE_PLATTER: "Separate labelled platter",
     NOT_HOST_A_GUEST_B: "Not for Host A or Guest B",
-    RECIPE_PENDING: "Recipe / preparation pending"
+    RECIPE_PENDING: "Recipe / preparation pending",
+    HOST_A_CLEARANCE_PENDING: "Host A clearance pending"
   };
   var STORE_CLOSURES = [
     { store: "spar", date: "2026-12-25", label: "Spar Port Alfred is closed on Christmas Day" }
@@ -738,10 +752,12 @@ body.high-contrast .tag{border-width:2px}
     $("#modal-back").hidden = true;
   }
   var isPendingLine = (l) => l.qty == null;
+  var heldStatus = (l) => isPendingLine(l) ? "recipe pending" : l.clearancePending ? "Host A clearance pending" : null;
+  var isHeldLine = (l) => heldStatus(l) !== null;
   var scaledQty = (l) => isPendingLine(l) ? null : scaleQty(l.qty, 10, state.guestCount);
-  var qtyText = (l) => isPendingLine(l) ? "recipe pending" : `${scaledQty(l)} ${esc(l.unit)}`;
+  var qtyText = (l) => isPendingLine(l) ? "recipe pending" : `${scaledQty(l)} ${esc(l.unit)}${l.clearancePending ? " \xB7 clearance pending" : ""}`;
   var qtyValue = (l) => isPendingLine(l) ? "recipe pending" : scaledQty(l);
-  var placeholdersHtml = () => MENU_PLACEHOLDERS.map((x) => `<li><strong>${esc(x.title)}</strong><span>${esc(x.detail)}</span></li>`).join("");
+  var placeholdersHtml = () => MENU_PLACEHOLDERS.map((x) => `<li><strong>${esc(x.title)}</strong><span>${x.status ? `<em>${esc(x.status)}</em> \u2014 ` : ""}${esc(x.detail)}</span></li>`).join("");
   var basketLines = () => state.lines.map((l) => ({ ...l, qty: scaledQty(l) }));
   function ctx() {
     return { today: state.today, basketLines: basketLines(), hasLoyaltyCard: state.hasLoyaltyCard };
@@ -794,11 +810,11 @@ body.high-contrast .tag{border-width:2px}
     <div class="rule"></div>
 
     <div class="banner info"><strong>The documented 09:30 \u2192 13:00 run sheet</strong>
-      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; homemade ice-cream is recipe-pending.</div>
+      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; homemade ice-cream is recipe-pending and coconut rice pudding is clearance-pending.</div>
     <div class="card"><ul class="tl">${runSheet}</ul></div>
 
-    <div class="card"><h3>Menu placeholders \u2014 do not prepare yet</h3>
-      <p class="lede">These entries have no invented ingredients, quantities, durations, prices or dietary claims.</p>
+    <div class="card"><h3>Menu options / placeholders \u2014 not cleared yet</h3>
+      <p class="lede">Held items are not to be bought, prepared or served until recipe/preparation, labels or Host A/dietitian clearance are supplied. Gammon and ice-cream have no invented details; coconut rice pudding restores the previous ingredient list for review only.</p>
       <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card">
@@ -924,7 +940,7 @@ body.high-contrast .tag{border-width:2px}
       <div class="timers" id="timers-box"></div>
     </div>
     <div class="banner info"><strong>Dietary guardrails</strong>
-      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs \u2014 prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. Homemade ice-cream is recipe-pending and must not be served until cleared.
+      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs \u2014 prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. Homemade ice-cream is recipe-pending and coconut rice pudding is Host A clearance-pending; neither is served until cleared.
       Nuts and seeds are finely chopped; both hosts in their 80s, including Host A, get boneless chicken and tender vegetables.</div>`;
     paintTimers();
     ensureTimerClock();
@@ -942,15 +958,15 @@ body.high-contrast .tag{border-width:2px}
     <div class="group-title">${esc(g)}</div>
     ${groups[g].map((l) => {
       const r = rowById.get(l.id);
-      const pending = isPendingLine(l);
-      const price = pending ? '<span class="tag gold">recipe pending</span>' : r?.selected ? `<span class="tag ${r.status === "compared" ? "" : "gold"}">${r.status === "compared" ? "\u2713 " : ""}${shortName(r.selected.entry.store)} ${formatZAR(r.selected.costCents)}</span>` : '<span class="tag rose">unpriced</span>';
+      const heldLabel = heldStatus(l);
+      const price = heldLabel ? `<span class="tag gold">${esc(heldLabel)}</span>` : r?.selected ? `<span class="tag ${r.status === "compared" ? "" : "gold"}">${r.status === "compared" ? "\u2713 " : ""}${shortName(r.selected.entry.store)} ${formatZAR(r.selected.costCents)}</span>` : '<span class="tag rose">unpriced</span>';
       return `<div class="line ${l.ticked ? "done" : ""}">
         <input type="checkbox" data-tick="${esc(l.id)}" ${l.ticked ? "checked" : ""} aria-label="Mark ${esc(l.name)} as bought">
         <div class="name">${esc(l.name)}${l.note ? `<div class="small muted">${esc(l.note)}</div>` : ""}
           <div class="small"><label style="display:inline-flex;gap:6px;align-items:center;text-transform:none;letter-spacing:0;font-weight:400;margin:4px 0 0">
             <input type="checkbox" data-pantry="${esc(l.id)}" ${l.pantry ? "checked" : ""}> Already in pantry</label></div></div>
         <div class="qty">${qtyText(l)}</div>
-        <div class="price">${price}<br>${pending ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button>`}</div>
+        <div class="price">${price}<br>${heldLabel ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button>`}</div>
       </div>`;
     }).join("")}`).join("");
     const ticked = state.lines.filter((l) => l.ticked).length;
@@ -1023,15 +1039,15 @@ body.high-contrast .tag{border-width:2px}
     const single = b.rows.filter((r) => r.status === "single");
     const unpriced = b.rows.filter((r) => !r.selected);
     const compareRows = b.rows.filter((r) => r.options.length || r.reasons.length).map((r) => {
-      const pending = isPendingLine(r.line);
+      const heldLabel = heldStatus(r.line);
       const cells = STORES.map((s) => {
         const o = r.options.find((x) => x.entry.store === s.id);
         return `<td class="nowrap">${o ? `<strong>${formatZAR(o.costCents)}</strong><div class="small muted">${formatZAR(o.entry.unitCents)}/unit</div>` : '<span class="muted small">no price</span>'}</td>`;
       }).join("");
-      const statusText = pending ? "recipe pending" : r.status === "compared" ? "cheapest verified" : r.status === "single" ? "single source" : "insufficient data";
+      const statusText = heldLabel || (r.status === "compared" ? "cheapest verified" : r.status === "single" ? "single source" : "insufficient data");
       return `<tr><td><strong>${esc(r.line.name)}</strong><div class="small muted">${qtyText(r.line)} \xB7 ${esc(statusText)}</div></td>
       ${cells}<td class="nowrap">${r.selected ? formatZAR(r.selected.costCents) : "\u2014"}</td>
-      <td>${pending ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button>`}</td></tr>`;
+      <td>${heldLabel ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button>`}</td></tr>`;
     }).join("");
     const split = STORES.map((s) => {
       const items = b.split[s.id] || [];
@@ -1043,8 +1059,9 @@ body.high-contrast .tag{border-width:2px}
     const shopLines = state.lines.map((l) => {
       const r = b.rows.find((x) => x.line.id === l.id);
       const here = r?.selected?.entry.store === singleShop;
+      const heldLabel = heldStatus(l);
       return `<div class="line ${l.ticked ? "done" : ""}"><div class="name">${esc(l.name)}</div>
-      <div class="qty">${isPendingLine(l) ? '<span class="tag gold">recipe pending</span>' : here ? formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
+      <div class="qty">${heldLabel ? `<span class="tag gold">${esc(heldLabel)}</span>` : here ? formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
     }).join("");
     const shopTotal = Object.values(b.split[singleShop] || []).reduce((a, x) => a + x.costCents, 0);
     const freshness = prices.filter((p) => p.validTo || p.excluded).map((p) => {
@@ -1121,13 +1138,13 @@ body.high-contrast .tag{border-width:2px}
       <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
         PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
       <div class="banner info"><strong>Shared table is safe for all ten</strong>
-        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; homemade ice-cream is held back until its recipe, labels and dietary clearance are supplied. Tongue is red meat at the table \u2014 fine \u2014 but only three people eat it, so it has its own board, knife, tongs and label.</div>
-      <div class="banner warn"><strong>Two menu placeholders are not cleared</strong>
-        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. Homemade ice-cream is recipe-pending. No ingredients, quantities, durations, prices or dietary claims are invented for either item.</div>
+        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; homemade ice-cream is held back until its recipe, labels and dietary clearance are supplied, and optional coconut rice pudding is held back until Host A/dietitian clearance. Tongue is red meat at the table \u2014 fine \u2014 but only three people eat it, so it has its own board, knife, tongs and label.</div>
+      <div class="banner warn"><strong>Three menu items are not cleared</strong>
+        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. Homemade ice-cream is recipe-pending, with no invented ingredients, quantities, durations, prices or dietary claims. Coconut rice pudding is an optional candidate whose previous ingredient list is for Host A review only; it is not a safety claim and is not served until cleared.</div>
     </div>
 
-    <div class="card"><h3>Menu placeholders</h3>
-      <p class="lede">Recipe/preparation details will be supplied later. These are guardrails, not medical advice.</p>
+    <div class="card"><h3>Menu options / placeholders</h3>
+      <p class="lede">Recipe/preparation details, labels and Host A/dietitian clearance are pending where noted. These are guardrails, not medical advice.</p>
       <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card"><h3>Settings</h3>
@@ -1202,6 +1219,7 @@ body.high-contrast .tag{border-width:2px}
     <div class="label">TONGUE \u2014 FOR 3<small>Own board, own knife, own tongs</small></div>
     <div class="label">SMOKED GAMMON \u2014 NOT FOR HOST A OR GUEST B<small>Own board, own knife, own tongs \xB7 quantity/preparation pending</small></div>
     <div class="label">ICE-CREAM \u2014 RECIPE PENDING<small>Do not serve until recipe, labels and dietary clearance</small></div>
+    <div class="label">COCONUT RICE PUDDING \u2014 HOST A CLEARANCE PENDING<small>Previous ingredient list for review only \xB7 do not serve until cleared</small></div>
     <div class="label">EXTRAS SIDEBOARD<small>For the nine \xB7 alcohol-free</small></div>
     <h2>Shopping checklist</h2>
     <ul>${state.lines.map((l) => `<li>\u2610 ${esc(l.name)} \u2014 ${qtyText(l)}</li>`).join("")}</ul>`;
@@ -1313,7 +1331,7 @@ body.high-contrast .tag{border-width:2px}
         qtyValue(l),
         l.unit,
         l.category,
-        isPendingLine(l) ? "recipe pending" : r?.status || "no-price",
+        heldStatus(l) ?? (r?.status || "no-price"),
         r?.selected ? (r.selected.costCents / 100).toFixed(2) : "",
         l.ticked ? "yes" : "no",
         l.pantry ? "yes" : "no"
@@ -1324,7 +1342,7 @@ body.high-contrast .tag{border-width:2px}
   }
   function addPriceModal(lineId) {
     const line = state.lines.find((l) => l.id === lineId);
-    if (!line || isPendingLine(line)) return;
+    if (!line || isHeldLine(line)) return;
     openModal("Add a price", `
     <p class="lede">${esc(line.name)} \xB7 ${qtyText(line)}. Enter the amount you actually paid \u2014 the app never guesses.</p>
     <label class="field"><span>Shop</span><select id="p-store">${STORES.map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join("")}</select></label>
@@ -1337,8 +1355,8 @@ body.high-contrast .tag{border-width:2px}
   function savePrice(lineId) {
     const line = state.lines.find((l) => l.id === lineId);
     const amount = Number($("#p-amount")?.value);
-    if (!line || isPendingLine(line)) {
-      toast("Recipe pending \u2014 no quantity or price entry yet");
+    if (!line || isHeldLine(line)) {
+      toast(`${heldStatus(line) || "Held item"} \u2014 no price entry yet`);
       return;
     }
     if (!Number.isFinite(amount) || amount <= 0) {

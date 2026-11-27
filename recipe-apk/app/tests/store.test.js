@@ -5,10 +5,13 @@ import {
   SHOPPING_LINES, RETIRED_SHOPPING_LINE_IDS, RETIRED_PRICE_MATCH_KEYS, RETIRED_STEP_IDS,
 } from '../js/data.js';
 
-test('fresh seed contains the two recipe-pending menu lines and no retired dessert lines', () => {
+test('fresh seed contains held menu lines and no retired dessert lines', () => {
   const state = freshState(SHOPPING_LINES);
   assert.ok(state.lines.some((l) => l.id === 'l40' && l.qty === null && /Smoked gammon/i.test(l.name)));
   assert.ok(state.lines.some((l) => l.id === 'l41' && l.qty === null && /Homemade ice-cream/i.test(l.name)));
+  assert.equal(state.lines.filter((l) => l.clearancePending === true).length, 5);
+  assert.ok(state.lines.some((l) => l.id === 'l42' && /coconut/i.test(l.name)));
+  assert.ok(state.lines.some((l) => l.id === 'l46' && /coconut/i.test(l.name)));
   for (const id of RETIRED_SHOPPING_LINE_IDS) assert.ok(!state.lines.some((l) => l.id === id));
 });
 
@@ -23,6 +26,7 @@ test('reconcileLines removes retired IDs but preserves other user state', () => 
   for (const id of RETIRED_SHOPPING_LINE_IDS) assert.ok(!lines.some((l) => l.id === id));
   assert.ok(lines.some((l) => l.id === 'l40' && l.qty === null));
   assert.ok(lines.some((l) => l.id === 'l41' && l.qty === null));
+  assert.equal(lines.filter((l) => l.clearancePending === true).length, 5);
 });
 
 test('migrateState removes retired prices and step durations', () => {
@@ -42,4 +46,5 @@ test('migrateState removes retired prices and step durations', () => {
   assert.equal(state.durations.s19, 20);
   assert.ok(RETIRED_STEP_IDS.includes('s18'));
   assert.ok(state.lines.every((l) => !RETIRED_SHOPPING_LINE_IDS.includes(l.id)));
+  assert.equal(state.lines.filter((l) => l.clearancePending === true).length, 5);
 });
