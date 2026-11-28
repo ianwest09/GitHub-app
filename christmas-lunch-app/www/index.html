@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#7a2e1e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="dark">
+<meta name="apple-mobile-web-app-title" content="Christmas Lunch">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Christmas Lunch for Ten</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+<!-- ==================== HOME ==================== -->
+<div id="view-home" class="view active">
+  <header class="app-header">
+    <h1>🎄 Christmas Lunch</h1>
+    <p class="subtitle">For 10 · Port Alfred</p>
+  </header>
+  <div class="nav-grid">
+    <div class="nav-card" onclick="showView('menu')">
+      <span class="nav-icon">🍽️</span>
+      <span class="nav-label">Menu</span>
+      <span class="nav-sub">18 dishes</span>
+    </div>
+    <div class="nav-card" onclick="showView('shopping')">
+      <span class="nav-icon">🛒</span>
+      <span class="nav-label">Shopping List</span>
+      <span class="nav-sub" id="shopping-count-nav">34 items</span>
+    </div>
+    <div class="nav-card" onclick="showView('recipes')">
+      <span class="nav-icon">📖</span>
+      <span class="nav-label">Recipes</span>
+      <span class="nav-sub">18 recipes</span>
+    </div>
+    <div class="nav-card" onclick="showView('costs')">
+      <span class="nav-icon">💰</span>
+      <span class="nav-label">Costs</span>
+      <span class="nav-sub">~R160/head</span>
+    </div>
+    <div class="nav-card" onclick="showView('schedule')">
+      <span class="nav-icon">⏰</span>
+      <span class="nav-label">Schedule</span>
+      <span class="nav-sub">Cooking timeline</span>
+    </div>
+    <div class="nav-card" onclick="showView('dietary')">
+      <span class="nav-icon">⚠️</span>
+      <span class="nav-label">Dietary</span>
+      <span class="nav-sub">Host A & guests</span>
+    </div>
+  </div>
+  <div class="home-footer">
+    <p>Alcohol-free table · 10 at the table · 4 courses</p>
+  </div>
+</div>
+
+<!-- ==================== MENU ==================== -->
+<div id="view-menu" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <h2>The Full Menu</h2>
+  </header>
+  <div id="menu-list" class="dish-list"></div>
+</div>
+
+<!-- ==================== DISH DETAIL ==================== -->
+<div id="view-dish" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('menu')">←</button>
+    <h2 id="dish-title">Dish</h2>
+  </header>
+  <div id="dish-detail" class="dish-detail"></div>
+</div>
+
+<!-- ==================== SHOPPING ==================== -->
+<div id="view-shopping" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <h2>Shopping List</h2>
+    <button class="add-btn" onclick="addShoppingItem()">+</button>
+  </header>
+  <div class="shopping-summary" id="shopping-summary"></div>
+  <div id="shopping-list" class="shopping-list"></div>
+</div>
+
+<!-- ==================== RECIPES ==================== -->
+<div id="view-recipes" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <h2>Recipes</h2>
+  </header>
+  <div id="recipe-list" class="dish-list"></div>
+</div>
+
+<!-- ==================== RECIPE DETAIL ==================== -->
+<div id="view-recipe" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('recipes')">←</button>
+    <h2 id="recipe-title">Recipe</h2>
+  </header>
+  <div id="recipe-detail" class="recipe-detail"></div>
+</div>
+
+<!-- ==================== COSTS ==================== -->
+<div id="view-costs" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <h2>Cost Breakdown</h2>
+  </header>
+  <div id="cost-summary" class="cost-summary"></div>
+  <div id="cost-table" class="cost-table"></div>
+</div>
+
+<!-- ==================== SCHEDULE ==================== -->
+<div id="view-schedule" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <h2>Cooking Schedule</h2>
+  </header>
+  <div id="schedule-list" class="schedule-list"></div>
+</div>
+
+<!-- ==================== DIETARY ==================== -->
+<div id="view-dietary" class="view">
+  <header class="view-header">
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <h2>Dietary Notes</h2>
+  </header>
+  <div id="dietary-content" class="dietary-content"></div>
+</div>
+
+</div><!-- #app -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

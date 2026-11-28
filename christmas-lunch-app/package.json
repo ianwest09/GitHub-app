@@ -1,0 +1,17 @@
+{
+  "name": "christmas-lunch-app",
+  "version": "1.0.0",
+  "description": "Christmas grazing lunch menu, shopping list, recipes and costs for 10 people in Port Alfred",
+  "scripts": {
+    "build:web": "echo 'PWA build — no compilation needed'",
+    "cap:sync": "npx cap sync android",
+    "cap:build": "npx cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0"
+  }
+}
