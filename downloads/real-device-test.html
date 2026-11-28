@@ -18,7 +18,12 @@
 </div>
 
 <div class="note">
-<strong>Use the newest successful run for branch <code>arena/2b1e7304-github-app</code></strong> (or the PR merge-ref run for the current menu-change PR). Confirm the run’s head SHA matches the recipe-supplied commit, and confirm its web tests and <code>assembleDebug</code> job succeeded. The workflow is <code>.github/workflows/build-android.yml</code>; it uploads one debug APK artifact plus <code>apk.sha256</code>.
+<strong>Current matching build — use this exact artifact.</strong> Head SHA <code>1ed0e06</code> (<code>1ed0e069d24171f076c989d9feed42d0f7a6f247</code>) on branch <code>arena/2b1e7304-github-app</code>.
+<ul>
+<li><strong>Push run <code>46062863941</code></strong> — <a href="https://github.com/ianwest09/GitHub-app/actions/runs/46062863941">open run</a> — both jobs SUCCESS. <strong>Debug APK artifact <code>15229940802</code></strong> (<code>christmas-lunch-debug-apk-1ed0e069d24171f076c989d9feed42d0f7a6f247</code>, 2,199,127 bytes). <em>This is the recommended install artifact — it is built from the same head SHA as the code in this workspace.</em></li>
+<li><strong>Pull-request run <code>46062867973</code></strong> — <a href="https://github.com/ianwest09/GitHub-app/actions/runs/46062867973">open run</a> — both jobs SUCCESS. Debug APK artifact <code>15229332463</code> (2,199,123 bytes). Equivalent build from the PR merge-ref; usable if the push-run artifact is unavailable.</li>
+</ul>
+The push run’s first <code>assembleDebug</code> attempt hit a transient CI failure; the failed job was rerun and succeeded. Confirm any newer run’s head SHA still matches <code>1ed0e06</code> before using it instead. The workflow is <code>.github/workflows/build-android.yml</code>; it uploads one debug APK artifact plus <code>apk.sha256</code>.
 </div>
 
 <h2>1. Get the current menu build APK</h2>
@@ -27,7 +32,14 @@
 <a class="stale" href="app-debug.apk">Open stale local APK (reference only)</a></p>
 
 <h3>Find and download with GitHub CLI (recommended)</h3>
-<pre># On your own machine, in a clone with the GitHub CLI authenticated:
+<pre># Fast path — current matching build (head 1ed0e06):
+gh run download 46062863941 \
+  -n christmas-lunch-debug-apk-1ed0e069d24171f076c989d9feed42d0f7a6f247 \
+  -D menu-change-apk
+cd menu-change-apk
+sha256sum -c apk.sha256
+
+# General path — on your own machine, in a clone with the GitHub CLI authenticated:
 gh run list --workflow build-android.yml \
   --branch arena/2b1e7304-github-app --limit 10
 
