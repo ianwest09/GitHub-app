@@ -100,6 +100,7 @@ function renderRun() {
 
   const stepRows = allSteps().map((s) => `
     <div class="step">
+      ${s.img ? `<img class="step-img" src="img/${esc(s.img)}" alt="${esc(s.title)}" loading="lazy">` : ''}
       <div class="t">${esc(s.title)}</div>
       <input type="number" min="1" max="720" step="5" data-dur="${esc(s.id)}"
              value="${s.durationMin ?? ''}" placeholder="Set time" aria-label="Duration in minutes for ${esc(s.title)}">
@@ -220,6 +221,7 @@ function renderCook() {
     <div class="rule"></div>
     <div class="cook-step">
       <div class="k">Step ${cookIndex + 1} of ${steps.length} · ${esc(s.dish)}</div>
+      ${s.img ? `<img class="cook-img" src="img/${esc(s.img)}" alt="${esc(s.title)}" loading="lazy">` : ''}
       <h3>${esc(s.title)}</h3>
       <div class="dish">${esc(s.resource)} · ${s.handsOn ? 'hands-on' : 'unattended'} · ${s.durationMin ? `${s.durationMin} min` : 'Set time in the Run sheet tab'}
         ${s.note ? ` · ${esc(s.note)}` : ''}</div>

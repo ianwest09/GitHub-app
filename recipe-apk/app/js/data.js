@@ -125,34 +125,34 @@ export const SHOPPING_LINES = [
 // Steps: durationMin is null unless MENU.md states it explicitly. "Set time" is a feature, not a guess.
 export const DISHES = [
   { id: 'd1', title: 'On arrival', dietary: ['NO_SUGAR', 'NO_YEAST', 'NO_WHEAT', 'NO_DAIRY', 'NO_VINEGAR', 'ALCOHOL_FREE'], steps: [
-    { id: 's1', title: 'Lemon–herb white bean dip', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [] },
-    { id: 's2', title: 'Finely chop roasted almonds & pumpkin seeds', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [] },
+    { id: 's1', title: 'Lemon–herb white bean dip', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [], img: 'd1.jpg' },
+    { id: 's2', title: 'Finely chop roasted almonds & pumpkin seeds', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [], img: 'd2.jpg' },
     { id: 's3', title: 'Chill the unsweetened rooibos & drinks', resource: 'FRIDGE', durationMin: null, handsOn: false, deps: [] },
   ]},
   { id: 'd2', title: 'First course — chilled salad', dietary: ['NO_SUGAR', 'NO_YEAST', 'NO_WHEAT', 'NO_DAIRY', 'NO_VINEGAR', 'ALCOHOL_FREE'], steps: [
-    { id: 's4', title: 'Shred fennel, slice cucumber & radish thin', resource: 'COUNTER', durationMin: null, handsOn: true, deps: ['s1'] },
-    { id: 's5', title: 'Dress with lemon juice & olive oil', resource: 'COUNTER', durationMin: null, handsOn: true, deps: ['s4'] },
+    { id: 's4', title: 'Shred fennel, slice cucumber & radish thin', resource: 'COUNTER', durationMin: null, handsOn: true, deps: ['s1'], img: 'd3.jpg' },
+    { id: 's5', title: 'Dress with lemon juice & olive oil', resource: 'COUNTER', durationMin: null, handsOn: true, deps: ['s4'], img: 'd3.jpg' },
   ]},
   { id: 'd3', title: 'Roast chicken & gravy', dietary: ['NO_SUGAR', 'NO_YEAST', 'NO_WHEAT', 'NO_DAIRY', 'NO_VINEGAR', 'ALCOHOL_FREE', 'CHICKEN_ONLY'], steps: [
     { id: 's6', title: 'Preheat oven to 200 °C', resource: 'OVEN', durationMin: null, handsOn: false, deps: [] },
-    { id: 's7', title: 'Roast chicken (top shelf) & potatoes (below)', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s6'] },
-    { id: 's8', title: 'Rest the chicken', resource: 'COUNTER', durationMin: null, handsOn: false, deps: ['s7'] },
-    { id: 's9', title: 'Lemon & parsley gravy with cornflour slurry', resource: 'STOVETOP', durationMin: null, handsOn: true, deps: ['s7'] },
+    { id: 's7', title: 'Roast chicken (top shelf) & potatoes (below)', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s6'], img: 'd4.jpg' },
+    { id: 's8', title: 'Rest the chicken', resource: 'COUNTER', durationMin: null, handsOn: false, deps: ['s7'], img: 'd4.jpg' },
+    { id: 's9', title: 'Lemon & parsley gravy with cornflour slurry', resource: 'STOVETOP', durationMin: null, handsOn: true, deps: ['s7'], img: 'd5.jpg' },
   ]},
   { id: 'd4', title: 'Sides', dietary: ['NO_SUGAR', 'NO_YEAST', 'NO_WHEAT', 'NO_DAIRY', 'NO_VINEGAR', 'ALCOHOL_FREE'], steps: [
-    { id: 's10', title: 'Brown rice & lentil pilaf', resource: 'STOVETOP', durationMin: null, handsOn: true, deps: [] },
-    { id: 's11', title: 'Silky cauliflower purée', resource: 'STOVETOP', durationMin: null, handsOn: true, deps: [] },
-    { id: 's12', title: 'Roast green beans, carrots & courgettes (batch 2)', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'] },
-    { id: 's13', title: 'Mushroom, leek & celery stuffing bake (batch 2)', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'] },
-    { id: 's14', title: 'Tomato, roast pepper & basil relish', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [] },
+    { id: 's10', title: 'Brown rice & lentil pilaf', resource: 'STOVETOP', durationMin: null, handsOn: true, deps: [], img: 'd7.jpg' },
+    { id: 's11', title: 'Silky cauliflower purée', resource: 'STOVETOP', durationMin: null, handsOn: true, deps: [], img: 'd8.jpg' },
+    { id: 's12', title: 'Roast green beans, carrots & courgettes (batch 2)', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'], img: 'd9.jpg' },
+    { id: 's13', title: 'Mushroom, leek & celery stuffing bake (batch 2)', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'], img: 'd10.jpg' },
+    { id: 's14', title: 'Tomato, roast pepper & basil relish', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [], img: 'd11.jpg' },
   ]},
   { id: 'd5', title: 'Tongue — for three (separate platter)', dietary: ['TONGUE_FOR_THREE', 'RED_MEAT_OK', 'ALCOHOL_FREE'], steps: [
-    { id: 's15', title: 'Slow-poach the ox tongue (no wine, no vinegar brine)', resource: 'STOVETOP', durationMin: 240, handsOn: false, deps: [], note: 'MENU.md: "poached for about 4 hours" — explicit.' },
-    { id: 's16', title: 'Peel and slice paper-thin on its own board', resource: 'COUNTER', durationMin: null, handsOn: true, deps: ['s15'] },
-    { id: 's17', title: 'Parsley, lemon & olive oil salsa', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [] },
+    { id: 's15', title: 'Slow-poach the ox tongue (no wine, no vinegar brine)', resource: 'STOVETOP', durationMin: 240, handsOn: false, deps: [], note: 'MENU.md: "poached for about 4 hours" — explicit.', img: 'd12.jpg' },
+    { id: 's16', title: 'Peel and slice paper-thin on its own board', resource: 'COUNTER', durationMin: null, handsOn: true, deps: ['s15'], img: 'd12.jpg' },
+    { id: 's17', title: 'Parsley, lemon & olive oil salsa', resource: 'COUNTER', durationMin: null, handsOn: true, deps: [], img: 'd13.jpg' },
   ]},
   { id: 'd6', title: 'Dessert — cinnamon-baked pears (shared-safe)', dietary: ['NO_SUGAR', 'NO_YEAST', 'NO_WHEAT', 'NO_DAIRY', 'NO_VINEGAR', 'ALCOHOL_FREE'], steps: [
-    { id: 's19', title: 'Bake pears with cinnamon until very soft', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'], note: 'Documented shared-safe dessert; ice-cream bombe recipe is supplied but dietary-clearance-pending; coconut rice pudding is Host A clearance-pending.' },
+    { id: 's19', title: 'Bake pears with cinnamon until very soft', resource: 'OVEN', durationMin: null, handsOn: false, deps: ['s7'], note: 'Documented shared-safe dessert; ice-cream bombe recipe is supplied but dietary-clearance-pending; coconut rice pudding is Host A clearance-pending.', img: 'd16.jpg' },
   ]},
 ];
 
