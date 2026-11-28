@@ -61,7 +61,7 @@ assert.match(view(), /Set time/);
 console.log('✓ run sheet renders');
 
 for (const [t, needle] of [
-  ['cook', 'Cook mode'], ['shop', 'Shopping list'], ['agenda', 'Agenda'],
+  ['cook', 'Cook mode'], ['recipes', 'Recipes'], ['shop', 'Shopping list'], ['agenda', 'Agenda'],
   ['cost', 'Cost &amp; cheaper route'], ['more', 'Dietary guardrails'], ['run', 'Run sheet'],
 ]) {
   click(`#tabs button[data-tab="${t}"]`);
@@ -69,6 +69,15 @@ for (const [t, needle] of [
   assert.match(view(), new RegExp(needle), `${t} tab missing heading`);
   console.log(`✓ ${t} tab renders`);
 }
+
+// Recipes tab has all 18 dishes with prep/cook times and ingredient lists.
+click('#tabs button[data-tab="recipes"]');
+assert.match(view(), /Lemon.*herb white bean dip/);
+assert.match(view(), /Prep/);
+assert.match(view(), /Cook/);
+assert.match(view(), /Serves/);
+assert.match(view(), /roast chicken/i);
+console.log('✓ recipes tab renders all dishes with prep/cook times');
 
 // Held menu items are explicit; supplied recipes are not presented as cleared or shared.
 click('#tabs button[data-tab="run"]');

@@ -249,6 +249,66 @@ function renderCook() {
   requestWakeLock();
 }
 
+/* ---------------- RECIPES ---------------- */
+function renderRecipes() {
+  const cards = D.RECIPES.map((r) => {
+    const held = r.held ? '<span class="tag" style="background:#f8ecee;color:#8d3242;border-color:#d4b3b8">Held — clearance pending</span> ' : '';
+    const prepLabel = r.prepMin != null ? `${r.prepMin} min` : '—';
+    const cookLabel = r.cookMin != null ? (r.cookMin === 0 ? 'no cook' : `${r.cookMin} min`) : '—';
+    const servesLabel = r.serves > 0 ? `${r.serves}` : 'TBC';
+    return `
+    <div class="recipe-card" data-recipe="${esc(r.id)}">
+      ${r.img ? `<img class="recipe-img" src="img/${esc(r.img)}" alt="${esc(r.name)}" loading="lazy">` : ''}
+      <div class="recipe-body">
+        <div class="recipe-course">${esc(r.course)}</div>
+        <h3>${esc(r.name)}</h3>
+        <div class="recipe-times">
+          <span class="rt"><b>Prep</b> ${prepLabel}</span>
+          <span class="rt"><b>Cook</b> ${cookLabel}</span>
+          <span class="rt"><b>Serves</b> ${servesLabel}</span>
+        </div>
+        ${held}
+        <button class="btn primary" data-act="recipe-open" data-recipe="${esc(r.id)}" style="margin-top:8px">View full recipe →</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  $('#view').innerHTML = `
+    <h2 class="sec">Recipes</h2>
+    <p class="lede">All 18 dishes with full ingredient lists, method, prep time and cooking time. Tap any recipe to see the details.</p>
+    <div class="rule"></div>
+    <div class="banner info"><strong>18 recipes</strong> covering the full Christmas grazing lunch — dips &amp; nibbles, salad, mains, sides, separate platters and desserts. Times shown are for 10 people unless noted otherwise. Held items need dietary clearance before cooking.</div>
+    <div class="recipe-grid">${cards}</div>`;
+}
+
+function openRecipe(id) {
+  const r = D.RECIPES.find((x) => x.id === id);
+  if (!r) return;
+  const held = r.held ? `<div class="banner warn"><strong>Held — do not cook yet.</strong> ${esc(r.notes)}</div>` : '';
+  const prepLabel = r.prepMin != null ? `${r.prepMin} min` : 'Not specified';
+  const cookLabel = r.cookMin != null ? (r.cookMin === 0 ? 'No cooking required' : `${r.cookMin} min`) : 'Not specified';
+  const servesLabel = r.serves > 0 ? `${r.serves} people` : 'To be confirmed';
+  const totalTime = (r.prepMin ?? 0) + (r.cookMin ?? 0);
+  const totalLabel = totalTime > 0 ? `${totalTime} min total` : '—';
+
+  openModal(r.name, `
+    ${r.img ? `<img class="recipe-img-modal" src="img/${esc(r.img)}" alt="${esc(r.name)}">` : ''}
+    <div class="recipe-course">${esc(r.course)}</div>
+    <div class="recipe-times-modal">
+      <div><b>Prep time</b><br>${prepLabel}</div>
+      <div><b>Cook time</b><br>${cookLabel}</div>
+      <div><b>Total</b><br>${totalLabel}</div>
+      <div><b>Serves</b><br>${servesLabel}</div>
+    </div>
+    <h3 style="margin:14px 0 8px">Ingredients</h3>
+    <ul class="recipe-ing">${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
+    <h3 style="margin:14px 0 8px">Method</h3>
+    <ol class="recipe-method">${r.method.map((m) => `<li>${esc(m)}</li>`).join('')}</ol>
+    ${r.notes ? `<div class="banner info" style="margin-top:12px"><strong>Notes</strong> ${esc(r.notes)}</div>` : ''}
+    ${held}
+  `);
+}
+
 /* ---------------- SHOPPING ---------------- */
 function renderShop() {
   const b = basket();
@@ -680,7 +740,7 @@ function savePrice(lineId) {
 function render() {
   applyTheme();
   renderHeader();
-  ({ run: renderRun, cook: renderCook, shop: renderShop, agenda: renderAgenda, cost: renderCost, more: renderMore })[tab]();
+  ({ run: renderRun, cook: renderCook, recipes: renderRecipes, shop: renderShop, agenda: renderAgenda, cost: renderCost, more: renderMore })[tab]();
   $$('#tabs button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
@@ -702,6 +762,7 @@ document.addEventListener('click', (e) => {
   const { act, id } = t.dataset;
   switch (act) {
     case 'close-modal': closeModal(); break;
+    case 'recipe-open': openRecipe(t.dataset.recipe); break;
     case 'add-price': addPriceModal(id); break;
     case 'save-price': savePrice(id); break;
     case 'clear-durations': state.durations = {}; S.save(state); render(); toast('Durations cleared'); break;

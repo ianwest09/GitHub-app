@@ -183,3 +183,277 @@ export const DIETARY_FLAGS = {
 export const STORE_CLOSURES = [
   { store: 'spar', date: '2026-12-25', label: 'Spar Port Alfred is closed on Christmas Day' },
 ];
+
+// Full recipes — ingredients, method, prep and cook times.
+// Times are in minutes; null means the recipe doesn't specify or it's a no-cook dish.
+export const RECIPES = [
+  {
+    id: 'r1', name: 'Lemon–herb white bean dip', course: 'On arrival', img: 'd1.jpg',
+    serves: 10, prepMin: 15, cookMin: 0,
+    ingredients: [
+      '500 g cooked white beans (2 tins, drained & rinsed)', '2 lemons (zest + juice)',
+      '2 garlic cloves', '~80 ml extra-virgin olive oil',
+      'Small bunch flat-leaf parsley', 'Sea salt & black pepper',
+      'Soft vegetable batons (cucumber, carrot, fennel), lettuce cups',
+      'Plain rice cakes / 100%-rice crackers (label-checked)',
+    ],
+    method: [
+      'Blanch the garlic briefly if a raw bite is unwanted; keep the flavour gentle for both hosts.',
+      'Blitz beans, garlic, lemon zest and juice, and most of the olive oil to a coarse-smooth dip. Add cold water to loosen if needed.',
+      'Fold through chopped parsley; season lightly with salt and pepper. Taste and adjust lemon.',
+      'Spoon into a bowl; finish with a drizzle of olive oil and parsley.',
+      'Arrange batons and lettuce cups around it; keep rice crackers on the side.',
+    ],
+    notes: 'No tahini needed. No wheat, yeast or sugar in the crackers — check labels.',
+  },
+  {
+    id: 'r2', name: 'Rosemary roasted almonds & pumpkin seeds', course: 'On arrival', img: 'd2.jpg',
+    serves: 10, prepMin: 5, cookMin: 10,
+    ingredients: [
+      '200 g almonds', '150 g pumpkin seeds', '1 sprig rosemary (needles removed)',
+      '1 tbsp olive oil', 'Pinch of sea salt',
+    ],
+    method: [
+      'Heat oven to 180 °C. Toss almonds and pumpkin seeds with olive oil, chopped rosemary and salt.',
+      'Spread on a tray and roast 8–10 min until fragrant, shaking once — do not let them char.',
+      'Cool, then chop or grind finely so both hosts can chew them easily.',
+    ],
+    notes: 'Swap for soft avocado and cucumber cups if preferred.',
+  },
+  {
+    id: 'r3', name: 'Chilled fennel, cucumber & avocado salad', course: 'First course', img: 'd3.jpg',
+    serves: 10, prepMin: 25, cookMin: 0,
+    ingredients: [
+      '2 bulbs fennel', '3 cucumbers', '3 avocados', '1 bunch radish',
+      '2 heads baby leaves', '1 small bunch dill or parsley',
+      '100 g sunflower seeds (toasted, finely ground)', '2 lemons (juice)',
+      'Extra-virgin olive oil', 'Black pepper & sea salt',
+    ],
+    method: [
+      'Finely shred the fennel; slice the cucumber paper-thin; slice the radish thin; dice the avocado.',
+      'Toast sunflower seeds in a dry pan, then grind finely.',
+      'Dress the leaves with lemon juice and olive oil; season. Fold in fennel, cucumber, radish and avocado gently.',
+      'Finish with dill/parsley and ground sunflower seeds. Keep chilled until serving.',
+    ],
+    notes: 'No vinegar, mustard or honey.',
+  },
+  {
+    id: 'r4', name: 'Rosemary, lemon & garlic roast chicken', course: 'Main', img: 'd4.jpg',
+    serves: 10, prepMin: 15, cookMin: 40,
+    ingredients: [
+      '10 boneless chicken thighs or supremes (~180 g each = ~1.8 kg)',
+      '2 lemons (1 juiced, 1 sliced)', '6 garlic cloves (crushed)',
+      '3–4 sprigs rosemary (chopped)', '~60 ml olive oil',
+      'Sea salt & black pepper',
+    ],
+    method: [
+      'Heat oven to 200 °C. Combine olive oil, lemon juice, crushed garlic, rosemary, salt and pepper.',
+      'Toss the boneless chicken in the marinade; rest 20–30 min if time allows.',
+      'Arrange in a roasting tray (top shelf); tuck lemon slices and rosemary sprigs between pieces.',
+      'Roast ~35–40 min until cooked through and juices run clear — no charred edges (cover with foil if browning too fast).',
+      'Rest 10 min before slicing. Reserve pan juices for the gravy.',
+    ],
+    notes: 'No butter, no sugar glaze, no wine, no stock cubes. Verified cost: R143.98 at PnP.',
+  },
+  {
+    id: 'r5', name: 'Lemon & parsley pan gravy', course: 'Main', img: 'd5.jpg',
+    serves: 10, prepMin: 5, cookMin: 10,
+    ingredients: [
+      'Pan juices from the chicken', '~400 ml homemade chicken stock',
+      '1 lemon (juice + zest)', 'Small bunch parsley (chopped)',
+      '1–2 tbsp cornflour (Maizena)', 'Cold water',
+    ],
+    method: [
+      'Drain excess fat from the chicken roasting tray; keep the juices and browned bits.',
+      'Set the tray on the hob, add hot homemade stock and scrape up the bits.',
+      'Simmer and reduce by a third; add lemon juice and zest.',
+      'Slake cornflour with cold water; whisk in slowly until thickened to coating consistency.',
+      'Finish with chopped parsley; pour into a labelled jug.',
+    ],
+    notes: 'No flour, yeast extract, wine or cream.',
+  },
+  {
+    id: 'r6', name: 'Olive oil & rosemary roast baby potatoes', course: 'Main', img: 'd6.jpg',
+    serves: 10, prepMin: 10, cookMin: 35,
+    ingredients: [
+      '1.5 kg baby potatoes', '3 sprigs rosemary', '~50 ml olive oil',
+      'Sea salt & black pepper',
+    ],
+    method: [
+      'Heat oven to 200 °C. Halve or quarter the baby potatoes if large; parboil 8 min, drain, shake to roughen edges.',
+      'Toss with olive oil, chopped rosemary, salt and pepper.',
+      'Roast on the lower shelf ~30–35 min, turning once, until crisp outside and soft inside.',
+    ],
+    notes: 'No butter, no duck fat. Verified cost: R26.25 (PnP bundle) / R29.99 (Woolworths).',
+  },
+  {
+    id: 'r7', name: 'Brown rice & lentil pilaf', course: 'Main', img: 'd7.jpg',
+    serves: 10, prepMin: 10, cookMin: 35,
+    ingredients: [
+      '400 g brown rice', '200 g brown or red lentils', '1 onion (finely chopped)',
+      '2 garlic cloves', '~500 ml homemade vegetable stock', '2 spring onions',
+      'Lemon zest', 'Small bunch parsley', 'Olive oil',
+    ],
+    method: [
+      'Rinse rice and lentils. Sweat the onion and garlic in olive oil until soft (no browning).',
+      'Add rice and lentils; stir to coat. Pour in hot homemade stock (no cubes).',
+      'Cover and simmer until liquid is absorbed and grains are tender (~30–35 min).',
+      'Fluff; fold through chopped spring onion, lemon zest and parsley. Reheat gently on the day.',
+    ],
+    notes: 'Quinoa 300 g + wild rice 200 g if available.',
+  },
+  {
+    id: 'r8', name: 'Silky cauliflower purée', course: 'Main', img: 'd8.jpg',
+    serves: 10, prepMin: 10, cookMin: 20,
+    ingredients: [
+      '2 large cauliflower heads', '4 garlic cloves', '~40 ml olive oil',
+      'Pinch of nutmeg', 'Sea salt',
+    ],
+    method: [
+      'Cut cauliflower into florets; simmer in lightly salted water (or steam) with the garlic until very tender.',
+      'Drain well; transfer to a blender with the olive oil and a pinch of nutmeg.',
+      'Blend until completely smooth and silky; season lightly. Reheat gently; do not let it catch.',
+    ],
+    notes: 'No cream, butter or cheese.',
+  },
+  {
+    id: 'r9', name: 'Roasted green beans, baby carrots & courgettes', course: 'Main', img: 'd9.jpg',
+    serves: 10, prepMin: 10, cookMin: 25,
+    ingredients: [
+      '400 g green beans', '400 g baby carrots', '400 g courgettes',
+      '3 sprigs thyme', '1 lemon (zest)', 'Olive oil', 'Sea salt & black pepper',
+    ],
+    method: [
+      'Heat oven to 200 °C. Trim beans; halve carrots lengthways if large; slice courgettes on the diagonal.',
+      'Toss all with olive oil, thyme, salt and pepper.',
+      'Roast ~20–25 min until tender (not al dente — soft for both hosts). Finish with lemon zest.',
+    ],
+    notes: 'Cook until tender, not al dente.',
+  },
+  {
+    id: 'r10', name: 'Mushroom, leek & celery "stuffing" bake', course: 'Main', img: 'd10.jpg',
+    serves: 10, prepMin: 15, cookMin: 25,
+    ingredients: [
+      '400 g mushrooms', '3 leeks', '1 head celery', '1 onion', '3 garlic cloves',
+      '~150 g cooked brown rice (from the pilaf batch)', 'Small bunch parsley',
+      'Olive oil', 'Sea salt & black pepper',
+    ],
+    method: [
+      'Finely chop mushrooms, leeks, celery, onion and garlic.',
+      'Sweat in olive oil until soft and any mushroom liquid has evaporated.',
+      'Fold in cooked brown rice and chopped parsley; season.',
+      'Press into a baking dish; bake at 200 °C ~25 min until hot through with a light crust on top.',
+    ],
+    notes: 'No bread, yeast, sausage, bacon or suet.',
+  },
+  {
+    id: 'r11', name: 'Fresh tomato, roast pepper & basil relish', course: 'Main', img: 'd11.jpg',
+    serves: 10, prepMin: 20, cookMin: 30,
+    ingredients: [
+      '600 g tomatoes', '3 red peppers', '1 bunch basil', '1 onion',
+      '2 garlic cloves', 'Olive oil', 'Sea salt & black pepper',
+    ],
+    method: [
+      'Roast the red peppers at 200 °C until skins blister; steam in a covered bowl, peel, and slice.',
+      'Blanch, peel and dice the tomatoes. Sweat onion and garlic in olive oil until soft.',
+      'Add tomatoes; simmer gently ~20 min until jammy but unsweetened. Fold in roasted peppers.',
+      'Tear in basil; season. Serve at room temperature as the sugar-free, vinegar-free stand-in for cranberry sauce.',
+    ],
+    notes: 'No sugar, no vinegar.',
+  },
+  {
+    id: 'r12', name: 'Slow-poached beef/ox tongue', course: 'Separate platter (for 3)', img: 'd12.jpg',
+    serves: 3, prepMin: 10, cookMin: 240,
+    ingredients: [
+      '1 large beef/ox tongue (~1.5 kg)', '2 bay leaves', '1 tsp peppercorns',
+      '1 onion', '2 celery sticks', 'Water',
+    ],
+    method: [
+      'Order from the butcher a week ahead. Place tongue in a deep pot with bay, peppercorns, onion and celery; cover with water.',
+      'Bring to a gentle simmer; poach about 4 hours until tender (no wine, no vinegar brine).',
+      'Cool slightly; peel off the outer skin. Refrigerate in its own sealed container overnight.',
+      'On the day, slice paper-thin on its own board with its own knife; warm gently in its own pan.',
+    ],
+    notes: 'Own platter, own tongs — never touches shared dishes or shared spoons. Separate from chicken-only guest.',
+  },
+  {
+    id: 'r13', name: 'Parsley, lemon & olive oil salsa', course: 'Separate platter (for 3)', img: 'd13.jpg',
+    serves: 3, prepMin: 5, cookMin: 0,
+    ingredients: [
+      '1 small bunch parsley', '1 lemon (zest + juice)', '1 garlic clove',
+      'Olive oil', 'Sea salt',
+    ],
+    method: [
+      'Finely chop parsley and garlic; combine with lemon zest and juice and enough olive oil to make a loose salsa.',
+      'Season. Travels with the tongue platter only.',
+    ],
+    notes: 'No vinegar, no mustard, no brined capers.',
+  },
+  {
+    id: 'r14', name: 'Smoked gammon', course: 'Separate platter', img: 'd14.jpg',
+    serves: 0, prepMin: null, cookMin: null,
+    ingredients: ['Quantity / source / preparation / labels to be supplied'],
+    method: ['No recipe until source, quantity and labels are confirmed. When supplied, it will be prepared and sliced last, on its own board with its own knife and tongs, and kept on its own labelled platter apart from the shared dishes and the tongue platter.'],
+    notes: 'Cured/processed pork — not for Host A or Guest B. Wash hands and change utensils before returning to shared dishes.',
+    held: true,
+  },
+  {
+    id: 'r15', name: 'Cinnamon-baked pears with toasted pecans', course: 'Dessert (shared-safe)', img: 'd16.jpg',
+    serves: 10, prepMin: 10, cookMin: 35,
+    ingredients: [
+      '10 small pears', '1 tsp ground cinnamon', '150 g pecans (toasted, finely chopped)',
+      'Water or a little rooibos to moisten the dish',
+    ],
+    method: [
+      'Heat oven to 180 °C. Halve and core the pears; leave stems on if you like.',
+      'Place cut-side up in a baking dish; dust with cinnamon; add a splash of water or rooibos.',
+      'Cover with foil; bake ~30–35 min until very soft. Uncover for the last 5–10 min for colour.',
+      'Toast pecans in a dry pan; chop finely for both hosts. Scatter over the pears before serving.',
+    ],
+    notes: 'Sweetened only by the fruit itself — no sugar, honey or syrup. Documented shared-safe dessert.',
+  },
+  {
+    id: 'r16', name: 'Homemade ice-cream bombe', course: 'Dessert (clearance pending)', img: 'd15.jpg',
+    serves: 0, prepMin: 20, cookMin: 0,
+    ingredients: [
+      '1 pint (≈473 ml) heavy whipping cream', '1 (14 oz / ≈397 g) can sweetened condensed milk',
+      'Fruit mince + chopped pecans + glacé cherries (quantities pending)',
+    ],
+    method: [
+      'Beat the cream in a chilled glass or metal bowl until soft peaks.',
+      'Add the condensed milk; beat until thick and well combined.',
+      'Line a medium round glass or stainless-steel bowl with two overlapping layers of cling wrap, leaving overhang.',
+      'Fold in fruit mince + chopped pecans + glacé cherries for the classic speckled pudding look.',
+      'Pack firmly, smooth the top, cover tightly, and freeze overnight.',
+    ],
+    notes: 'Dietary clearance pending — cream and condensed milk are dairy and contain sugar. Do not serve until Host A and dietitian clear. Crowd batch count not supplied.',
+    held: true,
+  },
+  {
+    id: 'r17', name: 'Coconut rice pudding', course: 'Dessert (clearance pending)', img: 'd17.jpg',
+    serves: 0, prepMin: 10, cookMin: 25,
+    ingredients: [
+      '2 × 400 ml coconut milk', '150 g dessert rice', '1 vanilla pod (not extract)',
+      '500 g berries', '100 g toasted coconut',
+    ],
+    method: [
+      'Simmer the dessert rice in coconut milk with cinnamon and the vanilla pod until soft and creamy.',
+      'Layer with berries and toasted coconut.',
+    ],
+    notes: 'Host A clearance pending — review only, not cleared. Previous description: soft, no added sugar, dairy, wheat or gelatine. Do not serve until cleared.',
+    held: true,
+  },
+  {
+    id: 'r18', name: 'Alcohol-free Christmas pudding + custard', course: 'Extras sideboard', img: 'd18.jpg',
+    serves: 9, prepMin: 5, cookMin: 15,
+    ingredients: [
+      '1 alcohol-free Christmas pudding (PnP Fruit Cake Alcohol Free 350 g, R59.99)',
+      'Custard to serve',
+    ],
+    method: [
+      'Confirm the label for alcohol. Warm gently and serve with custard.',
+      'Keep on the sideboard at the far end. Contains sugar/wheat/dairy — not for Host A.',
+    ],
+    notes: 'If homemade: replace all alcohol with strong rooibos or orange juice, use butter (not suet).',
+  },
+];
