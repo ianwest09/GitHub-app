@@ -61,7 +61,7 @@ assert.match(view(), /Set time/);
 console.log('✓ run sheet renders');
 
 for (const [t, needle] of [
-  ['cook', 'Cook mode'], ['shop', 'Shopping list'], ['agenda', 'Agenda'],
+  ['cook', 'Cook mode'], ['recipes', 'Recipes'], ['shop', 'Shopping list'], ['agenda', 'Agenda'],
   ['cost', 'Cost &amp; cheaper route'], ['more', 'Dietary guardrails'], ['run', 'Run sheet'],
 ]) {
   click(`#tabs button[data-tab="${t}"]`);
@@ -70,10 +70,41 @@ for (const [t, needle] of [
   console.log(`✓ ${t} tab renders`);
 }
 
+// Recipes tab has all 18 dishes with prep/cook times and ingredient lists.
+click('#tabs button[data-tab="recipes"]');
+assert.match(view(), /Lemon.*herb white bean dip/);
+assert.match(view(), /Prep/);
+assert.match(view(), /Cook/);
+assert.match(view(), /Serves/);
+assert.match(view(), /roast chicken/i);
+console.log('✓ recipes tab renders all dishes with prep/cook times');
+
+// Held menu items are explicit; supplied recipes are not presented as cleared or shared.
+click('#tabs button[data-tab="run"]');
+assert.match(view(), /Smoked gammon/);
+assert.match(view(), /Homemade ice-cream/);
+assert.match(view(), /Coconut rice pudding/);
+assert.match(view(), /Host A clearance pending/);
+assert.match(view(), /Recipe supplied/i);
+assert.match(view(), /Dietary clearance pending/i);
+assert.match(view(), /Preparation pending/i);
+assert.match(view(), /not a safety claim/i);
+assert.match(view(), /not for Host A or Guest B/);
+assert.doesNotMatch(view(), /Coconut rice pots|Rice \(for coconut pots\)|portion coconut|recipe to be supplied|recipe[ -]pending/i);
+click('#tabs button[data-tab="shop"]');
+assert.match(view(), /Dietary clearance pending/i);
+assert.match(view(), /Preparation pending/i);
+assert.match(view(), /Host A clearance pending/i);
+assert.match(view(), /clearance pending/i);
+assert.match(view(), /no price entry/i);
+console.log('✓ gammon / supplied ice-cream bombe / coconut-rice held items render without safety claims');
+
 // Accessibility + optional settings are present and persist.
 click('#tabs button[data-tab="more"]');
 assert.match(view(), /Text size/);
 assert.match(view(), /High-contrast/);
+assert.match(view(), /Three menu items are not cleared/);
+assert.match(view(), /Menu options \/ placeholders/);
 assert.match(view(), /MIUI reliability/);
 assert.match(view(), /Optional LAN sync/);
 change('[data-set="textScale"]', 'value', '125');

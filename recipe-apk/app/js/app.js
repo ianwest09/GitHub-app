@@ -44,7 +44,20 @@ function openModal(title, html, onMount) {
 }
 function closeModal() { $('#modal-back').hidden = true; }
 
-const scaledQty = (l) => E.scaleQty(l.qty, 10, state.guestCount);
+const isPendingLine = (l) => l.qty == null;
+const heldStatus = (l) => l.dietClearancePending ? 'Dietary clearance pending'
+  : l.clearancePending ? 'Host A clearance pending'
+  : l.preparationPending ? 'Preparation pending'
+  : isPendingLine(l) ? 'recipe pending' : null;
+const isHeldLine = (l) => heldStatus(l) !== null;
+const scaledQty = (l) => isPendingLine(l) ? null : E.scaleQty(l.qty, 10, state.guestCount);
+const qtyText = (l) => {
+  const status = heldStatus(l);
+  if (isPendingLine(l)) return status || 'recipe pending';
+  return `${scaledQty(l)} ${esc(l.unit)}${l.clearancePending ? ' · clearance pending' : ''}${l.dietClearancePending ? ' · dietary clearance pending' : ''}`;
+};
+const qtyValue = (l) => isPendingLine(l) ? (heldStatus(l) || 'recipe pending') : scaledQty(l);
+const placeholdersHtml = () => D.MENU_PLACEHOLDERS.map((x) => `<li><strong>${esc(x.title)}</strong><span>${x.status ? `<em>${esc(x.status)}</em> — ` : ''}${esc(x.detail)}</span></li>`).join('');
 // Basket lines carry the scaled quantity so costs follow the portion count.
 const basketLines = () => state.lines.map((l) => ({ ...l, qty: scaledQty(l) }));
 function ctx() {
@@ -87,6 +100,7 @@ function renderRun() {
 
   const stepRows = allSteps().map((s) => `
     <div class="step">
+      ${s.img ? `<img class="step-img" src="img/${esc(s.img)}" alt="${esc(s.title)}" loading="lazy">` : ''}
       <div class="t">${esc(s.title)}</div>
       <input type="number" min="1" max="720" step="5" data-dur="${esc(s.id)}"
              value="${s.durationMin ?? ''}" placeholder="Set time" aria-label="Duration in minutes for ${esc(s.title)}">
@@ -107,8 +121,12 @@ function renderRun() {
     <div class="rule"></div>
 
     <div class="banner info"><strong>The documented 09:30 → 13:00 run sheet</strong>
-      One cook, one oven in two batches, alcohol-free, tongue for three on its own platter.</div>
+      One cook, one oven in two batches, alcohol-free, tongue for three and smoked gammon on separate platters; the ice-cream bombe recipe is supplied but dietary-clearance-pending, and coconut rice pudding is clearance-pending.</div>
     <div class="card"><ul class="tl">${runSheet}</ul></div>
+
+    <div class="card"><h3>Menu options / placeholders — not cleared yet</h3>
+      <p class="lede">Held items are not to be bought, prepared or served until preparation details, labels, crowd batch count, mix-in quantities or Host A/dietitian clearance are supplied. The ice-cream recipe is supplied where noted, but no numeric minutes for "overnight", crowd quantities, prices or dietary claims are invented. Coconut rice pudding restores the previous ingredient list for review only.</p>
+      <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card">
       <h3>Computed schedule (serve 13:00)</h3>
@@ -203,6 +221,7 @@ function renderCook() {
     <div class="rule"></div>
     <div class="cook-step">
       <div class="k">Step ${cookIndex + 1} of ${steps.length} · ${esc(s.dish)}</div>
+      ${s.img ? `<img class="cook-img" src="img/${esc(s.img)}" alt="${esc(s.title)}" loading="lazy">` : ''}
       <h3>${esc(s.title)}</h3>
       <div class="dish">${esc(s.resource)} · ${s.handsOn ? 'hands-on' : 'unattended'} · ${s.durationMin ? `${s.durationMin} min` : 'Set time in the Run sheet tab'}
         ${s.note ? ` · ${esc(s.note)}` : ''}</div>
@@ -223,11 +242,71 @@ function renderCook() {
       <div class="timers" id="timers-box"></div>
     </div>
     <div class="banner info"><strong>Dietary guardrails</strong>
-      Alcohol-free table for all ten. Tongue has its own board, knife and tongs — never pass shared gravy over it.
+      Alcohol-free table for all ten. Tongue and smoked gammon each have their own board, knife and tongs — prep last, wash hands, change utensils, and never pass shared gravy over either platter. Smoked gammon is not for Host A or Guest B. The ice-cream bombe recipe is supplied but dietary clearance is pending, and coconut rice pudding is Host A clearance-pending; neither is served until cleared.
       Nuts and seeds are finely chopped; both hosts in their 80s, including Host A, get boneless chicken and tender vegetables.</div>`;
   paintTimers();
   ensureTimerClock();
   requestWakeLock();
+}
+
+/* ---------------- RECIPES ---------------- */
+function renderRecipes() {
+  const cards = D.RECIPES.map((r) => {
+    const held = r.held ? '<span class="tag" style="background:#f8ecee;color:#8d3242;border-color:#d4b3b8">Held — clearance pending</span> ' : '';
+    const prepLabel = r.prepMin != null ? `${r.prepMin} min` : '—';
+    const cookLabel = r.cookMin != null ? (r.cookMin === 0 ? 'no cook' : `${r.cookMin} min`) : '—';
+    const servesLabel = r.serves > 0 ? `${r.serves}` : 'TBC';
+    return `
+    <div class="recipe-card" data-recipe="${esc(r.id)}">
+      ${r.img ? `<img class="recipe-img" src="img/${esc(r.img)}" alt="${esc(r.name)}" loading="lazy">` : ''}
+      <div class="recipe-body">
+        <div class="recipe-course">${esc(r.course)}</div>
+        <h3>${esc(r.name)}</h3>
+        <div class="recipe-times">
+          <span class="rt"><b>Prep</b> ${prepLabel}</span>
+          <span class="rt"><b>Cook</b> ${cookLabel}</span>
+          <span class="rt"><b>Serves</b> ${servesLabel}</span>
+        </div>
+        ${held}
+        <button class="btn primary" data-act="recipe-open" data-recipe="${esc(r.id)}" style="margin-top:8px">View full recipe →</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  $('#view').innerHTML = `
+    <h2 class="sec">Recipes</h2>
+    <p class="lede">All 18 dishes with full ingredient lists, method, prep time and cooking time. Tap any recipe to see the details.</p>
+    <div class="rule"></div>
+    <div class="banner info"><strong>18 recipes</strong> covering the full Christmas grazing lunch — dips &amp; nibbles, salad, mains, sides, separate platters and desserts. Times shown are for 10 people unless noted otherwise. Held items need dietary clearance before cooking.</div>
+    <div class="recipe-grid">${cards}</div>`;
+}
+
+function openRecipe(id) {
+  const r = D.RECIPES.find((x) => x.id === id);
+  if (!r) return;
+  const held = r.held ? `<div class="banner warn"><strong>Held — do not cook yet.</strong> ${esc(r.notes)}</div>` : '';
+  const prepLabel = r.prepMin != null ? `${r.prepMin} min` : 'Not specified';
+  const cookLabel = r.cookMin != null ? (r.cookMin === 0 ? 'No cooking required' : `${r.cookMin} min`) : 'Not specified';
+  const servesLabel = r.serves > 0 ? `${r.serves} people` : 'To be confirmed';
+  const totalTime = (r.prepMin ?? 0) + (r.cookMin ?? 0);
+  const totalLabel = totalTime > 0 ? `${totalTime} min total` : '—';
+
+  openModal(r.name, `
+    ${r.img ? `<img class="recipe-img-modal" src="img/${esc(r.img)}" alt="${esc(r.name)}">` : ''}
+    <div class="recipe-course">${esc(r.course)}</div>
+    <div class="recipe-times-modal">
+      <div><b>Prep time</b><br>${prepLabel}</div>
+      <div><b>Cook time</b><br>${cookLabel}</div>
+      <div><b>Total</b><br>${totalLabel}</div>
+      <div><b>Serves</b><br>${servesLabel}</div>
+    </div>
+    <h3 style="margin:14px 0 8px">Ingredients</h3>
+    <ul class="recipe-ing">${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
+    <h3 style="margin:14px 0 8px">Method</h3>
+    <ol class="recipe-method">${r.method.map((m) => `<li>${esc(m)}</li>`).join('')}</ol>
+    ${r.notes ? `<div class="banner info" style="margin-top:12px"><strong>Notes</strong> ${esc(r.notes)}</div>` : ''}
+    ${held}
+  `);
 }
 
 /* ---------------- SHOPPING ---------------- */
@@ -245,16 +324,19 @@ function renderShop() {
     <div class="group-title">${esc(g)}</div>
     ${groups[g].map((l) => {
       const r = rowById.get(l.id);
-      const price = r?.selected
-        ? `<span class="tag ${r.status === 'compared' ? '' : 'gold'}">${r.status === 'compared' ? '✓ ' : ''}${shortName(r.selected.entry.store)} ${E.formatZAR(r.selected.costCents)}</span>`
-        : '<span class="tag rose">unpriced</span>';
+      const heldLabel = heldStatus(l);
+      const price = heldLabel
+        ? `<span class="tag gold">${esc(heldLabel)}</span>`
+        : r?.selected
+          ? `<span class="tag ${r.status === 'compared' ? '' : 'gold'}">${r.status === 'compared' ? '✓ ' : ''}${shortName(r.selected.entry.store)} ${E.formatZAR(r.selected.costCents)}</span>`
+          : '<span class="tag rose">unpriced</span>';
       return `<div class="line ${l.ticked ? 'done' : ''}">
         <input type="checkbox" data-tick="${esc(l.id)}" ${l.ticked ? 'checked' : ''} aria-label="Mark ${esc(l.name)} as bought">
         <div class="name">${esc(l.name)}${l.note ? `<div class="small muted">${esc(l.note)}</div>` : ''}
           <div class="small"><label style="display:inline-flex;gap:6px;align-items:center;text-transform:none;letter-spacing:0;font-weight:400;margin:4px 0 0">
             <input type="checkbox" data-pantry="${esc(l.id)}" ${l.pantry ? 'checked' : ''}> Already in pantry</label></div></div>
-        <div class="qty">${scaledQty(l)} ${esc(l.unit)}</div>
-        <div class="price">${price}<br><button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button></div>
+        <div class="qty">${qtyText(l)}</div>
+        <div class="price">${price}<br>${heldLabel ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(l.id)}">+ price</button>`}</div>
       </div>`;
     }).join('')}`).join('');
 
@@ -334,13 +416,15 @@ function renderCost() {
   const unpriced = b.rows.filter((r) => !r.selected);
 
   const compareRows = b.rows.filter((r) => r.options.length || r.reasons.length).map((r) => {
+    const heldLabel = heldStatus(r.line);
     const cells = D.STORES.map((s) => {
       const o = r.options.find((x) => x.entry.store === s.id);
       return `<td class="nowrap">${o ? `<strong>${E.formatZAR(o.costCents)}</strong><div class="small muted">${E.formatZAR(o.entry.unitCents)}/unit</div>` : '<span class="muted small">no price</span>'}</td>`;
     }).join('');
-    return `<tr><td><strong>${esc(r.line.name)}</strong><div class="small muted">${r.line.qty} ${esc(r.line.unit)} · ${esc(r.status === 'compared' ? 'cheapest verified' : r.status === 'single' ? 'single source' : 'insufficient data')}</div></td>
+    const statusText = heldLabel || (r.status === 'compared' ? 'cheapest verified' : r.status === 'single' ? 'single source' : 'insufficient data');
+    return `<tr><td><strong>${esc(r.line.name)}</strong><div class="small muted">${qtyText(r.line)} · ${esc(statusText)}</div></td>
       ${cells}<td class="nowrap">${r.selected ? E.formatZAR(r.selected.costCents) : '—'}</td>
-      <td><button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button></td></tr>`;
+      <td>${heldLabel ? '<span class="small muted">no price entry</span>' : `<button class="btn small" data-act="add-price" data-id="${esc(r.line.id)}">+ price</button>`}</td></tr>`;
   }).join('');
 
   const split = D.STORES.map((s) => {
@@ -354,8 +438,9 @@ function renderCost() {
   const shopLines = state.lines.map((l) => {
     const r = b.rows.find((x) => x.line.id === l.id);
     const here = r?.selected?.entry.store === singleShop;
+    const heldLabel = heldStatus(l);
     return `<div class="line ${l.ticked ? 'done' : ''}"><div class="name">${esc(l.name)}</div>
-      <div class="qty">${here ? E.formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
+      <div class="qty">${heldLabel ? `<span class="tag gold">${esc(heldLabel)}</span>` : here ? E.formatZAR(r.selected.costCents) : '<span class="tag rose">no price here</span>'}</div></div>`;
   }).join('');
   const shopTotal = Object.values(b.split[singleShop] || []).reduce((a, x) => a + x.costCents, 0);
 
@@ -438,8 +523,14 @@ function renderMore() {
       <div class="banner bad" style="margin-top:12px"><strong>Excluded from the alcohol-free table</strong>
         PnP Brandy Pudding and PnP Brandy Christmas Fruit Cake are flagged and never suggested. No wine, beer or vanilla extract anywhere.</div>
       <div class="banner info"><strong>Shared table is safe for all ten</strong>
-        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Tongue is red meat at the table — fine — but only three people eat it, so it has its own board, knife, tongs and label.</div>
+        No sugar, yeast, wheat, dairy, vinegar, alcohol or charred cooking. Cinnamon-baked pears remain the documented shared-safe dessert; the ice-cream bombe is held back until its supplied recipe's dairy, sugar, fruit-mince, glacé-cherry and other labels are cleared, and optional coconut rice pudding is held back until Host A/dietitian clearance. Tongue is red meat at the table — fine — but only three people eat it, so it has its own board, knife, tongs and label.</div>
+      <div class="banner warn"><strong>Three menu items are not cleared</strong>
+        Smoked gammon is a separate cured-pork platter with its own board, knife and tongs, not for Host A or Guest B. The ice-cream bombe recipe is supplied, with no invented crowd batch count, mix-in quantities, numeric "overnight" minutes, prices or dietary claims; dairy, sugar, fruit-mince/alcohol/suet and glacé-cherry label risks remain. Coconut rice pudding is an optional candidate whose previous ingredient list is for Host A review only; it is not a safety claim and is not served until cleared.</div>
     </div>
+
+    <div class="card"><h3>Menu options / placeholders</h3>
+      <p class="lede">The ice-cream recipe is supplied where noted; preparation details, labels, crowd batch count, mix-in quantities and Host A/dietitian clearance are pending where noted. These are guardrails, not medical advice.</p>
+      <ul class="tl">${placeholdersHtml()}</ul></div>
 
     <div class="card"><h3>Settings</h3>
       <div class="grid2">
@@ -513,9 +604,12 @@ function printCards() {
     <h2>Large-print dish labels</h2>
     <div class="label">SHARED — SAFE FOR ALL<small>No sugar · no yeast · no wheat · no dairy · no vinegar · alcohol-free</small></div>
     <div class="label">TONGUE — FOR 3<small>Own board, own knife, own tongs</small></div>
-    <div class="label">EXTRAS SIDEOUT<small>For the nine · alcohol-free</small></div>
+    <div class="label">SMOKED GAMMON — NOT FOR HOST A OR GUEST B<small>Own board, own knife, own tongs · quantity/preparation pending</small></div>
+    <div class="label">ICE-CREAM BOMBE — DIETARY CLEARANCE PENDING<small>Recipe supplied · check dairy/sugar/fruit-mince/glacé-cherry labels · do not serve until cleared</small></div>
+    <div class="label">COCONUT RICE PUDDING — HOST A CLEARANCE PENDING<small>Previous ingredient list for review only · do not serve until cleared</small></div>
+    <div class="label">EXTRAS SIDEBOARD<small>For the nine · alcohol-free</small></div>
     <h2>Shopping checklist</h2>
-    <ul>${state.lines.map((l) => `<li>☐ ${esc(l.name)} — ${scaledQty(l)} ${esc(l.unit)}</li>`).join('')}</ul>`;
+    <ul>${state.lines.map((l) => `<li>☐ ${esc(l.name)} — ${qtyText(l)}</li>`).join('')}</ul>`;
   if (native('printPage')) return; // Android PrintManager, not WebView.print()
   window.print();
 }
@@ -603,8 +697,8 @@ function exportCSV() {
   const rows = [['Item', 'Quantity', 'Unit', 'Category', 'Price status', 'Cost (ZAR)', 'Ticked', 'Pantry'].map(q).join(',')];
   for (const l of state.lines) {
     const r = byId.get(l.id);
-    rows.push([l.name, scaledQty(l), l.unit, l.category,
-      r?.status || 'no-price', r?.selected ? (r.selected.costCents / 100).toFixed(2) : '',
+    rows.push([l.name, qtyValue(l), l.unit, l.category,
+      heldStatus(l) ?? (r?.status || 'no-price'), r?.selected ? (r.selected.costCents / 100).toFixed(2) : '',
       l.ticked ? 'yes' : 'no', l.pantry ? 'yes' : 'no'].map(q).join(','));
   }
   download('christmas-lunch-shopping.csv', rows.join('\n'), 'text/csv');
@@ -614,9 +708,9 @@ function exportCSV() {
 /* ---------------- ADD PRICE MODAL ---------------- */
 function addPriceModal(lineId) {
   const line = state.lines.find((l) => l.id === lineId);
-  if (!line) return;
+  if (!line || isHeldLine(line)) return;
   openModal('Add a price', `
-    <p class="lede">${esc(line.name)} · ${scaledQty(line)} ${esc(line.unit)}. Enter the amount you actually paid — the app never guesses.</p>
+    <p class="lede">${esc(line.name)} · ${qtyText(line)}. Enter the amount you actually paid — the app never guesses.</p>
     <label class="field"><span>Shop</span><select id="p-store">${D.STORES.map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></label>
     <label class="field"><span>Amount paid for this line (R)</span><input id="p-amount" type="number" min="0" step="0.01" placeholder="0.00" required></label>
     <label class="field"><span>Source</span><select id="p-source"><option value="RECEIPT">Till slip</option><option value="MANUAL">Manual entry</option></select></label>
@@ -627,7 +721,8 @@ function addPriceModal(lineId) {
 function savePrice(lineId) {
   const line = state.lines.find((l) => l.id === lineId);
   const amount = Number($('#p-amount')?.value);
-  if (!line || !Number.isFinite(amount) || amount <= 0) { toast('Enter a valid amount'); return; }
+  if (!line || isHeldLine(line)) { toast(`${heldStatus(line) || 'Held item'} — no price entry yet`); return; }
+  if (!Number.isFinite(amount) || amount <= 0) { toast('Enter a valid amount'); return; }
   const cents = Math.round(amount * 100);
   const qty = Number(scaledQty(line)) || Number(line.qty) || 1;
   state.customPrices.push({
@@ -645,7 +740,7 @@ function savePrice(lineId) {
 function render() {
   applyTheme();
   renderHeader();
-  ({ run: renderRun, cook: renderCook, shop: renderShop, agenda: renderAgenda, cost: renderCost, more: renderMore })[tab]();
+  ({ run: renderRun, cook: renderCook, recipes: renderRecipes, shop: renderShop, agenda: renderAgenda, cost: renderCost, more: renderMore })[tab]();
   $$('#tabs button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
@@ -667,6 +762,7 @@ document.addEventListener('click', (e) => {
   const { act, id } = t.dataset;
   switch (act) {
     case 'close-modal': closeModal(); break;
+    case 'recipe-open': openRecipe(t.dataset.recipe); break;
     case 'add-price': addPriceModal(id); break;
     case 'save-price': savePrice(id); break;
     case 'clear-durations': state.durations = {}; S.save(state); render(); toast('Durations cleared'); break;

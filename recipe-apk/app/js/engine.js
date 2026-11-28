@@ -51,6 +51,7 @@ export function usable(entry, line, ctx) {
 
 /** Cost of a shopping line using a price entry. Returns cents, or null when units cannot be compared. */
 export function lineCost(line, entry) {
+  if (line.qty == null) return null;
   const q = Number(line.qty);
   if (!Number.isFinite(q) || q <= 0) return null;
   const weightLike = (u) => u === 'kg' || u === 'g';
@@ -69,6 +70,12 @@ export function lineCost(line, entry) {
 
 /** Compare the three shops for one line. Never guesses a missing shop. */
 export function compareLine(line, entries, ctx) {
+  if (line.qty == null) {
+    const reason = line.dietClearancePending ? 'Dietary clearance pending — no quantity yet'
+      : line.preparationPending ? 'Preparation pending — no quantity yet'
+      : 'Recipe pending — no quantity yet';
+    return { status: 'no-price', options: [], reasons: [reason] };
+  }
   if (!line.matchKey) return { status: 'no-price', options: [], reasons: ['No verified product match'] };
   const candidates = entries.filter((e) => e.matchKey === line.matchKey);
   const reasons = [];
@@ -123,14 +130,21 @@ export const mergeLines = (lines) => {
   for (const l of lines) {
     const key = `${l.name.trim().toLowerCase()}|${l.unit}`;
     const prev = map.get(key);
-    if (prev) prev.qty = Number(prev.qty) + Number(l.qty);
-    else map.set(key, { ...l });
+    if (prev) {
+      // A held duplicate stays pending; adding null as zero would invent a quantity.
+      if (prev.qty == null || l.qty == null) prev.qty = null;
+      else prev.qty = Number(prev.qty) + Number(l.qty);
+    } else map.set(key, { ...l });
   }
   return [...map.values()];
 };
 
-export const scaleQty = (qty, fromGuests, toGuests) =>
-  Math.round((Number(qty) * toGuests / fromGuests) * 1000) / 1000;
+export const scaleQty = (qty, fromGuests, toGuests) => {
+  if (qty == null) return null;
+  const n = Number(qty);
+  if (!Number.isFinite(n)) return null;
+  return Math.round((n * toGuests / fromGuests) * 1000) / 1000;
+};
 
 /**
  * Dependency-aware, resource-aware schedule.

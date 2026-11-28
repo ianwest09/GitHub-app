@@ -4,7 +4,7 @@ import {
   isExpired, isActive, usable, lineCost, compareLine, optimiseBasket, mergeLines,
   scaleQty, schedule, hhmmToMinutes, minutesToHHMM, formatZAR, bundleCount,
 } from '../js/engine.js';
-import { PRICE_ENTRIES, SHOPPING_LINES, DISHES, STORES } from '../js/data.js';
+import { PRICE_ENTRIES, SHOPPING_LINES, DISHES, RUN_SHEET, STORES, MENU_PLACEHOLDERS, RETIRED_SHOPPING_LINE_IDS } from '../js/data.js';
 
 const TODAY = '2026-11-19';
 const ctx = { today: TODAY, basketLines: SHOPPING_LINES, hasLoyaltyCard: false };
@@ -111,12 +111,51 @@ test('duplicate ingredients merge and portion scaling works', () => {
   assert.equal(merged.length, 2);
   assert.equal(merged.find((l) => l.unit === 'each').qty, 10);
   assert.equal(scaleQty(10, 10, 12), 12);
+  assert.equal(scaleQty(null, 10, 12), null);
 });
 
 test('lineCost refuses incomparable units', () => {
   const wool = PRICE_ENTRIES.find((e) => e.id === 'wool-potatoes');
   assert.equal(lineCost({ qty: 1.5, unit: 'kg' }, wool), 3000);
   assert.equal(lineCost({ qty: 3, unit: 'each' }, wool), null);
+});
+
+test('held menu items stay unpriced and retired dessert data is absent', () => {
+  const pending = SHOPPING_LINES.filter((l) => l.qty === null);
+  assert.equal(pending.length, 5);
+  assert.ok(pending.some((l) => /Smoked gammon/i.test(l.name)));
+  assert.ok(pending.some((l) => /heavy whipping cream/i.test(l.name)));
+  assert.equal(pending.filter((l) => l.dietClearancePending === true).length, 4);
+  assert.equal(pending.filter((l) => l.preparationPending === true).length, 1);
+  for (const line of pending) {
+    assert.equal(lineCost(line, PRICE_ENTRIES[0]), null);
+    const comparison = compareLine(line, PRICE_ENTRIES, ctx);
+    assert.equal(comparison.status, 'no-price');
+    assert.match(comparison.reasons.join(' '), line.dietClearancePending ? /Dietary clearance pending/ : /Preparation pending/);
+  }
+  const clearance = SHOPPING_LINES.filter((l) => l.clearancePending === true);
+  assert.equal(clearance.length, 5);
+  assert.ok(clearance.every((l) => l.matchKey === null && typeof l.qty === 'number'));
+  assert.ok(clearance.some((l) => /Coconut rice pudding/i.test(l.name)));
+  for (const line of clearance) {
+    const comparison = compareLine(line, PRICE_ENTRIES, ctx);
+    assert.equal(comparison.status, 'no-price');
+    assert.match(comparison.reasons.join(' '), /No verified product match/);
+  }
+  const basket = optimiseBasket([...pending, ...clearance], PRICE_ENTRIES, ctx);
+  assert.equal(basket.pricedCount, 0);
+  assert.equal(basket.complete, false);
+  assert.equal(MENU_PLACEHOLDERS.length, 3);
+  assert.ok(MENU_PLACEHOLDERS.some((x) => /Coconut rice pudding/i.test(x.title) && /Host A clearance pending/i.test(x.status)));
+  assert.ok(MENU_PLACEHOLDERS.some((x) => /ice-cream bombe/i.test(x.title) && /Recipe supplied/i.test(x.status) && /dietary clearance pending/i.test(x.status)));
+  assert.ok(SHOPPING_LINES.every((l) => !RETIRED_SHOPPING_LINE_IDS.includes(l.id)));
+  const seedText = JSON.stringify({ SHOPPING_LINES, DISHES, RUN_SHEET, MENU_PLACEHOLDERS });
+  assert.match(seedText, /Recipe supplied/);
+  assert.match(seedText, /1 pint heavy whipping cream/);
+  assert.match(seedText, /14 ounce/);
+  assert.match(seedText, /freeze overnight/);
+  assert.doesNotMatch(seedText, /Coconut rice pots|Rice \(for coconut pots\)|portion coconut/i);
+  assert.doesNotMatch(seedText, /recipe to be supplied|recipe[ -]pending ice/i);
 });
 
 test('schedule: missing durations are reported, explicit ones are scheduled', () => {
