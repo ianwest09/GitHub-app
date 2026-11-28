@@ -1,18 +1,52 @@
 # Cost breakdown & cheapest-route per-head estimate
 
 *Christmas Lunch for Ten · Port Alfred · researched 28 November 2026.*
-*Prices investigated across Pick n Pay, Woolworths, Spar (Port Alfred) plus Checkers Eastern Cape catalogues and fresh-produce market data.*
+*Prices investigated across the shops actually in Port Alfred — Pick n Pay, Woolworths, SPAR/Superspar, U-Save and Boxer — plus online delivery (Pick n Pay ASAP!, Woolworths online) and fresh-produce market data. **There is no Checkers in Port Alfred**, so Checkers Sixty60 is not an option here.*
 
 > **Read this first — how honest this number is.** A defensible "cheapest basket total" needs a current, like-for-like price for *every* line at *every* shop. That does not exist here. So this document splits every line into **three confidence tiers** and gives you a rough per-head figure built from all three, plus a separate **verified-only subtotal** you can trust. Replace Tier B/C figures with till-slip prices as you shop. **Nothing below is a final, verified total — it is a planning estimate.**
+
+## Shops actually in Port Alfred
+
+Port Alfred is a small town — there is **no Checkers** (so no Sixty60), no Food Lover's Market, no Makro. The grocery options are:
+
+| Shop | Address | Type | Online? |
+| --- | --- | --- | --- |
+| **Pick n Pay Family** | Heritage Mall, cnr Masonic & Gluckman/Cilligman St | Full supermarket, fresh + pantry | **Yes — Pick n Pay ASAP! app**, confirmed live in Port Alfred (same-day, in-store prices, delivery ~R35, Smart Shopper points) |
+| **Woolworths** | Shop 16/17 Rosehill Mall, R72 | Full supermarket, fresh + pantry | **Yes — woolworths.co.za / Woolies app** (the live prices below are the online retail prices) |
+| **Superspar Rosehill** | Rosehill Mall, R72 | Full supermarket, fresh + pantry | No own delivery |
+| **SPAR Nemato** | 32–36 Biscay Rd | Full supermarket | No own delivery; **closed Christmas Day** |
+| **U-Save** | 39 Masonic St (Shoprite group) | No-frills discount, limited fresh range | No online delivery |
+| **Boxer** | Heritage Mall, cnr Gluckman & Biscay (Pick n Pay group) | Discount, staples-focused | No online delivery |
+| Smaller independents | Port Alfred Friendly Grocer, Howards Cash & Carry, FreshStop at Caltex, Hill Supermarket, The Supermarket | Limited range | — |
+| **Butcher** (order ahead) | local butcher | Beef/ox tongue | — |
+
+### Online shopping — what's actually available
+
+- **Pick n Pay ASAP!** — confirmed operating in Port Alfred (the service explicitly calls out "smaller towns like Port Alfred"). Same-day delivery in ~60 min, **in-store prices** (so the PnP catalogue prices = the online prices), delivery ~R35, earn Smart Shopper points. Best online option for the bulk of the basket.
+- **Woolworths online** (woolworths.co.za) — full fresh + pantry range; the verified prices in the table below are the live online retail prices. Delivery fee applies; check the Woolies app for Port Alfred delivery slots.
+- **No Checkers Sixty60** — there is no Checkers in Port Alfred.
+- **U-Save / Boxer** — no online delivery; in-store only.
+
+### U-Save and Boxer — do they help this menu?
+
+Both are discount stores, but their ranges do **not** match this menu's requirements:
+
+- **Chicken:** both stock only **frozen, bone-in mixed portions** (U-Save Farmer's Choice/Goldi 5 kg ~R199.99; Boxer Golden Ray IQF 5 kg R189.99–R199.99). The menu needs **fresh boneless** chicken for both hosts — frozen bone-in is **not like-for-like and is excluded**, not substituted as a cheaper option.
+- **Rice:** both stock **white parboiled** rice (Boxer Golden Ray 10 kg R89.99; U-Save Spekko 2 kg ~R32.99). The menu uses **brown rice** — not like-for-like, excluded.
+- **Fresh produce / brown lentils / cornflour / nuts:** U-Save and Boxer carry little to none of these.
+
+**Conclusion:** U-Save and Boxer are useful for generic household staples (maize meal, cooking oil, sugar) but **do not beat PnP/Woolworths on any menu line** that has a like-for-like requirement. They are not in the cheapest route for this basket.
 
 ## Cheapest shop — headline routing
 
 | Shop | Best for | Why |
 | --- | --- | --- |
-| **Pick n Pay** (cnr Masonic & Gluckman) | **Chicken** (if the fresh-fillet per-kg special holds), potatoes (bundle), pantry staples, alcohol-free fruit cake | Historically cheapest boneless chicken (R79.99/kg last cycle). **Current 23–29 Nov "Fresh Food People" catalogue is image-based — the per-kg chicken price could not be text-verified this round; re-confirm at the cabinet.** Open Mon–Sun. |
-| **Woolworths** (online listings, verified live 28 Nov) | Boneless chicken (verified fallback), brown rice, lentils, cornflour, cauliflower, potatoes | Only shop with current text-verifiable prices for the pantry + produce lines below. Dearer chicken than PnP *if* PnP's special holds. |
-| **Spar** (32–36 Biscay Rd) | **Gammon** (if cleared), pork, rice, long-life milk | Spar "Tender & Tasty Boneless Gammon (uncooked)" **R89.99** found in current 23 Nov–6 Dec catalogue — the only gammon price found. Still **held** (cured/processed pork, not for Host A or Guest B). **Closed Christmas Day** — shop by 24 Dec. |
-| **Checkers** (Eastern Cape catalogues 23 Nov–6 Dec + Black Friday 26–29 Nov) | Worth a price-check pass | Catalogues are image-based; no usable text prices extracted this round. Check Sixty60 app in-store/online for chicken, rice, oil. |
+| **Pick n Pay** (Heritage Mall, Masonic St) + **ASAP! online** | **Chicken** (if the fresh-fillet per-kg special holds), potatoes (bundle), pantry staples, alcohol-free fruit cake | Historically cheapest boneless chicken (R79.99/kg last cycle). **Current 23–29 Nov "Fresh Food People" catalogue is image-based — the per-kg chicken price could not be text-verified this round; re-confirm at the cabinet or via the ASAP! app.** Open Mon–Sun. Online = same in-store prices + ~R35 delivery. |
+| **Woolworths** (Rosehill Mall) + **online** | Boneless chicken (verified fallback), brown rice, lentils, cornflour, cauliflower, potatoes | Only shop with current text-verifiable prices for the pantry + produce lines below. Dearer chicken than PnP *if* PnP's special holds. Online prices = the verified prices in this doc. |
+| **Spar / Superspar** (Biscay Rd / Rosehill) | **Gammon** (if cleared), pork, long-life milk | Spar "Tender & Tasty Boneless Gammon (uncooked)" **R89.99** found in current 23 Nov–6 Dec catalogue — the only gammon price found. Still **held** (cured/processed pork, not for Host A or Guest B). **SPAR Nemato closed Christmas Day** — shop by 24 Dec. |
+| **U-Save** (39 Masonic St) | Generic staples only | Frozen bone-in chicken + white rice only — **not like-for-like** with this menu; excluded from the route. |
+| **Boxer** (Heritage Mall) | Generic staples only | Same — frozen bone-in chicken + white parboiled rice; not like-for-like; excluded. |
+| ~~Checkers~~ | **Not in Port Alfred** | No Checkers, no Sixty60 here. |
 | **Butcher** (order ahead) | Beef/ox tongue | No supermarket tongue price exists; order a week ahead, price from the till slip. |
 
 ## The three tiers
@@ -95,15 +129,15 @@
 
 ---
 
-## Cheapest-route shopping plan (one trip where possible)
+## Cheapest-route shopping plan (online + one shop visit where possible)
 
-1. **Pick n Pay Port Alfred** — chicken (verify R79.99/kg special), potatoes (if the 2 kg bundle is back), white beans, rice cakes, nuts, alcohol-free fruit cake, lemons, garlic, herbs, olive oil, spices. Biggest potential saving is here if the chicken special holds.
-2. **Woolworths (online or in-store)** — brown rice, lentils, cornflour, cauliflower, cucumber (the lines where Woolworths is the only verified price). Also the chicken fallback if PnP's special has lapsed.
-3. **Spar Port Alfred** — gammon *only if/when cleared* (R89.99/kg boneless). Shop by **24 Dec** — Spar is **closed Christmas Day**.
+1. **Pick n Pay Port Alfred — in-store or via ASAP! app** — chicken (verify R79.99/kg special at the cabinet or in the app), potatoes (if the 2 kg bundle is back), white beans, rice cakes, nuts, alcohol-free fruit cake, lemons, garlic, herbs, olive oil, spices. Biggest potential saving is here if the chicken special holds. **ASAP! delivers same-day at in-store prices for ~R35** — useful if you want it brought to the door.
+2. **Woolworths (Rosehill Mall or online)** — brown rice, lentils, cornflour, cauliflower, cucumber (the lines where Woolworths is the only verified price). Also the chicken fallback if PnP's special has lapsed. Online prices match the verified figures in this doc.
+3. **Spar / Superspar** — gammon *only if/when cleared* (R89.99/kg boneless). Shop by **24 Dec** — SPAR Nemato is **closed Christmas Day**.
 4. **Butcher** — order tongue ~1 week ahead; price from till slip.
-5. **Checkers** — a quick Sixty60 price-check pass on chicken, rice and oil could beat PnP/Woolworths; not verified this round.
+5. **U-Save / Boxer** — skip for this menu (frozen bone-in chicken + white rice only; not like-for-like).
 
-> Travel cost is **user-entered only** — no petrol/route cost is assumed in the per-head figure. If you make separate trips to PnP + Woolworths + butcher, add that and split it too.
+> Travel cost is **user-entered only** — no petrol/route cost is assumed in the per-head figure. Using **Pick n Pay ASAP! online** (~R35 delivery) can replace a trip; split the delivery fee across the 10 if you use it.
 
 ---
 
@@ -116,4 +150,4 @@
 - **Host A / Guest B guardrails intact.** Host A is one of two hosts; alcohol-free table; Guest B chicken-only; tongue for three (separate platter/utensils); gammon separate/not for Host A or Guest B; boneless chicken; 10 at the table; cinnamon-baked pears shared-safe; no medical advice.
 - **Nothing here is a final till-validated total.** Use the app's shopping view (partial subtotal only, "insufficient data" for gaps) as the live truth once you start capturing till-slip prices.
 
-*Sources: Guzzle PnP/Spar/Checkers Port Alfred & Eastern Cape catalogue listing pages (28 Nov 2026); Woolworths.co.za live category/listing pages (28 Nov 2026); AgriMag fresh-produce commodity prices (6 Nov 2026); hikersbay Eastern Cape price aggregate (2026). Catalogue image pages (PnP Fresh Food People, Checkers Black Friday) could not be text-extracted, so their produce prices are not in Tier A.*
+*Sources: Guzzle PnP/Spar/U-Save Port Alfred & Eastern Cape catalogue listing pages (28 Nov 2026); Woolworths.co.za live category/listing pages (28 Nov 2026, = online retail prices); Pick n Pay ASAP! confirmed in Port Alfred (bottlesapp.co.za / bandwidthblog Apr 2026); Cybo/InfoisInfo/Rosehill Mall Port Alfred shopping directories (shop list + addresses); cataloguespecials.co.za Boxer & U-Save price history; AgriMag fresh-produce commodity prices (6 Nov 2026); hikersbay Eastern Cape price aggregate (2026). **No Checkers in Port Alfred** (confirmed via directories). Catalogue image pages (PnP Fresh Food People) could not be text-extracted, so their produce prices are not in Tier A.*
