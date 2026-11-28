@@ -73,25 +73,29 @@
 
 | | Amount |
 | --- | --- |
-| **Shared-basket total (lines 1–33, excluding tongue)** | **R1,493.77** |
+| **Shared-basket total (lines 1–33, excluding tongue)** | **R1,610.62** |
 | Beef/ox tongue (line 34) — 3 guests only | R180.00 |
-| **Total including tongue** | **R1,673.77** |
+| **Total including tongue** | **R1,790.62** |
 
 ### Equal split across 10 (simplest — tongue absorbed into common pot)
 
 | | Per head |
 | --- | --- |
-| **R1,673.77 ÷ 10** | **≈ R167 / head** |
+| **R1,790.62 ÷ 10** | **≈ R179 / head** |
 
 ### If Pick n Pay's chicken special holds at R79.99/kg
 - Chicken drops from R215.98 (Woolworths) to **R143.98** (PnP) — saves **R72**.
-- Total becomes **R1,601.77 → ≈ R160 / head**.
+- Total becomes **R1,718.62 → ≈ R172 / head**.
 - **This is the single biggest lever — verify the PnP fresh skinless breast per-kg price at the cabinet or via the ASAP! app before 5 Dec.**
 
+### If olive oil is already in your pantry
+- Subtract R129.99 (the oil bottle) → R1,660.63 ÷ 10 = **≈ R166 / head**.
+- With PnP chicken too: **≈ R159 / head**.
+
 ### Weighted split (tongue guests cover their platter)
-- Shared basket R1,493.77 ÷ 10 = **≈ R149 / head** (everyone).
+- Shared basket R1,610.62 ÷ 10 = **≈ R161 / head** (everyone).
 - Tongue R180 ÷ 3 tongue guests = **R60 / tongue guest extra**.
-- So: 7 non-tongue guests pay **≈ R149**; 3 tongue guests pay **≈ R209**.
+- So: 7 non-tongue guests pay **≈ R161**; 3 tongue guests pay **≈ R221**.
 
 ### If held items are later cleared and added
 - Gammon (Spar R89.99/kg): split among guests who eat it, not all 10.
@@ -101,7 +105,9 @@
 
 ## Summary — the number to give guests before 5 December
 
-> **Roughly R160–R167 per head**, depending on whether the Pick n Pay chicken special holds and whether the tongue is split equally or weighted. Built from **live Woolworths online prices (28 Nov 2026)** for every ingredient, with the tongue as a butcher placeholder and the PnP chicken special as the main saving to verify. **Re-check prices at the till when you shop — these are online retail prices, not till slips.**
+> **Roughly R160–R180 per head**, depending on whether the Pick n Pay chicken special holds (R72 swing), whether olive oil is already in your pantry (R130 swing), and whether the tongue is split equally (R179) or weighted (R161/R221). Built from **live Woolworths online prices (28 Nov 2026)** for every ingredient, with the tongue as a butcher placeholder. **Re-check prices at the till when you shop — these are online retail prices, not till slips.**
+
+> **A full per-dish cost breakdown and meeting brief is in `MEETING-BRIEF.md`** — bring that to the meeting with Hostess A.
 
 ## Shopping plan (online + one visit)
 
