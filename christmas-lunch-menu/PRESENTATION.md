@@ -6,10 +6,11 @@ large text, and a Christmas-themed photo on every slide.
 
 **Google Slides:** https://docs.google.com/presentation/d/1lGbwF8cXT4SrIXL45Y_fD5jOYDRbLrobnuCrFhl9peY/edit
 
-## Structure (19 slides)
+## Structure (21 slides)
 
 1. **Title** — Christmas Lunch for Ten (festive hero photo)
 2. **The Full Menu** — all courses listed for all 10 diners
+3. **The Christmas Grazing Table** — all dishes spread on a festive table (full overview)
 3. **Lemon-Herb White Bean Dip** — R100.98 · serves 10
 4. **Rosemary Roasted Almonds & Pumpkin Seeds** — R140.00 · serves 10
 5. **Chilled Fennel, Cucumber & Avocado Salad** — R228.90 · serves 10
@@ -31,6 +32,19 @@ large text, and a Christmas-themed photo on every slide.
 
 Each dish slide has: dish name (title), Christmas-themed photo, full ingredients
 with per-item costs, and total cost at the bottom (32pt bold centered).
+
+## Images (regenerated 19 Nov 2026)
+All 16 dish images regenerated with modern, festive Christmas plating and
+presentation styling (warm natural lighting, ceramic tableware, holly/pine/
+rosemary/candlelight accents, shallow depth of field, high-end restaurant
+quality). Uploaded to Google Drive and swapped into the presentation via
+`replace_image` (img001–img016, CENTER_CROP).
+
+A **grazing table** image was also generated showing all dishes spread on a
+festive table, and added as a new slide (`grz001`) at position 3 with title
+"The Christmas Grazing Table" (36pt bold, deep blue, centered).
+
+Drive file IDs for all 17 images recorded in `IMAGE-UPLOAD-TRACKER.md`.
 
 Ingredients double-checked against COST-BREAKDOWN.md (all 33 priced lines).
 Prices verified from woolworths.co.za (28 Nov 2026) and Spar Port Alfred catalogue.
