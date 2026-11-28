@@ -37,5 +37,24 @@ Prices verified from woolworths.co.za (28 Nov 2026) and Spar Port Alfred catalog
 No medical advice. Gammon not for Host A or Guest B. Alcohol-free table.
 
 ## Figma note
-The Figma connector reported "Invalid scope" when trying to read team files.
-The connection needs to be reconnected in Arena to access Figma assets.
+The Figma connector is working — `validate_credential`, `get_team_styles`,
+`get_team_components`, `get_file_meta`, and `get_file` all succeed.
+Only `get_team_projects` returns "Invalid scope" (a known scope limitation
+on that single endpoint; the connection itself is fine, no reconnect needed).
+The team library file (`aInaUd1HBn2ngbCkppU4lG`) contains only default
+Figma color swatches (Fuschia/Iris) and text styles — no Christmas assets.
+
+## Complementary colour palette (applied)
+A complementary palette was derived by analysing the user-uploaded food
+photography image (warm dark brown, avg `#76583C`, hero hue 30°) and
+computing complementary/split-complementary/analogous colours.
+Full details in `FIGMA-PALETTE.md`. Applied to all 19 content slides:
+
+- **Slide backgrounds** → Neutral Paper `#F2EEEA` (warm off-white)
+- **Title text** (all 19 slides) → Deep Blue 80 `#1C4772` (primary)
+- **Ingredient text** (16 dish slides) → Warm Brown 80 `#8C5B2A` (tertiary)
+- **Body text** (menu, summary, decisions) → Deep Blue 60 `#446E99` (secondary)
+- **Cost boxes** (16 slides) → Deep Blue 80 fill `#1C4772` + white text `#FFFFFF`,
+  middle-aligned (32pt bold)
+
+The title slide retains its Christmas hero photo as a stretched background fill.
