@@ -1,29 +1,38 @@
-# Christmas Lunch for Ten — Presentation
+# Christmas Lunch for Ten — Menu Presentation
 
 A simple, image-led Google Slides deck for the meeting with Hostess A.
 Built to be **presented to her** (not navigated alone): one idea per slide,
-large text, and a photo on every visual slide.
+large text, and a photo on every slide.
 
-**Google Slides:** https://docs.google.com/presentation/d/1peTIq8m0-ilZUvp3wdYBKsb6A1LouP8perp2FjGJAII/edit
+**Google Slides:** https://docs.google.com/presentation/d/1cB0zgYJJTnD32Zae8Ye96SufWDNhQLBwkYrz8ojWJ70/edit
 
-## The 12 slides
+## Structure (23 slides)
 
-1. **Christmas Lunch for Ten** — title (Port Alfred · Christmas Day at 1 o'clock · 10 at the table · alcohol-free)
-2. **What We're Serving** — the menu at a glance
-3. **Smoked Gammon — New on the Menu** (photo)
-4. **Dessert: Baked Pears — Safe for Everyone** (photo)
-5. **Dessert: Ice-cream Bombe — The Showstopper** (photo)
-6. **Dessert: Coconut Rice — The Lighter Option** (photo)
-7. **About R193 Per Person** — cost scenarios (R193 / R219 / R243)
-8. **Table Theme 1: Coastal Blues** (photo)
-9. **Table Theme 2: Fynbos & Proteas** (photo)
-10. **Table Theme 3: Garden Long Table** (photo)
-11. **Table Theme 4: Red & White Festive** (photo)
-12. **Decisions for Today** — the 5 questions to settle
+1. **Title** — Christmas Lunch for Ten
+2. **Course 1: Arrival & Nibbles** — overview + image
+3. **Lemon-Herb White Bean Dip** — R100.98 · serves 10
+4. **Rosemary Roasted Almonds & Pumpkin Seeds** — R140.00 · serves 10
+5. **Course 2: First Course** — overview + image
+6. **Chilled Fennel, Cucumber & Avocado Salad** — R228.90 · serves 10
+7. **Course 3: Main Course** — overview + image
+8. **Rosemary, Lemon & Garlic Roast Chicken** — R215.98 · serves 10
+9. **Olive Oil & Rosemary Roast Baby Potatoes** — R41.24 · serves 10
+10. **Brown Rice & Lentil Pilaf** — R40.60 · serves 10
+11. **Silky Cauliflower Purée** — R70.00 · serves 10
+12. **Roasted Green Beans, Carrots & Courgettes** — R65.20 · serves 10
+13. **Mushroom, Leek & Celery Stuffing Bake** — R130.99 · serves 10
+14. **Fresh Tomato, Roast Pepper & Basil Relish** — R80.58 · serves 10
+15. **Slow-Poached Beef / Ox Tongue** — R180.00 · serves 3
+16. **Smoked Gammon** — R134.99 · serves 8
+17. **Course 4: Dessert** — overview + image
+18. **Cinnamon-Baked Pears with Pecans** — R141.24 · serves 10
+19. **Ice-Cream Bombe** — R502.18 · serves 10
+20. **Coconut Rice Pudding** — R261.46 · serves 10
+21. **Alcohol-Free Christmas Pudding** — R59.99 · serves 9
+22. **About R193 Per Person** — cost scenarios
+23. **Decisions for Today** — 4 questions
 
-All slide images are AI-generated, stored locally in `presentation-images/`
-and uploaded to Google Drive (publicly linked so the Slides API can render them).
+Each dish slide has: dish name (title), photo, ingredients list, and cost at the bottom.
 
-Prices verified from woolworths.co.za (28 Nov 2026) and the Spar Port Alfred
-catalogue (23 Nov–6 Dec 2026). No medical advice. Gammon is not for Host A or
-Guest B. The whole table is alcohol-free.
+Prices verified from woolworths.co.za (28 Nov 2026) and Spar Port Alfred catalogue (23 Nov–6 Dec 2026).
+No medical advice. Gammon not for Host A or Guest B. Alcohol-free table.
